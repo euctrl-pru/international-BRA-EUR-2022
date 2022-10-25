@@ -1,9 +1,27 @@
 # Preface {.unnumbered}
 
-This is a Quarto book.
+This report represents the 2nd edition of the Brazil-Europe Comparison of Operational Air Navigation System Performance.
+It characterises and compares operational performance in both regions on the basis of a set of harmonised performance measures. 
+The report is jointly developed by the Performance Section of the Department of Airspace Control (DECEA) and EUROCONTROL's Performance Review Unit (PRU).
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+This report was published in October 2022. 
+The online version is available at <ADD FINAL LINK HERE>.
 
-```{r}
-1 + 1
-```
+For any questions, please do not hesitate to contact one of the authoring organisations. Enjoy the read!
+
+Performance Section, DECEA
+<br>Performance Review Unit, EUROCONTROL
+
+:::{.border}
+
+COPYRIGHT NOTICE AND DISCLAIMER
+
+Every possible effort was made to ensure that the information and analysis contained in this document are as accurate and complete as possible. Should you find any errors or inconsistencies we would be grateful if you could bring them to our attention.
+
+The views expressed herein do not necessarily reflect the official views or policy of DECEA or EUROCONTROL, which makes no warranty, either implied or express, for the information contained in this document, neither does it assume any legal liability or responsibility for the accuracy, completeness or usefulness of this information.
+
+This document is jointly published by EUROCONTROL and DECEA for information purposes. It may be copied in whole or in part, provided that EUROCONTROL and DECEA is mentioned as the source and it is not used for commercial purposes (i.e. for financial gain). The information in this document may not be modified without prior written permission from EUROCONTROL and DECEA.
+
+www.eurocontrol.int & www.decea.mil.br
+
+:::

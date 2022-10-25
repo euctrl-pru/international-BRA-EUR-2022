@@ -2,12 +2,16 @@ project:
   type: book
   output-dir: docs
 
+execute:
+  echo: false
+
 book:
   title: "BRA-EUR2"
   author: "DECEA Performance Section, EUROCONTROL Performance Review Unit"
   date: "28. October 2022"
   chapters:
     - index.qmd
+    - 00-front-matters.qmd
     - intro.qmd
     - references.qmd
   output-file: "BRA-EUR-2022"
