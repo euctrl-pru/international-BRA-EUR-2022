@@ -1,15 +1,16 @@
 project:
   type: book
+  output-dir: docs
 
 book:
   title: "BRA-EUR2"
-  author: "Jane Doe"
-  date: "10/25/2022"
+  author: "DECEA Performance Section, EUROCONTROL Performance Review Unit"
+  date: "28. October 2022"
   chapters:
     - index.qmd
     - intro.qmd
-    - summary.qmd
     - references.qmd
+  output-file: "BRA-EUR-2022"
 
 bibliography: references.bib
 
@@ -18,6 +19,11 @@ format:
     theme: cosmo
   pdf:
     documentclass: scrreprt
+  docx:
+    toc: true
+    number-sections: true
+    highlight-style: github
 
 editor: visual
+
 
