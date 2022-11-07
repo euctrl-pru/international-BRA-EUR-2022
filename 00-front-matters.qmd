@@ -1,9 +1,14 @@
 # Forewords {.unnumbered}
 
-\twocolumn
+<!-- configure spacing between 2 columns in html output, aka add spacing between columns
+kudus to: https://stackoverflow.com/questions/73166794/put-2-chunks-of-code-side-by-side-in-rmarkdown-or-quarto
+-->
+<style>
+.column { padding-right: 2ex }
+.column + .column { padding-left: 2ex }
+</style>
 
 :::: {.columns}
-
 ::: {.column width="50%"}
 
 ```{r, out.width="30%"}
@@ -31,12 +36,12 @@ In this context transparency plays a fundamental role.
 This comparison report adds to providing a transparent basis for an informed discussion by providing data-driven analyses to identify performance gaps and allow stakeholders to understand better and even participate in finding solutions to the issues on the table. 
 
 :::
-
 ::::
 
-\onecolumn
-\twocolumn
 
+\onecolumn
+<br><br><br>
+\twocolumn
 
 :::: {.columns}
 
@@ -66,8 +71,8 @@ This standardization of performance management also facilitates communication wi
 
 ::::
 
-\newpage
 \onecolumn
+\newpage
 
 # Executive Summary {-}
 
@@ -79,7 +84,7 @@ This second edition aims to consolidate the existing comparison process and expa
 
 While the primacy of Safety is fully recognised, the scope of this report is limited to operational ANS performance due to data constraints. In particular, Predictability, Capacity, Efficiency and Environment, as shown below.
 
-```{r KPA-KPI, fig.cap="(ref:KPA Index)"}
+```{r KPA-KPI, fig.cap="(ref:KPA Index)", out.width="90%"}
 knitr::include_graphics("./figures/KPA-and-KPI.png")
 ```
 

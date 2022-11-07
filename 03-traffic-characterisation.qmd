@@ -1,0 +1,832 @@
+# Traffic Characterisation
+
+```{r}
+source("_chapter-setup.R")
+```
+
+The overarching objective of air traffic services is the provision of safe, orderly, and efficient flow of air traffic.
+Accordingly, operational system performance is linked to the actual and serviced demand (i.e. air traffic).
+It must be noted that the serviced traffic may be different from the actual demand.
+Constraints, both on the airspace user and air navigation system side may lead to unsatisfied demand.
+However, the level of these changes is outside the scope of this comparison.\
+For operational comparisons, it is therefore important to have a good understanding of the level and composition of the air traffic.
+The previous section provided the high-level context and organisation of air navigation services in Brazil and Europe.
+This chapter establishes some key air traffic characteristics for both regions to frame the observed operational performance in latter parts of the report.
+
+## Annual Traffic {#annualtraffic}
+
+```{r, eval=FALSE}
+NEW_BRA_count <- read.csv("./data/BRASIL_FLT_PER_DAY_2016_2022.csv")
+NEW_BRA_count
+NEW_BRA_count$Date <- as.Date(with(NEW_BRA_count, paste(ano, mes , dia, sep ="-")),"%Y-%m-%d")
+NEW_BRA_count
+```
+
+```{r, eval=FALSE}
+NEW_BRA_count %>% ggplot(aes(x = Date, y = mov)) + geom_point(size = 0.1) + geom_line(size = 0.05)
+```
+
+@fig-timeline-region-mvts shows the regional traffic development in Brazil and Europe.
+Pre-COVID air traffic in Brazil showed only mild variation across the year [^traffic-characterisation-1].
+This is in contrast to the strong seasonal nature of air traffic in Europe and its peaking behaviour during the summer months of 2019.
+In both regions, the unprecedented decline in air traffic occurred in March 2019 in the aftermath of the pandemic-declaration by the World Health Organisation (WHO).
+
+[^traffic-characterisation-1]: For Brazil, the depicted volume of air traffic is the sum of all movements at the study airports.
+    This captures a significant share of the total traffic and shows the overall development.
+
+```{r}
+#Read relevant data
+bra_count_region <- read_csv("./data/BRA-region-traffic.csv")
+eur_count_region <- read_csv("./data/PBWG-EUR-region-traffic-2019-202204.csv")
+
+bra_count_airport <- read_csv("./data/BRA-airport-traffic.csv")
+eur_count_airport <- read_csv("./data/BRA-EUR-airport-traffic.csv") %>% 
+  na.omit() # single days missing for Heathrow (2019-12-12) and LEMD 2021-01-09????
+
+#------------- determine max date in our data sets -------------------
+## this allows to calculate the variation year-to-date
+max_date_in_data <- function(.ds){
+  max_date <- .ds %>% pull(DATE) %>% max()
+}
+bra_apt_max_date <- bra_count_airport %>% max_date_in_data()
+eur_apt_max_date <- eur_count_airport %>% max_date_in_data()
+```
+
+```{r}
+calc_total_flights <- function(.df){
+  df <- .df %>% 
+    mutate( MVTS         = ARRS + DEPS - ARRS_DOM
+           ,MVTS_ROLLAVG = zoo::rollmean(x = MVTS, k = 7, align = "center", fill = NA)
+           )
+  return(df)
+}
+
+# brazil network data 
+# -------- BRAZIL network traffic --------
+bra_tfc_fn <- here::here("data", "BRASIL_FLT_PER_DAY_2016_2022.csv")
+bra_tfc    <- read_csv(bra_tfc_fn) %>% 
+  mutate(DATE = lubridate::date(paste0(ano,"-",mes,"-",dia))
+         ,REGION = "BRA"
+         ,MVTS = mov
+         ,MVTS_ROLLAVG = zoo::rollmean(x = MVTS, k = 7, align = "center", fill = NA))
+reg_bra <- bra_tfc %>% 
+  select(REG = REGION, DATE, MVTS, MVTS_ROLLAVG)
+
+
+
+# reg_bra <- bra_count_region %>% calc_total_flights %>%
+#   #---------------- doubled the reported data - sort of ok with report
+#   mutate(MVTS = 1.9 * MVTS, MVTS_ROLLAVG = 2 * MVTS_ROLLAVG)
+# replaced bra regional traffic count with FR24 data ------------ 
+# reg_bra <- read_csv("./data/PBWG-BRA-region-traffic-FR24.csv")
+# reg_bra %>% pivot_wider(id_cols = "date_takeoff", names_from = "is_domestic", values_from = "n") %>% rename("DEPS_INTL"="FALSE", DEPS_DOM = "TRUE") %>% mutate(MVTS = 2 * DEPS_INTL + 2 * DEPS_DOM) %>% group_by(YEAR = year(date_takeoff)) %>% summarise(TOT = sum(MVTS))
+# -------------- results in +/- 4000 flights per day
+# -------------- 2019 annual ~ 1.5M ok with report
+# -------------- where is the 8k per day idea coming from?
+
+
+#reg_eur <- eur_count_region %>% calc_total_flights
+reg_eur <- read_csv(here::here("data","eur_nm_tfc_202207.csv")) %>% 
+  mutate(REG = "EUR")
+
+#--------- plot regions -----------------------------------------------
+min_date <- lubridate::date("2019-01-01")
+max_date <- lubridate::date("2022-07-01")
+reg_bra <- reg_bra %>% filter(DATE >= min_date, DATE < max_date )
+reg_eur <- reg_eur %>% filter(DATE >= min_date, DATE < max_date )
+
+p1 <- reg_bra %>% mutate(DATE = as.Date(DATE)) %>%
+  ggplot(aes(x = DATE)) +
+  geom_point(aes(y = MVTS), colour = bra_eur_colours[1], alpha = 0.2, size = 0.2) +
+  geom_line(aes(y = MVTS_ROLLAVG), colour = bra_eur_colours[1], size = 1) +
+  scale_x_date(date_breaks = "1 year", limits = c(as.Date("2019-01-01"), DateLimit), date_labels = "%b-%Y", date_minor_breaks = "1 month") +
+  theme_minimal() +
+  labs( subtitle = "Brazil region - daily movements (rolling 7-day-average)"
+       ,x = NULL, y = NULL) +
+  theme(legend.position = "none") 
+
+p2 <- reg_eur %>% mutate(DATE = as.Date(DATE)) %>%
+  ggplot(aes(x = DATE)) +
+  geom_point(aes(y = MVTS), colour = bra_eur_colours[2], alpha = 0.2, size = 0.2) +
+  geom_line(aes(y = MVTS_ROLLAVG), colour = bra_eur_colours[2], size = 1) +
+  scale_x_date(date_breaks = "1 year", limits = c(as.Date("2019-01-01"), DateLimit), date_labels = "%b-%Y", date_minor_breaks = "1 month") +
+  theme_minimal() +
+  labs( subtitle = "European region - daily movements (rolling 7-day-average)"
+       ,x = NULL, y = NULL) +
+  theme(legend.position = "none")
+```
+
+
+
+```{r}
+#| label: fig-timeline-region-mvts
+#| fig-cap: Timeline of regional air traffic
+p1 / p2
+```
+
+To understand the magnitude of the impact of COVID on air traffic, @fig-norm-timeline depicts the regional traffic in a normalised form.
+The reference level for the normalisation is set at the 90th percentile of the traffic observed in 2019.
+The initial drop in traffic due to COVID-related travel constraints started a few days earlier in Europe.
+This was related to the reaction of several air transport operators to limit their flights to Asia.
+Furthermore, some European states already responded to the initial surge of infections in anticipation of the declaration by the WHO.
+
+```{r norm-timeline, fig.cap="(ref:norm-timeline)"}
+#| label: fig-norm-timeline
+#| fig-cap: Normalised daily traffic in Brazil and Europe
+
+reg_tfc <- bind_rows(reg_bra, reg_eur) %>%
+  select(REG, DATE, MVTS, MVTS_ROLLAVG) %>%
+  filter(DATE <= DateLimit)
+
+ref_pct <- 0.9  # reference percentile for normalisation
+
+reg_tfc <- reg_tfc %>% mutate(DATE = as.Date(DATE)) %>%
+  group_by(REG) %>%
+  mutate( MVTS_NORM = MVTS / quantile(MVTS[year(DATE)==2019], probs = ref_pct)
+         ,MVTS_NORM_ROLLAVG = rollmean(MVTS_NORM, k = 7, fill = NA)
+         ) %>%
+  ungroup()
+
+reg_tfc %>%
+  ggplot(mapping = aes(x = DATE)) +
+  geom_line(aes(y = MVTS_NORM, colour = REG), alpha = 0.2) +
+  geom_line(aes(y = MVTS_NORM_ROLLAVG, colour = REG)) +
+  scale_colour_manual(values = bra_eur_colours, labels = c("BRA","EUR")) +
+  scale_y_continuous( expand = c(0, 0), limits = c(0, NA)
+                     ,labels = scales::percent_format(accuracy = 1)) +
+  scale_x_date(limits = c(as.Date("2019-01-01"), max_date), date_labels = "%b-%Y") +
+  theme_minimal() +
+  labs(x = NULL, y = NULL, colour = NULL) +
+  theme(legend.position = c(0.1, 0.2))
+```
+
+Both regions responded initially similar to the world wide restrictions for air travel in combination with immediate regional health measures following the declaration by the WHO.
+The traffic declined in both regions in the order of magnitude of about 80-90%.
+While traffic in March through May 2020 showed a similar pattern, Europe experienced a higher share of air traffic in June, July and August of 2020.
+Traffic levels in Brazil grew gradually and consistently in 2020 and broke even with Europe in the early autumn.
+At that point in time Europe was facing a second wave of infections following an initial relaxation of health constraints to facilitate the summer vacation season.
+In consequence, governments had to impose again restrictions on the regional traffic to curb the further spread.
+While air traffic in Europe declined, traffic in Brazil continued its initial recovery until the end of 2020.
+In both regions the spikes (twin peaks) of the seasonal Christmas and New Year's traffic are visible.
+A significant change in the pattern developed with the beginning of 2021.
+Following the seasonal pattern, Europe observed a continual increase in air traffic as of end January/beginning February 2021 and a strong recovery to about the 65-70% pre-COVID level ensued.
+The pattern of air traffic was different in Brazil.
+After having reached a level of about 65% at the end of 2020, Brazil also faced a second wave of COVID infections in early 2021.
+This resulted in a distinct reduction over the first 6 weeks in 2021 followed by a similar recovery rate throughout March and April 2021.
+Both regions reached 65-70% of their pre-COVID traffic levels in April and May 2021.
+While traffic continuously increased in Brazil, Europe saw another wave post-summer 2021.
+Traffic levels reached the pre-COVID 90% (and higher level) in Brazil in early 2022.
+With the continual relaxation of travel constraints for inner-European traffic in early 2022, Europe also reached the 85% pre-COVID level with July 2022.
+
+In general, the gradual recovery over 2020 and 2021 also suffered severe setbacks by the subsequent reappearances of the virus characterised by the subsequent waves (i.e. ripples) in @fig-norm-timeline.
+Comparing both regions, the recovery patterns of the two regions show a coherent central tendency, with relevant differences according to the season or increased regional health measures (i.e. travel restrictions).
+It is pertinent to note that European air traffic was more sensitive to the effects of winter and summer, reflecting the holiday seasons and climatic variations.
+It is interesting to note, that the Brazilian system shows little sensitivity to calendrical and seasonal effects.
+
+By the time of the publication of this report (October 2022), the world economy and global air transportation is still recovering.
+There is growing confidence that COVID transitioned from its pandemic stage to an endemic stage.
+By the end of 2021, traffic volume was 26% and 25.5% higher for Brazil and Europe compared to 2020.
+The Brazilian Gross Domestic Product grew by 4.6% in 2021 and the World Bank's estimate for 2022 is a growth of 1.4%.
+The European market has shown a 5.4% GDP [^traffic-characterisation-2] increase for EU in 2021.
+The traffic volume of 2019 is expected to be reached towards end 2023 or beginning of 2024 for both regions, if the economic activity keeps on track.
+
+[^traffic-characterisation-2]: Source: https://ec.europa.eu/eurostat
+
+## Study Airport Level Traffic
+
+The previous section showed the traffic development on the network level and Airports, in turn, represent nodes in this overall network.
+Thus, changes in the overall traffic situation will ripple down to the airport level.
+However, connectivity and type of traffic may differ from airport to airport.
+It is therefore useful to understand how traffic developed locally on the level of the selected study airports.
+
+```{=html}
+<!--
+TODO
+- check for "normalised" counts ==> object 'eur_count_airport' not found
+-->
+```
+```{r}
+#defining reference percentile
+ref_pct   <- 0.9
+
+#utility function
+daily_reg_count <- . %>% 
+  group_by(DATE) %>% 
+  summarize(MVTS = sum(ARRS, DEPS),
+            MVTS_INT = sum(ARRS-ARRS_DOM, DEPS-DEPS_DOM)) %>%
+  mutate(MVTS_NORM = MVTS / quantile(MVTS[year(DATE)==2019], probs = ref_pct),
+         MVTS_INT_NORM = MVTS_INT / quantile(MVTS_INT[year(DATE)==2019], probs = ref_pct) )
+
+eur_count_norm <- eur_count_airport %>% daily_reg_count() %>% mutate(REG = "EUR")
+#creating eur rolling avgs
+eur_count_norm <- eur_count_norm %>% mutate(MVTS_ROLLAVG = rollmean(MVTS, k = 7, fill = NA), MVTS_NORM_ROLLAVG = rollmean(MVTS_NORM, k = 7, fill = NA))
+
+bra_count_norm <- bra_count_airport %>% daily_reg_count() %>% mutate(REG = "BRA")
+#creating bra rolling avgs
+bra_count_norm <- bra_count_norm %>% mutate(MVTS_ROLLAVG = rollmean(MVTS, k = 7, fill = NA), MVTS_NORM_ROLLAVG = rollmean(MVTS_NORM, k = 7, fill = NA))
+
+counts_norm <- bind_rows(bra_count_norm, eur_count_norm)
+
+ds4 <- counts_norm %>% 
+  group_by(REG, YR = as.factor(year(DATE))) %>% 
+  summarise(MVTS = sum(MVTS), MVTS_INT = sum(MVTS_INT)) %>% 
+  mutate(VAR_TO_2019 = round((MVTS-MVTS[YR==2019])/MVTS[YR==2019], 2))
+# ds4
+
+# determine variation to current max date -----------------------
+max_joint_date <- min(bra_apt_max_date, eur_apt_max_date)
+
+var_ytd <- counts_norm %>%
+  mutate(DAY_NBR = yday(DATE)) %>%
+  filter(DATE <= max_joint_date, DAY_NBR <= yday(max_joint_date)) %>%
+  group_by(REG, YR = year(DATE)) %>%
+  summarise(MVTS = sum(MVTS), MVTS_INT = sum(MVTS_INT)) %>% 
+  mutate(VAR_YTD_2019 = round((MVTS-MVTS[YR==2019])/MVTS[YR==2019], 2)
+         ,YTD_NBR = yday(max_joint_date))
+```
+
+
+```{r , fig.cap="(ref:viz-annualvar)"}
+#| label: fig-viz-annualvar
+#| fig-cap: Movements at study airports in both regions
+
+g1 <- ds4 %>% ggplot() + 
+  aes(x = REG, y = MVTS, fill = YR) +
+  geom_col(position = position_dodge()) +
+  scale_fill_brewer(palette="BuGn") +
+  geom_text( aes(label = MVTS), position = position_dodge(0.9)
+            ,vjust = ifelse(ds4$MVTS > 200000, 1.2, -0.8)) + 
+  scale_y_continuous(labels = scales::number_format()) +
+  theme_minimal() +
+  labs(x = NULL, y = "Movements", fill = NULL
+      # ,title = "Movements at the Study Airports in both Regions"
+      ) +
+  theme(legend.position = c(0.9, 0.9))
+
+g2 <- ds4 %>% ggplot(aes(x = REG)) +
+  geom_col(aes(y = VAR_TO_2019), fill = "royalblue") +
+  geom_text(data = ds4[ds4$YR == 2020,], aes(y = VAR_TO_2019, label = scales::percent(VAR_TO_2019, accuracy = 1)), nudge_y = 0.1, color = "white" ) +
+  theme_minimal() +
+  theme(axis.title = element_blank(), axis.ticks.y = element_blank(), axis.text.y = element_blank()) +
+  labs(subtitle = "2020 vs 2019", x = NULL, y = NULL)
+
+g3 <- ds4 %>% ggplot(aes(x = REG)) +
+  geom_col(aes(y = VAR_TO_2019), fill = "royalblue") +
+  geom_text(data = ds4[ds4$YR == 2021,], aes(y = VAR_TO_2019, label = scales::percent(VAR_TO_2019, accuracy = 1)), nudge_y = 0.1, color = "white" ) +
+  theme_minimal() +
+  theme(axis.title = element_blank(), axis.ticks.y = element_blank(), axis.text.y = element_blank()) +
+  labs(subtitle = "2021 vs 2019", x = NULL, y = NULL)
+
+gvar <- g2 / g3
+
+# g1 + 
+#   inset_element(g2+g3, left = 0.02, bottom = 0.6, right = 0.4, top = 1) +
+#   plot_annotation(caption = paste0("Note: max joint date := ", max_joint_date))
+g1 + gvar + plot_layout(widths = c(4,1))
+```
+
+@fig-viz-annualvar shows the variation of air traffic across the study airports.
+On average, the annual traffic at the Brazilian airports in 2020 and 2021 ranged about 45% respectively 47% lower than in 2019.
+The European study airports observed a higher decrease.
+The airports serviced -60% in 2020 and -55% in 2021.
+The airports of this study had been selected based on their role in the regional networks.
+While the numbers vary slightly, a similar pattern is observed in Brazil and Europe.
+This suggests that the traffic related pressure on air traffic services behaved in a similar fashion.
+This observation will be relevant for the following chapters.
+Considering all 10 airports per region may however mask varying behaviour at different airports.
+It is important to note that the pandemic affected both sets of 10 airports more severely than their national levels, recalling that Brazil closed 2021 with -20% and EUR with -43% compared to 2019 overall aircraft movement.
+
+```{=html}
+<!-- TODO: remove digits from variation to deconflict %labels - UPDATE: Done. 
+Function percent() in scale_y_continuous replaced by label_percent() with argument "accuracy" set to 1 in graphs g2 and g4
+-->
+```
+```{r}
+####################### BRAZIL ##################################
+# tmp_b <- bra %>% filter(YEAR %in% c(key_year, key_year-1)) %>%
+#   select(AIRPORT, YEAR, N_TOT) %>%
+#   mutate(REGION = "BRA")
+tmp_b <- bra_count_airport %>% 
+  mutate(YEAR = lubridate::year(DATE), N_TOT = ARRS + DEPS) %>% 
+  group_by(AIRPORT = APT_ICAO, YEAR) %>% 
+  summarise(N_TOT = sum(N_TOT), .groups = "drop") %>% 
+  mutate(REGION = "BRA") %>% 
+  filter(YEAR %in% c(key_year, key_year-1))
+
+#bra_eur_colours <- c("#52854C","#4E84C4")
+max_x <- 550000 # maximum observed at European airports
+
+g1 <- ggplot() + 
+  geom_col(data = tmp_b %>% filter(YEAR == key_year)
+           , mapping = aes(x = reorder(AIRPORT, N_TOT), y = N_TOT
+                           , fill = I("#52854C"))
+           , width = 0.9) +
+  coord_flip() +
+  scale_y_continuous(labels = scales::comma) +  
+  my_own_theme_minimal +
+  labs(x = NULL, y = NULL) +
+  theme(legend.position = "none")
+
+
+ann_var_b <- tmp_b %>% 
+  tidyr::pivot_wider( id_cols = c("AIRPORT","REGION")
+                     ,names_from ="YEAR", names_prefix = "YR"
+                     ,values_from="N_TOT") %>% 
+  #mutate(YR_DIFF = YR2019 - YR2018, YR_DIFF_P = YR_DIFF / YR2018) %>% 
+  mutate(YR_DIFF = YR2021 - YR2020, YR_DIFF_P = YR_DIFF / YR2020) %>% 
+  mutate(COL = case_when(YR_DIFF_P < 0 ~ "#D61A46", TRUE ~"#98CA32"))
+
+g2 <- ggplot() + 
+  geom_col( data = ann_var_b
+           ,mapping=aes(x = reorder(AIRPORT, YR2021), y = YR_DIFF_P, fill = I(COL))
+           ,width = 0.9) +
+  coord_flip() +
+  my_own_theme_minimal +
+  labs(x = NULL, y = NULL) +
+  scale_y_continuous(labels = scales::label_percent(accuracy = 1)) +
+  theme( legend.position = "none"
+        ,axis.text.y=element_blank())
+
+################### EUROPE ###############################
+# tmp_e <- eur %>% filter(YEAR %in% c(key_year, key_year-1)) %>%
+#   select(AIRPORT, YEAR, N_TOT) %>%
+#   mutate(REGION = "BRA")
+tmp_e <- eur_count_airport %>% 
+  mutate(YEAR = lubridate::year(DATE), N_TOT = ARRS + DEPS) %>% 
+  group_by(AIRPORT = ICAO, YEAR) %>% 
+  summarise(N_TOT = sum(N_TOT), .groups = "drop") %>% 
+  mutate(REGION = "EUR") %>% 
+  filter(YEAR %in% c(key_year, key_year-1))
+
+#bra_eur_colours <- c("#52854C","#4E84C4")
+eur_colour <- "#4E84C4"
+
+g3 <- ggplot() + 
+  geom_col(data = tmp_e %>% filter(YEAR == key_year)
+           , mapping = aes(x = reorder(AIRPORT, N_TOT), y = N_TOT
+                           , fill = I(eur_colour))
+           , width = 0.9) +
+  coord_flip() +
+  scale_y_continuous(labels = scales::comma) +  
+  my_own_theme_minimal +
+  labs(x = NULL, y = "annual traffic") +
+  theme(legend.position = "none")
+
+
+ann_var_e <- tmp_e %>% 
+  tidyr::pivot_wider( id_cols = c("AIRPORT","REGION")
+                     ,names_from ="YEAR", names_prefix = "YR"
+                     ,values_from="N_TOT") %>% 
+  #mutate(YR_DIFF = YR2019 - YR2018, YR_DIFF_P = YR_DIFF / YR2018) %>% 
+  mutate(YR_DIFF = YR2021 - YR2020, YR_DIFF_P = YR_DIFF / YR2020) %>% 
+  mutate(COL = case_when(YR_DIFF_P < 0 ~ "#D61A46", TRUE ~"#98CA32"))
+
+g4 <- ggplot() + 
+  geom_col( data = ann_var_e
+           #,mapping=aes(x = reorder(AIRPORT, YR2019), y = YR_DIFF_P, fill = I(COL))
+           ,mapping=aes(x = reorder(AIRPORT, YR2021), y = YR_DIFF_P, fill = I(COL))
+           ,width = 0.9) +
+  coord_flip() +
+  my_own_theme_minimal +
+  labs(x = NULL, y = "annual variation") +
+  scale_y_continuous(labels = scales::label_percent(accuracy = 1)) +
+  theme( legend.position = "none"
+        ,axis.text.y=element_blank()
+        )
+
+```
+
+```{r, message=FALSE, warning=FALSE}
+#| label: fig-annual-tfc-var
+#| fig-cap: Annual traffic at study airport in 2021 and variation 2020/2021
+
+# ggplot complains about scales already present --> suppress message and warning
+
+# set dimensions
+max_x <- 520000
+g1 <- g1 + scale_y_continuous(labels = scales::comma, limits = c(0, max_x))
+g3 <- g3 + scale_y_continuous(labels = scales::comma, limits = c(0, max_x))
+
+max_var <- c(-0.35, 0.35)
+g2 <- g2 + scale_y_continuous(labels = scales::label_percent(accuracy = 1), limits = max_var ) 
+g4 <- g4 + scale_y_continuous(labels = scales::label_percent(accuracy = 1), limits = max_var )
+
+# patchwork composite plot
+(g1 + g2 + plot_layout(widths = c(3, 1)) ) / (g3 + g4 + plot_layout(widths = c(3, 1)))
+```
+
+@fig-annual-tfc-var shows the annual traffic observed at the study airports in `r key_year` and the associated annual variation of traffic comparing `r key_year -1` and `r key_year`.
+On average, traffic levels at all airports in both regions increased following the initial drop in 2019.
+But there are notable exemptions.\
+São Paulo/Guarulhos (SBGR) in Brazil and London Heathrow (EGLL) in Europe show a similar lagging recovery.
+This reflects the high share of international air traffic serviced at both airports.
+Both airports observed an about -5% lower traffic on an annual basis in 2021 than in 2020.
+Almost -10% lower traffic was observed in 2021 in comparison to 2020 at Curitiba (SBCT).This drop may be related to the strong connection between Curitiba and the Argentine capital, Buenos Aires, which faced more severe travel restrictions due to COVID.
+London Gatwick (EGKK) serviced about -30% less traffic in 2021 than in 2020, probably reflecting the UK's more severe anti-COVID restrictions at that time.
+Traffic levels in 2021 at SBGR and São Paulo/Congonhas (SBSP) range in the order of magnitude of the less busy airports in the top-10 of Europe.
+
+## Peak Day Traffic
+
+While the annual traffic provides insights in the total air traffic volume and associated demand, it does not provide insights on the upper bound of achievable daily movement numbers.
+The latter depends on demand, operational procedures and constraints, and the use of the runway system infrastructure.
+The peak day traffic is determined as the 99th percentile of the total number of daily movements (arrivals and departures).
+The measure represents thus an upper bound for comparison purposes.
+
+@fig-peak-day99 shows the peak day traffic in 2019 with reference to the number of runways.
+
+```{r}
+bra_count_airport <- read_csv(here::here("data","BRA-airport-traffic.csv"))
+eur_count_airport <- read_csv(here::here("data","BRA-EUR-airport-traffic.csv")) %>% 
+  na.omit() # single days missing for Heathrow (2019-12-12) and LEMD 2021-01-09????
+
+
+# ------------------- START FIX
+peak_day_from_counts <- function(.counts, .pct = 0.99){
+  peak <- .counts %>% 
+    mutate( YEAR = lubridate::year(DATE)
+           ,TOT  = ARRS + DEPS) %>% 
+    group_by(ICAO, YEAR) %>% 
+    summarise(PEAK_DAY_PCT = quantile(TOT, probs = .pct), .groups = "drop")
+}
+
+add_nbr_rwy <- function(.pdfc){
+  peak <- .pdfc %>% 
+    mutate(RWY = case_when(
+       ICAO == "EHAM" ~ 6
+      ,ICAO %in% c("EDDF","LFPG","LEMD","LIRF") ~ 4
+      ,ICAO %in% c("LEBL","LSZH") ~ 3
+      ,ICAO %in% c("EGLL","EDDM","SBGR","SBSP","SBGL","SBBR","SBRJ","SBSV","SBCT") ~ 2
+      ,ICAO %in% c("EGKK","SBKP","SBCF","SBPA") ~ 1
+      ,TRUE ~ as.numeric(NA)
+    ))
+}
+
+tmp_b <- bra_count_airport %>% rename(ICAO = APT_ICAO) %>% 
+  peak_day_from_counts() %>% add_nbr_rwy() %>% 
+  mutate(REGION = "BRA")
+tmp_e <- eur_count_airport %>% peak_day_from_counts() %>% add_nbr_rwy() %>% 
+  mutate(REGION = "EUR")
+tmp   <- dplyr::bind_rows(tmp_b, tmp_e) %>% rename(AIRPORT = ICAO)
+
+plot_peak_day_tfc <- function(.df, .year, ...){
+  viz <- ggplot() + 
+     geom_col(
+        data = .df %>% filter(YEAR == .year)
+       ,mapping = aes(x = PEAK_DAY_PCT, y = reorder(AIRPORT, PEAK_DAY_PCT)
+                      , fill = REGION)
+       ) +
+     scale_fill_manual(values = bra_eur_colours) + 
+     facet_grid(RWY ~., as.table = FALSE, switch = "y", scales = "free", space = "free") +
+     my_own_theme_bw +
+     labs(x = paste0("peak day traffic (", .year,")"), y = NULL, fill = "Region") +
+     theme(legend.position = c(0.9, 0.15)
+          ,axis.ticks = element_blank()
+          )
+  return(viz)
+}
+```
+
+```{r}
+#| label: fig-peak-day99
+#| fig-cap: Peak day traffic (99th percentile of annual movements)
+plot_peak_day_tfc(tmp, 2021)
+```
+
+```{r, warning=FALSE}
+#| label: fig-peak-day99-var 
+#| fig-cap: Variation of Peak day traffic over time 
+t4p_peak_day99 <- function(.df, .reg){
+  .df %>% select(AIRPORT, YEAR, RWY, PEAK_DAY_PCT) %>%
+    mutate(REGION = .reg) %>%
+    mutate(LABEL = if_else( YEAR == max(YEAR)
+                           ,as.character(AIRPORT), NA_character_))
+}
+
+#### DUE TO FIX ABOVE, WE NEED TO RENAME VARIABLES
+# tmp_b <- t4p_peak_day99(bra, "BRA")
+# tmp_e <- t4p_peak_day99(eur, "EUR")
+
+tmp_b <- tmp_b %>% rename(AIRPORT = ICAO) %>% t4p_peak_day99("BRA")
+tmp_e <- tmp_e %>% rename(AIRPORT = ICAO) %>% t4p_peak_day99("EUR")
+
+#to get a better color scale, "patching" graphs works better than facets, due to less color categories (only 10 instead of 20). So let's use the source objects separately.
+tmp   <- dplyr::bind_rows(tmp_b, tmp_e)
+
+# add previous years for consistency
+tmp_prev <- dev3_summaries %>% 
+  select(AIRPORT, YEAR, RWY, PEAK_DAY_PCT) %>% 
+  mutate(REGION = case_when(
+      AIRPORT %in% eur_apts ~ "EUR"
+    , AIRPORT %in% unique(bra_count_airport$APT_ICAO) ~ "BRA"
+    , TRUE ~ "NN")
+    )
+
+tmp <- tmp %>% filter(YEAR != 2019) %>% bind_rows(tmp_prev)  #fix 2019 delta ?!?
+tmp_b <- tmp %>% filter(REGION == "BRA")
+tmp_e <- tmp %>% filter(REGION == "EUR")
+
+g1 <- ggplot(data= tmp_b, mapping = aes(x = YEAR, y = PEAK_DAY_PCT, group = AIRPORT, colour = AIRPORT)) +
+  geom_line() +
+  geom_text_repel(mapping = aes(x = max(YEAR), label = LABEL , colour = AIRPORT) 
+                  #, nudge_x = 0.5
+                  #, point.padding = 0.5 , na.rm = TRUE
+                  , xlim = c(max(tmp$YEAR - 2), NA)
+                  , force = 10, segment.colour = "grey50"
+                  , size = 3
+) +
+  #facet_wrap(.~REGION) + 
+  my_own_theme_minimal +
+  scale_color_discrete(l = 30, c = 100, guide = FALSE) +
+  labs(x = NULL, y = "peak day movements") +
+  xlim(min_year-0.5, max(tmp$YEAR)+0.5)
+
+g2 <- ggplot(data= tmp_e, mapping = aes(x = YEAR, y = PEAK_DAY_PCT, group = AIRPORT, colour = AIRPORT)) +
+  geom_line() +
+  geom_text_repel(mapping = aes(x = max(YEAR), label = LABEL , colour = AIRPORT) 
+                  #, nudge_x = 0.5
+                  #, point.padding = 0.5 , na.rm = TRUE
+                  , xlim = c(max(tmp$YEAR - 2), NA)
+                  , force = 10, segment.colour = "grey50"
+                  , size = 3
+) +
+  #facet_wrap(.~REGION) + 
+  my_own_theme_minimal +
+  scale_color_discrete(l = 20, c = 100, guide = FALSE) +
+  labs(x = NULL, y = NULL) +
+  xlim(min_year-0.5, max(tmp$YEAR)+0.5)
+
+# now all combined in one facetted plot g1 =========== #OLD??? DELETE ===================
+#g2 <- ggplot(data= tmp_e, mapping = aes(x = YEAR, y = #PEAK_DAY_PCT, group = AIRPORT, colour = AIRPORT)) +
+#  geom_line() +
+#  facet_wrap(.~REGION) + 
+#  my_own_theme_minimal +
+#  labs(x = NULL, y = "peak day movements")
+################################################## END #OLD ??? ############
+# after combination show only g1
+
+(g1 + scale_y_continuous(limits = c(0, 1700))) | (g2 + scale_y_continuous(limits = c(0, 1700), labels = NULL)) 
+```
+
+@fig-peak-day99 shows the peak day traffic in 2021.
+Peak traffic at the 2-runway airports Guarulhos (SBGR) and São Paulo Congonhas (SBSP) in Brazil and London Heathrow (EGLL) and Munich (EDDM) in Europe achieve similar or higher peak numbers than airport with more runways.
+It's valid to note that Campinas (SBKP) and Salvador (SBSV) were stable due to an already low traffic concentration regarding per day granularity.
+
+For European with more than 2 runways it needs to be noted that the runway system does not support independent operations of all available runways.
+Thus, the serviced peak traffic is also impacted by the runway system configuration.
+Peak operations as SBGR range in the same order of magnitude than Munich (EDDM) and exceed the peak movement observed in Zurich (LSZH, 3 runway system) or Rome Fiumincino (LIRF, 4 runway system).
+
+@fig-timeline-region-mvts and @fig-norm-timeline depict the decline in air traffic with the start of the COVID pendemic in March 2020 at the same moment in both regions.
+However in terms of peak movements the seasonal difference between Brazil and Europe become more visible in Figure @fig-peak-day99-var.
+While in Europe a sharp drop in peak day traffic is already observed for the year 2020, the respective peak day movements in the first 3 month in 2020 in Brazil range in the same number than the years before.
+The recovery seen in 2021 movements did not reflect at Peak Days.
+The distribution was more equalized, resulting in lower peaks.
+
+## Fleet Mix
+
+The fleet mix - and in particular the separation requirements between the different aircraft types - is an important influencing factor for the capacity and observed (and realisable) throughput.
+In particular, aircraft with longer runway occupancy times or larger proportions of heavy aircraft may result in lower throughout due to the larger wake turbulence separations.
+The locally defined capacity values may therefore differ based on the predominant fleet mix and operational characteristics, and ultimately result in different observed Peak Day movement numbers.
+
+@fig-fleet-mix depicts the observed share of different wake turbulence categories (WTC) across the study airports in `r key_year`.
+In both regions, "medium" aircraft types are the predominant aircraft type.\
+On average, airports in Europe observed a higher share of "heavy" aircraft in 2021.
+In Brazil, Guarulhos (SBGR) and Campinas (SBKP) serviced a noticeable share of "heavy" aircraft of around 12% which is comparable to the share at Zurich (LSZH).
+In Brazil, "light" types play a larger role at the study airports than on the European side.
+The fleet mix at SBGR and SBKP showed a similar pattern (high share of medium, discernible share of heavy, and shallow share of light types) as observable at European airports.
+The heavy category represents wide-body passenger aircraft and full cargo flights.
+Within the European region - and its multitude of national hubs - a significant number of international long-haul flights is operated at the chosen study airports.
+In Brazil, the highlighted airports, Guarulhos (SBGR) and Campinas (SBKP), play a major role in terms of international connectivity.
+It follows that medium and light types are used for inter-reginal connections.
+Based on the selected study airports, the underlying decentralised structure of the European network becomes more visible.
+While international air traffic is centralised in Brazil with 2 pre-dominant hubs, capital or main national hubs are more frequent in Europe.
+London Heathrow (EGLL) is a noteworthy exemption.
+The level of international connectivity can be derived from a 50% share of heavy types.
+
+```{r prep-fleet-mix}
+t4p_fleet_mix <- function(.df, .reg){
+  df <- .df %>% 
+    select(AIRPORT, YEAR, H_PERC, M_PERC, L_PERC) %>% 
+    mutate(REGION = .reg) %>%
+    tidyr::pivot_longer(
+       cols     = c(H_PERC, M_PERC, L_PERC)
+      ,names_to = "WTC"
+      ,values_to= "SHARE") %>%
+    mutate(WTC = factor(WTC
+                        ,levels = c("L_PERC","M_PERC","H_PERC")
+                        ,labels = c("Light" ,"Medium","Heavy"))
+           )
+}
+# tmp_b <- t4p_fleet_mix(bra, "BRA")
+# tmp_e <- t4p_fleet_mix(eur, "EUR")
+
+#---------- FIX ---- based on counts
+fleet_mix_from_counts <- function(.counts, .reg){
+  fm <- .counts %>% 
+    mutate(YEAR = lubridate::year(DATE)
+           ,TOT = ARRS + DEPS) %>% 
+    group_by(APT_ICAO, YEAR) %>% 
+    summarise(
+        TOT    = sum(ARRS) + sum(DEPS)
+      , H_PERC = sum(HEAVY)/TOT
+      , M_PERC = sum(MED) / TOT
+      , L_PERC = sum(LIGHT)/TOT
+      , .groups = "drop") %>% 
+    mutate(REGION = .reg) %>%
+    tidyr::pivot_longer(
+       cols     = c(H_PERC, M_PERC, L_PERC)
+      ,names_to = "WTC"
+      ,values_to= "SHARE") %>%
+    mutate(WTC = factor(WTC
+                        ,levels = c("L_PERC","M_PERC","H_PERC")
+                        ,labels = c("Light" ,"Medium","Heavy"))
+           )
+}
+
+tmp_b <- fleet_mix_from_counts(bra_count_airport, "BRA")
+tmp_e <- fleet_mix_from_counts(eur_count_airport %>% rename(APT_ICAO = ICAO), "EUR")
+
+#------------------------ END FIX =========================
+
+tmp   <- bind_rows(tmp_b, tmp_e) %>% rename(AIRPORT = APT_ICAO)
+```
+
+```{r}
+#| label: fig-fleet-mix 
+#| fig-cap: !expr paste0("Fleet mix observed at study airports in ", key_year)
+
+ggplot( data    = tmp %>% filter(YEAR == key_year)
+      , mapping = aes(x = AIRPORT, y = SHARE, fill = WTC)) +
+  geom_col(position = "stack", width = 0.9)  +
+  scale_fill_manual(values = c("#56B4E9", "#009E73","#F0E442")) +
+  coord_flip() +
+  facet_wrap(.~REGION, scales = "free_y") + 
+  scale_y_continuous(labels = scales::percent) +
+  my_own_theme_minimal +
+  theme( legend.position = "top"
+        ,legend.title    = element_text(size = 8) 
+        ,legend.text     = element_text(size = 8)
+        ,legend.key.size = unit(0.3, "cm")) +
+  labs(x = NULL, y = NULL, caption = paste0("Note: key-year ", key_year))
+```
+
+```{=html}
+<!-- skip the following evolution ... too congested 
+set eval to FALSE
+-->
+```
+```{r fleet-evo1, eval=FALSE, fig.cap="EXAMPLE - evolution of fleet mix", fig.height=5}
+p_evo1 <- tmp %>% 
+  ggplot(aes(x = SHARE, y = AIRPORT, fill = WTC)) + 
+  geom_col(position = "stack", width = 0.9) + 
+  scale_fill_manual(values = c("#56B4E9", "#009E73","#F0E442")) +
+  scale_x_continuous(labels = scales::percent) +
+  facet_wrap(YEAR ~ REGION, scales = "free_y", ncol = 2) +
+  labs(x = NULL, y = NULL) +
+  my_own_theme_minimal +
+  theme(axis.text.y = element_text(size=8))
+p_evo1
+```
+
+```{r}
+#| label: fig-fleet-evo-bra
+#| fig-cap: Fleet mix change over time observed at study airports in Brazil in 2021
+
+p_evo_bra <- tmp %>% filter(REGION == "BRA") %>% 
+  mutate(YEAR = as.factor(YEAR)) %>% 
+ # filter(AIRPORT %in% c("SBSP","SBGR","SBBR","SBRJ", "EGLL","EHAM","EDDF","LSZH") ) %>% 
+  ggplot() +
+  geom_line(aes(x = YEAR, y = SHARE, group = WTC, color = WTC)) +
+  geom_point(aes(x = YEAR, y = SHARE, color = WTC)) +
+  scale_color_manual(values = c("#56B4E9", "#009E73","#F0E442")) +
+  scale_y_continuous(labels = scales::percent) +
+  facet_wrap(.~AIRPORT, ncol = 3) +
+  my_own_theme_minimal +
+  theme(legend.position = "top") +
+  labs(x = NULL)
+p_evo_bra
+```
+
+```{r}
+#| label: fig-fleet-evo-eur 
+#| fig-cap: Fleet mix change over time observed at study airports in Europe in 2021
+
+p_evo_eur <- tmp %>% filter(REGION == "EUR", AIRPORT != "LEBL") %>% 
+  mutate(YEAR = as.factor(YEAR)) %>% 
+  ggplot() +
+  geom_line(aes(x = YEAR, y = SHARE, group = WTC, color = WTC)) +
+  geom_point(aes(x = YEAR, y = SHARE, color = WTC)) +
+  scale_color_manual(values = c("#56B4E9", "#009E73","#F0E442")) +
+  scale_y_continuous(labels = scales::percent) +
+  facet_wrap(.~AIRPORT, ncol = 3) +
+  my_own_theme_minimal +
+  theme(legend.position = "top") +
+  labs(x = NULL)
+p_evo_eur
+```
+
+@fig-fleet-evo-bra and @fig-fleet-evo-eur depict the evolution of the annual fleet mix for the years 2019 through 2021 for nine of the study airports in both regions [^traffic-characterisation-3].
+Two principal patterns emerge: (i) airports with COVID-related contraction of traffic, i.e. the reduction in overall traffic in 2020 and 2019 did not influence the relative share of aircraft types serviced at the airport, and (ii) airport with a reduction of the share of "heavy" aircraft and increase of the relative share of "medium" or "light" types.
+\
+With the exception of Zurich (LSZH) in Europe, "light" types did not feature widely.
+There appears to be a reciprocal relationship between the relative share of "heavy" and "medium" types utilised in Europe.
+At major hubs (e.g. EDDF, EGLL, EHAM, LFPG) the ratio of "heavy" aircraft increased across the years.
+\
+The fleet mix in Brazil showed a different pattern.
+While the share of "heavy" types remained on average constant across the period 2019 through 2021, lower shares of "medium" types resulted in higher utilisation rate of "light" types.
+
+[^traffic-characterisation-3]: To increase readability of the visualisation an airport with low variability has been removed from the figure for both regions.
+
+For future reports it will be interesting to investigate also the connectivity in terms of operated aerodrome pairs and aircraft types.
+
+@fig-bra-fleet-mix-timeline and @fig-eur-fleet-mix-timeline focus on the temporal evolution of the fleet mix on a rolling weekly basis (7-days) for heavy and medium type aircraft.
+This shows a more varied behaviour across all airports.
+
+```{=html}
+<!-- 
+Note: bra data only came up with 9 airports (TODO - check where the 10th went) :)
+EUR removed LEMD to have also 9 and show nice examples of substistution.
+-->
+```
+```{r}
+tmp_bra <- bra_count_airport %>% 
+  mutate(SHARE_H = HEAVY / (ARRS + DEPS), SHARE_M = MED / (ARRS + DEPS)
+         , H_7d = zoo::rollmean(SHARE_H, k = 7, fill = NA)
+         , M_7d = zoo::rollmean(SHARE_M, k = 7, fill = NA)) %>% 
+  pivot_longer(cols = c("SHARE_H", "SHARE_M", H_7d, M_7d)
+               , names_to = "TYPE", values_to = "VALUE") 
+
+bra_share <- ggplot() + 
+  geom_line( data = tmp_bra %>% filter(TYPE %in% c("SHARE_H", "SHARE_M")) 
+            ,aes(x = DATE, y = VALUE, group = TYPE), colour = "grey90") + 
+  geom_line(data = tmp_bra %>% filter(TYPE %in% c("H_7d", "M_7d")) 
+            ,aes(x = DATE, y = VALUE, group = TYPE, colour = TYPE)) + 
+  facet_wrap(. ~ APT_ICAO) + 
+  theme_minimal() + 
+  labs(x = NULL, y = "share of Heavy and Medium types") + 
+  theme(legend.position = "top")
+
+
+tmp_eur <- eur_count_airport %>% 
+  mutate(SHARE_H = HEAVY / (ARRS + DEPS), SHARE_M = MED / (ARRS + DEPS)
+         , H_7d = zoo::rollmean(SHARE_H, k = 7, fill = NA)
+         , M_7d = zoo::rollmean(SHARE_M, k = 7, fill = NA)) %>% 
+  pivot_longer(cols = c("SHARE_H", "SHARE_M", H_7d, M_7d)
+               , names_to = "TYPE", values_to = "VALUE") 
+
+tmp_eur <- tmp_eur %>% rename(APT_ICAO = ICAO) %>% 
+  filter(APT_ICAO != "LEMD")
+
+eur_share <- ggplot() + 
+  geom_line( data = tmp_eur %>% filter(TYPE %in% c("SHARE_H", "SHARE_M")) 
+            ,aes(x = DATE, y = VALUE, group = TYPE), colour = "grey90") + 
+  geom_line(data = tmp_eur %>% filter(TYPE %in% c("H_7d", "M_7d")) 
+            ,aes(x = DATE, y = VALUE, group = TYPE, colour = TYPE)) + 
+  facet_wrap(. ~ APT_ICAO) + 
+  theme_minimal() + 
+  labs(x = NULL, y = "share of Heavy and Medium types") + 
+  theme(legend.position = "top")
+
+```
+
+```{r}
+#| label: fig-bra-fleet-mix-timeline
+#| fig-cap: Evolution of fleet mix at selected Brazilian airports
+bra_share
+```
+
+```{r eur-fleet-mix-timeline, fig.cap="(ref:eur-fleet-mix-timeline)"}
+#| label: fig-eur-fleet-mix-timeline
+#| fig-cap: Evolution of fleet mix at selected European airports
+eur_share
+```
+
+The synchronicity of the relative reduction and increase can be observed at all European airports.
+The overall traffic pattern at these airports followed the overall traffic development in Europe for the observed period.
+The increased share of heavy aircrafts may reflect the resilience of cargo flights over the pandemic.
+Zurich (LSZH) - based on a structurally overall lower share of heavy aircraft and on the presence of a good share of light types - showed a pattern that reflected the overall trends.
+With a lower share of heavy aircraft for most Brazilian airports, the evolution of the medium type share follows the overall traffic development in Brazil.
+The decline in March 2020 is characteristic.
+For example, in Sao Paulo (SBSP) - with a negligible share of heavy aircraft - the share of medium aircraft mirrors the overall trend in Brazil.
+This shows that SBSP predominantly serviced domestic or short-range traffic.
+That is somehow expected for São Paulo (SBSP) and Rio de Janeiro (SBRJ) since their runaway length and airport infrastructure are not suitable for heavies, but it is interesting to note that other Brazilian airports such as Brasília, Confins and Curitiba, which can accommodate heavies, do not serve a significant number of these aircraft.
+That is a good opportunity for future studies and explorations.
+
+## Summary
+
+This chapter described the overall evolution of air traffic in Brazil and Europe and offered a closer look at the selected subset of study airports.
+Both regions observed a unprecedented decline in air traffic in March 2020 in response to COVID.
+However, the response pattern differed.
+Both regions observed COVID waves resulting in measures to limit air travel and curb the spread of COVID.
+Despite these waves, the Brazilian system recovered more consistently in structural terms.
+This shows the effect of the additional coordination and harmonisation effort of policies in Europe.
+As national governments varied in their assessment and introduction of health measures, including travel restrictions.
+
+An intersting observation is that despite the overall variation of traffic on regional and local level, the share of operated aircraft types varied to a lesser extent on an annual level.
+However, distinct patterns become visible on the airport level.
+A central factor is the difference in terms of network connectivity and the role of the selected study airports.
+Based on the historic context, there exists a higher number of national hubs across Europe.
+In Brazil, international and cargo air traffic are more centralised and primarily operated to/from SBGR and SBKP.
+This can be obsered based on the differences of shares of heavy types (predominantly wide-body aircraft = long-haul international and cargo traffic).
+
+These differences may impact - amongst others - separation and throughput.
+This chapter also highlighted potential areas for further research to better qualify the level of network and pan-regional connectivity.

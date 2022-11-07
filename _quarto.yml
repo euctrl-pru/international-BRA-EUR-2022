@@ -4,30 +4,46 @@ project:
 
 execute:
   echo: false
+  warning: false
 
 book:
   title: "BRA-EUR2"
-  author: "DECEA Performance Section, EUROCONTROL Performance Review Unit"
+  author: "DECEA Performance Section, \nEUROCONTROL Performance Review Unit"
   date: "28. October 2022"
   chapters:
     - index.qmd
     - 00-front-matters.qmd
-    - intro.qmd
+    - 01-intro.qmd
+    - 02-system-overview.qmd
+    - 03-traffic-characterisation.qmd
+    - 07-environment.qmd
+    - 08-conclusions.qmd
+  appendices:
+    - 90-back-matters.qmd
     - references.qmd
   output-file: "BRA-EUR-2022"
 
-bibliography: references.bib
+bibliography: [references.bib, book.bib, packages.bib, bra-eur.bib]
 
 format:
   html:
     theme: cosmo
   pdf:
     documentclass: scrreprt
+    pandoc_args:
+    # control 2-column layout in pdf output
+    # https://stackoverflow.com/questions/73166794/put-2-chunks-of-code-side-by-side-in-rmarkdown-or-quarto
+      - "--lua-filter=columns-to-table.lua"
+    fig-pos: 'h'
+    geometry:
+    - top=20mm
+    - right=30mm
+    - left=30mm
+    - bottom=20mm
+    - heightrounded
   docx:
     toc: true
     number-sections: true
     highlight-style: github
 
 editor: visual
-
-

@@ -1,5 +1,9 @@
 # Preface {.unnumbered}
 
+```{r setup}
+source("_chapter-setup.R")
+```
+
 This report represents the 2nd edition of the Brazil-Europe Comparison of Operational Air Navigation System Performance.
 It characterises and compares operational performance in both regions on the basis of a set of harmonised performance measures. 
 The report is jointly developed by the Performance Section of the Department of Airspace Control (DECEA) and EUROCONTROL's Performance Review Unit (PRU).

@@ -1,0 +1,180 @@
+# Environment
+
+## Overview and Motivation
+
+```{r}
+library(treemapify)
+source("_chapter-setup.R")
+```
+
+At ICAO Assembly 40 in 2019 two global aspirational goals for curbing the impact of the international aviation sector were agreed.
+This includes an annual fuel efficiency improvement of 2% through 2050 and carbon neutral growth from 2020 onwards (c.f. @icao2019).
+Across the globe, states have defined ambitious political goals to address the impact of climate change. 
+For example, the European Union launched its Green Deal (@europeancommission2019) and Fit-for-55 initiative. 
+The latter strives strives towards cutting the net greenhouse gas emissions by at least 55% by 2030, compared to 1990 levels (@europeancommission2021).
+
+In general terms, air navigation shall contribute to the protection of the environment by considering noise, gaseous emissions and other environmental issues in the implementation and operation (KPA Environment, c.f. Appendix D @icaodoc98542005.
+Accordingly, there is a higher interest in monitoring/estimating the impact of operational (in)efficiency.
+Operational inefficiencies typically increase the aircraft flying time (i.e. airborne and surface movement times) and , thus, engine running time.
+Engine time is directly linked to fuel burn and associated emissions and pollutants.
+In that respect, inefficiencies contribute to the ditremental effect of excessive emissions to climate change.
+
+The Global Air Navigation Plan (GANP) proposes indicators for regional benchmarking [@icaodoc97502019].
+However, there is no detailed guidance on how to measure *additional fuel burn*.
+Fuel burn per se is known to the aircraft operator.
+While the actual fuel burn and fuel flow during the flight is recorded (e.g. flight data recorder), these data are not commonly shared.
+It is noteworthy that aircraft operators have to report their fuel burn per flight in Brazil (c.f. ANAC reporting files).
+This level of data is not available in Europe (or generally across the globe).
+
+For this report, both groups tapped into openly available data sources and developed an initial approach to quantifying operational inefficiencies with respect to fuel burn.
+It is planned to refine this approach in consultation with the international operational performance benchmarking community.
+
+## Fuel Burn Estimation
+
+The appendix presents an initial approach to estimating fuel burn during taxi operations as part of a comparison report. 
+@fig-example-fb depicts the monthly estimated fuel burn at a European hub for the taxi-in and taxi-out phase.
+It must be noted that the metric uses parameters of the ICAO landing and take-off cycle (LTO).
+The LTO estimates represent upper bounds for the fuel estimation and overestimates the actual fuel burn. 
+
+```{r example-fb, fig.cap="(ref:example-fb)"}
+#| label: fig-example-fb 
+#| fig-cap: Example fuel burn estimation at a European hub airport
+
+knitr::include_graphics("./figures/fuel_burn_EDDF.png")
+```
+
+@fig-example-fb highlights that there is a higher fuel burn during the departure phase.
+This phase entails the take-off roll with a thrust setting at or close to 100%. 
+This adds a substantial component to the fuel burn during take-off in comparison to the taxi-in phase.
+As mentioned above, the quantities shown reflect upper bounds based on the LTO assumptions and do not account for operational reduction measures such as single-engine taxi or reduced thrust take-offs. 
+It is planned to refine the approach with the international benchmarking community and account for such operational measures.
+
+## Environmental Benefit Pool - Taxi
+
+Earlier work has introduced the concept of an environmental benefit pool, c.f.  @US-EU-comparison2017.
+
+```{r}
+fns <- list.files(path = here::here("data"), pattern = "SB[A-Z]{2}_FUEL", full.names = TRUE)
+fuel_bra_taxi <- fns %>% 
+  map_dfr(.f = readr::read_csv, show_col_types = FALSE) %>% 
+  mutate(REGION = "BRA") %>%        #, YEAR = lubridate::year(MOF)) 
+  rename(SRC_PHASE = PHASE)
+
+
+fuel_eur_taxi <- read_csv("./data/BRA-EUR_EUR_FUEL-TXXT.csv") %>% mutate(REGION = "EUR") %>% drop_na()
+
+fuel_taxi_pool <- bind_rows(fuel_bra_taxi, fuel_eur_taxi) %>% 
+  group_by(YEAR = lubridate::year(MOF), ICAO, SRC_PHASE, REGION) %>% 
+  summarise(N = sum(N), TOT_ADD_FUEL = sum(TOT_ADD_FUEL), TOT_TXX_FUEL = sum(TOT_TXX_FUEL), .groups = "drop") %>% 
+  mutate( FUEL_POOL = TOT_ADD_FUEL / N
+         ,YEAR = as.factor(YEAR)
+         ) 
+``` 
+
+```{r}
+#| label: fig-fuel-pool-taxi-in
+#| fig-cap: Benefit pool in terms of additional fuel burn during taxi-in phase
+
+fuel_taxi_pool %>% 
+  filter(
+    SRC_PHASE == "ARR"
+    ,YEAR %in% c(2019,2020,2021)
+    ) %>%  
+  ggplot() +
+    geom_col(aes(x = FUEL_POOL, y = ICAO, fill = YEAR, group = YEAR)
+             , position = position_dodge(-.9), width = 0.9
+      ) +
+    scale_fill_brewer("GnBu") +
+    labs(x = "additional fuel burn per arrival [kg/arr]", y = NULL
+         ,subtitle = "fuel benefit pool - taxi-in") +
+    facet_wrap(.~REGION, scales = "free_y")
+  
+```
+
+@fig-fuel-pool-taxi-in shows the fuel benefit pool for the taxi-in phase per arrival.
+The benefit pool is influenced by the fleet mix and the overall taxi-in performance. 
+Thus, it varies significantly across the airports. 
+
+With the exception of Rome Fiumicino (LIRF), there is an increase in the benefit pool when comparing 2020 and 2021 within the European region. 
+
+```{r fuel-pool-taxi-out, fig.cap="(ref:fuel-pool-taxi-out)"}
+#| label: fig-fuel-pool-taxi-out
+#| fig-cap: Benefit pool in terms of additional fuel burn during taxi-out
+
+fuel_taxi_pool %>% 
+  filter(
+    SRC_PHASE == "DEP"
+    ,YEAR %in% c(2019,2020,2021)) %>%  
+  ggplot() +
+    geom_col(aes(x = FUEL_POOL, y = ICAO, fill = YEAR, group = YEAR)
+             , position = position_dodge(-.9), width = 0.9
+      ) +
+    scale_fill_brewer("GnBu") +
+    labs(x = "additional fuel burn per departure [kg/dep]", y = NULL
+         ,subtitle = "fuel benefit pool - taxi-out") +
+    facet_wrap(.~REGION, scales = "free_y")
+```
+
+Comparing @fig-fuel-pool-taxi-out with @fig-fuel-pool-taxi-in shows the overall impact of higher observed taxi-out times and the high-thrust take-off run. 
+For the major hubs in Europe the traffic decline during the COVID phase culminated in sharp decline of the average additional fuel burn per departure when comparing 2019 levels to 2020 or 2021.
+The impact of congestions on the taxi-operations and the associated refernce times was highlighted already in the efficiency chapter. 
+In light of this, the results for London Heathrow (EGLL) and London Gatwick (EGKK) need to be interpreted comparing the absolute different between the different years. 
+The decline in traffic allowed to operate without constraints which resulted in a - numerical - gain.     
+However, this showcases that the determined reference times internalised inefficiencies. 
+The values for these airports range higher than presented.
+Future research will address how such variations in terms of traffic load can be better captured as part of the benefit pool approach. 
+
+## Mapping of Benefit Pools
+
+The following Figures depicts the observed shares of additional fuel burn for taxi-out and taxi-in.
+It must be noted that the totals are based on the assumptions of the ICAO LTO cycle. 
+As such the estimates present an **_upper bound_** and do not take into consideration single-engine taxi-operations, reduced taxi-thrust, etc.
+
+```{r}
+annual_pool_comparison <- function(.mypool,.year, .region){
+  p <- .mypool %>% 
+  filter(REGION == .region , YEAR == .year) %>%  
+  ggplot(aes(area = TOT_ADD_FUEL, fill = ICAO, subgroup = SRC_PHASE, label = paste0(ICAO, "\n", round(TOT_TXX_FUEL * 10e-9, 2),"Mt"))) + 
+  geom_treemap() + 
+  geom_treemap_text(colour = "black",
+                    place = "centre",
+                    size = 15) +
+  scale_fill_brewer(palette = "Greens") +
+  geom_treemap_subgroup_border(colour = "white", size = 5) +
+  geom_treemap_subgroup_text(place = "centre", grow = TRUE
+                             , alpha = 0.2, colour = "white", fontface = "italic")
+  return(p)
+  }
+
+fuel_taxi_pool_eur_2019 <- annual_pool_comparison(fuel_taxi_pool, 2019, "EUR") + theme(legend.position = "none")
+fuel_taxi_pool_bra_2019 <- annual_pool_comparison(fuel_taxi_pool, 2019, "BRA") + theme(legend.position = "none")
+
+fuel_taxi_pool_eur_2021 <- annual_pool_comparison(fuel_taxi_pool, 2021, "EUR") + theme(legend.position = "none")
+fuel_taxi_pool_bra_2021 <- annual_pool_comparison(fuel_taxi_pool, 2021, "BRA") + theme(legend.position = "none")
+```
+
+<!-- 
+{r,fig.show='hold', warning=FALSE}
+--> 
+
+```{r}
+#| label: fig-treemap
+#| fig-cap: Regional shares of additional fuel burn during ground movement phase
+
+(fuel_taxi_pool_bra_2019 + fuel_taxi_pool_eur_2019) +
+  plot_annotation(subtitle = "Regional shares of taxi-out and taxi-in fuel burn (2019)")
+
+(fuel_taxi_pool_bra_2021 + fuel_taxi_pool_eur_2021) +
+  plot_annotation(subtitle = "Regional shares of taxi-out and taxi-in fuel burn (2021)")
+```
+
+
+## Summary
+
+This chapter is a first attempt to estimate the environmental impact of operational inefficiencies at airports. 
+The determined benefit pools for taxi-in and taxi-out vary significantly between airports. 
+While operational inefficiencies, e.g. higher sequencing and holding times, impact on the overall taxi-phase duration - and ultimately - the total fuel burnt during these phases, the metric is also dependent on the different fleet mix observed at these airports. 
+The impact of wide-bodies (and primarily international traffic) can be readily observed for the major hubs during 2019.
+The COVID related decline of operations of these types and connections, resulted in a sharp drop of the measured benefit pool in 2020 and 2021. 
+
+Based on the underlying databank of aircraft types and associated fuel burn indices, more detailed analyses will be feasible in future reports. 
