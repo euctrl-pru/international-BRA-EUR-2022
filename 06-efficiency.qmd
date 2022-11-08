@@ -461,7 +461,7 @@ knitr::include_graphics("./figures/EUR-flight-time-var-50.png")
 ```{r flight-time-var, fig.cap="(ref:flight-time-var)", fig.pos="H"}
 #| label: fig-flight-time-var
 #| fig-cap: Monthly flight time variability between study airports in Brazil and Europe
-#| 
+
 knitr::include_graphics("./figures/BRA-EUR-flight-time-var-combined.png")
 ```
 

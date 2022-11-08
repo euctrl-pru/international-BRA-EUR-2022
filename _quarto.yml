@@ -16,6 +16,9 @@ book:
     - 01-intro.qmd
     - 02-system-overview.qmd
     - 03-traffic-characterisation.qmd
+    - 04-predictability.qmd
+    - 05-capacity.qmd
+    - 06-efficiency.qmd
     - 07-environment.qmd
     - 08-conclusions.qmd
   appendices:
