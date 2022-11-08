@@ -25,7 +25,7 @@ ul.task-list{list-style: none;}
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./01-intro.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -100,14 +100,49 @@ ul.task-list{list-style: none;}
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./02-system-overview.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Air Navigation System Characterisation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-traffic-characterisation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Traffic Characterisation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-environment.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Environment</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-conclusions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Conclusions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Appendices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./90-back-matters.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Fuel Burn Methodology</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -140,6 +175,13 @@ ul.task-list{list-style: none;}
 
 </header>
 
+<!-- configure spacing between 2 columns in html output, aka add spacing between columns
+kudus to: https://stackoverflow.com/questions/73166794/put-2-chunks-of-code-side-by-side-in-rmarkdown-or-quarto
+-->
+<style>
+.column { padding-right: 2ex }
+.column + .column { padding-left: 2ex }
+</style>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
@@ -154,6 +196,7 @@ EUROCONTROL PRC Chairman</p>
 <p>Without collaboration - both on regional and international level - and the promotion and application of standards, the aviation system we know today, would never have come to pass, and will undoubtedly fail in the future. With that in mind, this second comparison report reflects the efforts of Brazil and Europe to keep moving in the direction of cooperation and standardisation in the field of operational air navigation system performance. Furthermore, the global community is asking for all its sectors to improve efficiency and reduce environmental impact. Additionally to the challenges mentioned above, addressing the carbon footprint of air transportation and how air navigation can help in this context is mandatory. In this context transparency plays a fundamental role. This comparison report adds to providing a transparent basis for an informed discussion by providing data-driven analyses to identify performance gaps and allow stakeholders to understand better and even participate in finding solutions to the issues on the table.</p>
 </div>
 </div>
+<p><br><br><br> </p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
@@ -179,7 +222,7 @@ Head of SDOP/DECEA</p>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./figures/KPA-and-KPI.png" class="img-fluid figure-img" width="287"></p>
+<p><img src="./figures/KPA-and-KPI.png" class="img-fluid figure-img" style="width:90.0%"></p>
 <p></p><figcaption class="figure-caption">(ref:KPA Index)</figcaption><p></p>
 </figure>
 </div>
@@ -312,7 +355,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link">
+      <a href="./01-intro.html" class="pagination-link">
         <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
