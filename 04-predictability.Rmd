@@ -1,0 +1,408 @@
+# Predictability
+
+The previous chapters showed distinct responses by both systems to the overall air transport developments. 
+Predictability in the system affects operations in both the strategic phase when airline schedules are produced and in the operating phase when ANSPs and stakeholders are balancing demand and capacity.
+High levels of predictability will benefit ANSPs servicing airspace users with a view to achieving highly efficient operations also during peak periods.
+This report focuses on the arrival and departure punctuality as measures of predictability.
+
+## Arrival Punctuality
+
+(ref:arr-punctuality) Arrival punctuality across study airports in `r key_year`
+
+```{r arr-punctuality, fig.cap="(ref:arr-punctuality)", message=FALSE}
+bra_punc <- readr::read_csv("./data/PBWG-BRA-PUNCT_ADR.csv", show_col_types = FALSE)
+# bra_punc2 <- readr::read_csv("./data/bra-punc.csv.gz", show_col_types = FALSE)
+# bra_punc2 <- bra_punc2 %>% 
+#   mutate(
+#     SLOT2 = case_when(
+#         PUNC == "[-Inf,-15]" ~ "EARLY"
+#       , PUNC == "(-15,-5]" ~ "EARLY_1505"
+#       , PUNC == "(-5,0]" ~ "WITHIN_5"
+#       , PUNC == "(0,5]" ~ "WITHIN_5"
+#       , PUNC == "(5,15]" ~ "LATE_0515"
+#       , PUNC == "(15, Inf]" ~ "LATE"
+#       , TRUE ~ NA_character_ )
+#       , YEAR = substr(YM, 1, 4), REGION = "BRA") %>% 
+# # took a while to tackle this - named ok flights N_VALID which in the original data set were total of ok flights
+#   rename(APT_ICAO = ICAO, FLIGHTS = N_VALID, N_VALID = FLTS)
+bra_punc2 <- readr::read_csv("./data/BRA-EUR-BRA-PUNC.csv")%>% 
+  mutate(REGION = "BRA"
+         ,SLOT2 = factor(SLOT2, levels = c("EARLY","EARLY_1505","WITHIN_5","LATE_0515","LATE")))
+
+#eur_punc <- readr::read_csv("./data/PBWG_EUR_PUNCT.csv", show_col_types = FALSE)
+eur_punc <- readr::read_csv("./data/BRA-EUR_EUR-PUNC-FIX.csv")
+
+bra_punc_arr <- bra_punc %>% filter(PHASE == "ARR") %>% 
+    mutate( YEAR = lubridate::parse_date_time(DATE, "ym", tz = "UTC") %>% lubridate::year()
+           ,EARLY = rowSums(across(`(-1e+09.-60]`:`(-20.-15]`))
+           ,EARLY_1505 = `(-15.-10]`+`(-10.-5]`
+           ,WITHIN_5   = `(-5.0]`+`(0.5]`
+           ,LATE_515   = rowSums(across(c(19:20)))
+           ,LATE       = rowSums(across(c(21:30)))
+           )  
+  
+# tmp_b <- bra_punc_arr %>% 
+#   group_by(APT_ICAO, YEAR) %>% 
+#   summarise(across(.cols = c("N_VALID","EARLY", "EARLY_1505", "WITHIN_5","LATE_515","LATE")
+#                    , .f = sum)
+#             , .groups = "drop")   %>%
+#   mutate(across(.cols = c("EARLY", "EARLY_1505", "WITHIN_5","LATE_515","LATE")
+#                 , .f = ~ .x/N_VALID)
+#          ,REGION = "BRA")
+tmp_b <- bra_punc2 %>% filter(PHASE == "ARR") 
+```
+
+```{r}
+calc_punc_groups <- function(.punc){
+  punc <- .punc %>% 
+    mutate(  EARLY      = rowSums(across(5:14))
+           , EARLY_1505 = rowSums(across(15:16))
+           , WITHIN_5   = rowSums(across(17:18))
+           , LATE_0515  = rowSums(across(c(19:20)))
+           , LATE       = rowSums(across(c(21:30)))
+           ) %>% 
+    select(AIRPORT, DATE, PHASE, N_VALID, EARLY, EARLY_1505, WITHIN_5, LATE_0515, LATE)
+}
+
+calc_punc_share_per_group <- function(.puncgroups){
+  punc_share <- .puncgroups %>% 
+    mutate(YEAR = lubridate::year(DATE)) %>% 
+    group_by(AIRPORT, YEAR) %>% 
+    summarise(across( .cols = N_VALID:LATE
+                     , .fns = sum, na.rm = TRUE)
+              , .groups = "drop") %>% 
+    mutate(across(.cols = EARLY:LATE, .fns = ~ ./N_VALID))
+}
+
+
+# tmp_b <- bra_punc %>% filter(PHASE == "ARR") %>% rename(AIRPORT = APT_ICAO) %>%
+#   mutate(DATE = lubridate::parse_date_time(DATE, "ym", tz = "UTC")) %>% 
+#   calc_punc_groups() %>% 
+#   calc_punc_share_per_group() %>% 
+#   mutate(REGION = "BRA")
+tmp_b = tmp_b %>% rename(AIRPORT = ICAO) %>% 
+  group_by(AIRPORT, YEAR, REGION, SLOT2) %>%
+  summarise(across(.cols = c("FLIGHTS", "N_VALID"), .fns = sum), .groups = "drop")
+
+# tmp_e <- eur_punc %>% filter(PHASE == "ARR") %>% 
+#   calc_punc_groups() %>% 
+#   calc_punc_share_per_group() %>% 
+#   mutate(REGION = "EUR")
+tmp_e <- eur_punc %>% filter(SRC_PHASE == "ARR") %>% 
+  group_by(ICAO, YEAR) %>% 
+  summarise(across(.cols = EARLY:N_VALID, .fns = sum, na.rm = TRUE)) %>% 
+  drop_na() %>% 
+  mutate(WITHIN_5 = EARLY_M0500 + LATE_P0005, REGION = "EUR") %>% 
+  select(AIRPORT = ICAO, YEAR, N_VALID, EARLY, EARLY_1505 = EARLY_M1505, WITHIN_5, LATE_0515 = LATE_P0515, LATE, REGION) %>% 
+  mutate(YEAR = as.character(YEAR))
+```
+
+```{r}
+#tmp <- bind_rows(tmp_b, tmp_e) %>%
+tmp <- bind_rows(
+  tmp_b %>% mutate(YEAR = as.character(YEAR)), 
+  tmp_e %>% pivot_longer(cols = EARLY:LATE, names_to = "SLOT2", values_to = "FLIGHTS")
+)
+
+tmp <- tmp %>% 
+  mutate(
+     SLOT3 = factor(SLOT2, levels = c("LATE","LATE_0515","WITHIN_5","EARLY_1505","EARLY"))
+     ,SHARE = FLIGHTS / N_VALID
+     ,LABEL = paste0(SLOT3, "\n", round(SHARE, 2))
+    )
+``` 
+
+```{r}
+punc_plot <- function(.puncdf, .debug = FALSE){
+  punc_plot <- .puncdf %>% 
+  ggplot(aes(x = SHARE, y = AIRPORT)) +
+  geom_col(aes(fill = SLOT3))
+  
+  if(.debug){
+    punc_plot <- punc_plot +
+      geom_text(aes(label = LABEL), position = position_stack(vjust = 0.5), size = 2)
+  }
+  
+  punc_plot <- punc_plot  +
+  scale_x_continuous(labels = scales::percent) +
+  scale_fill_brewer(
+          palette = "RdYlBu"
+        , name = "Time horizon"
+        , labels = c("Late", "Late 5-15", "Within 5", "Early 15-5", "Early")
+        ) +
+  facet_wrap(.~REGION, scales = "free_y") +
+  labs(x = NULL, y = NULL) +
+  theme( legend.position = "top"
+        ,legend.title    = element_text(size = 8) 
+        ,legend.text     = element_text(size = 8)
+        ,legend.key.size = unit(0.3, "cm"))
+  
+  return(punc_plot)
+}
+```
+
+
+<!--
+VERIFICATION
+```{r}
+tmp %>% filter(YEAR == 2019) %>% punc_plot(.debug = TRUE)
+```
+
+-->
+
+<!--
+plot_punc_barchart <- function(.puncshares, .debug = TRUE){
+  this_ds <- .puncshares %>% mutate(SHARE = FLIGHTS/N_VALID)
+  if(.debug == TRUE) this_ds <- this_ds %>% mutate(LABEL = paste0(SLOT3,"-",round(SHARE,2)))
+  
+  my_plot <- ggplot(
+      data    = this_ds  
+    , mapping = aes(y = AIRPORT, x = SHARE, fill = SLOT3)) +
+  geom_col( position = "fill" )
+  
+  if(.debug == TRUE){
+    my_plot <- my_plot +
+      geom_text(aes(LABEL), position = position_stack(vjust = 0.5))
+  }
+  
+  my_plot <- my_plot +
+  scale_fill_brewer(palette = "RdYlBu") +
+  #to control the "fill" aesthetic and legend, use the 2 lines below
+  #scale_fill_manual(name = "Time horizon")
+  #, # labels = c("Late", "Late 5-15", "Within 5", "Early 15-5", "Early"), values = RColorBrewer::brewer.pal(5, "RdYlBu")) +
+  #guides(fill = guide_legend(reverse = TRUE)) +
+  #coord_flip() +
+  facet_wrap(.~REGION, scales = "free_y") +
+ # scale_y_continuous(labels = scales::percent) +
+  my_own_theme_minimal +
+  theme( legend.position = "top"
+        ,legend.title    = element_text(size = 8) 
+        ,legend.text     = element_text(size = 8)
+        ,legend.key.size = unit(0.3, "cm")) +
+  labs(x = NULL, y = NULL) 
+  return(my_plot)
+}
+-->
+
+(ref:arrivalpunc) Evolution of arrival punctuality at study airports in both regions
+
+
+```{r arrivalpunc, fig.cap="(ref:arrivalpunc)", fig.show='hold'}
+p_2019 <- punc_plot(tmp %>% filter(YEAR == 2019)) + labs(caption = "arrival punctuality 2019")
+p_2020 <- punc_plot(tmp %>% filter(YEAR == 2020)) + labs(caption = "arrival punctuality 2020")
+p_2021 <- punc_plot(tmp %>% filter(YEAR == 2021)) + labs(caption = "arrival punctuality 2021")
+
+#(p_2019 / p_2020 / p_2021) + plot_layout(guides = 'collect') & theme(legend.position = 'top')
+
+p_2019
+p_2020 + theme(legend.position = "none")
+p_2021 + theme(legend.position = "none")
+```
+
+Figure \@ref(fig:arrivalpunc) shows the evolution of arrival punctuality for the select airports in Brazil and Europe.
+
+In 2019, about 70% of flights arrived within 15 minutes of their scheduled arrival time on average in both regions. This raises concerns about schedule stability with a share of about 30% of flights arriving either well before 15 minutes or late when compared to the schedule.
+However, the punctual portion of the flights was further compressed in 2020, with the crisis peak. This share noticed a brief relief in 2021, with demand resuming its historical levels. The Brazilian data showed a soft advantage in the last year.
+On average a higher share of traffic at European airports arrives within + 15 minutes late of the scheduled arrival time.
+Within the European region, arrival punctuality decreased in 2020 with a higher share of early arrivals at all airports.
+The lower arrival punctuality was also characteristic for arrivals in 2020 in Brazil.
+TThe larger airports in Brazil, São Paulo/Guarulhos (SBGR), São Paulo/Congonhas (SBSP), Campinas (SBKP), and Rio de Janeiro Galeão (SBGL) observed a higher share of non-punctual arrivals (more/less than 15 minutes compared to the scheduled arrival time).
+A similar behaviour was also observed in 2021 across the Brazilian airports.
+In Europe, the schedule reliability  has been improved for late arrivals, notably Rome (LIRF) in 2020 and Barcelona (LEBL) in 2021.
+However, pre-COVID levels have not been fully achieved.
+It is interesting to observe flights arriving well before their scheduled arrival time.
+Despite increasing end-user satisfaction, early arrivals did not reflect a healthy system and did contribute to a certain degree of inefficiency in the use of airspace and ground infrastructure due to the lack of predictability. 
+Across the airports this portion of flights varies. However, on average, about 20-30% of flights arrived more than 15 minutes before their scheduled arrival time.
+The associated pattern and share varied across the 2019-2021 horizon. 
+For a future report it will be interesting to investigate how structural this pattern is (i.e. which connections or service types showed this behaviour).
+Early arrivals may pose problems to the service delivery as available runway, apron, and stand capacity may negatively impact the management of the arrival flow.
+Figure \@ref(fig:earlyarrs) highlights the share of arrivals with more than 15 minutes compared to the scheduled arrival time. 
+For the European region, the significant lower load on the system is visible.
+Early arrivals increased roughly doubled in 2020 compared to 2019 and contracted again with 2021 and the overall higher traffic levels.
+This pattern is more diverse at the Brazilian study airports.
+This suggests that on average a higher level of flights arrive well ahead of their scheduled time.
+
+(ref:earlyarrs) Evolution of early arrivals in both regions
+
+```{r earlyarrs, fig.cap="(ref:earlyarrs)"}
+early <- 
+  tmp %>% filter(SLOT3 == "EARLY", YEAR %in% c(2019:2021)) 
+
+early %>% 
+  ggplot() + 
+    geom_col(aes(x = SHARE, y = AIRPORT, fill = YEAR)
+             , position = position_dodge2(reverse = TRUE)) + 
+    scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) + 
+    scale_x_continuous(labels = scales::percent) + 
+    facet_wrap(.~REGION, scales = "free_y") +
+    labs(x = NULL, y = NULL)
+```
+
+
+## Departure Punctuality
+
+This section analyses the level of departure punctuality.
+The previous section showed that the overall traffic situation during the previous years impacted the reliability of schedules for arrivals.
+Though the overall pattern represented a decline in traffic due to COVID, early arrivals may impact and put an additional strain on the infrastructure (runway system, apron, and stands).
+
+
+```{r}
+# tmp_b <- bra_punc %>% filter(PHASE == "DEP") %>% rename(AIRPORT = APT_ICAO) %>%
+#   mutate(DATE = lubridate::parse_date_time(DATE, "ym", tz = "UTC")) %>% 
+#   calc_punc_groups() %>% 
+#   calc_punc_share_per_group() %>% 
+#   mutate(REGION = "BRA")
+tmp_b <- bra_punc2 %>% filter(PHASE == "DEP") %>% 
+  rename(AIRPORT = ICAO) %>% 
+  group_by(AIRPORT, YEAR, REGION, SLOT2) %>%
+  summarise(across(.cols = c("FLIGHTS", "N_VALID"), .fns = sum), .groups = "drop") 
+
+# tmp_e <- eur_punc %>% filter(PHASE == "DEP") %>% 
+#   calc_punc_groups() %>% 
+#   calc_punc_share_per_group() %>% 
+#   mutate(REGION = "EUR")
+tmp_e <- eur_punc %>% filter(SRC_PHASE == "ARR") %>% group_by(ICAO, YEAR) %>% summarise(across(.cols = EARLY:N_VALID, .fns = sum, na.rm = TRUE)) %>% drop_na() %>% mutate(WITHIN_5 = EARLY_M0500 + LATE_P0005, REGION = "EUR") %>% select(AIRPORT = ICAO, YEAR, N_VALID, EARLY, EARLY_1505 = EARLY_M1505, WITHIN_5, LATE_0515 = LATE_P0515, LATE, REGION)
+```
+
+```{r}
+tmp <- bind_rows(
+  tmp_b , #%>% mutate(YEAR = as.character(YEAR)), 
+  tmp_e %>% pivot_longer(cols = EARLY:LATE, names_to = "SLOT2", values_to = "FLIGHTS")
+)
+
+tmp <- tmp %>% 
+  mutate(
+     SLOT3 = factor(SLOT2, levels = c("LATE","LATE_0515","WITHIN_5","EARLY_1505","EARLY"))
+     ,SHARE = FLIGHTS / N_VALID
+     ,LABEL = paste0(SLOT3, "\n", round(SHARE, 2))
+    )
+
+# plot_punc_barchart <- function(.puncshares){
+#   my_plot <- ggplot(data = .puncshares , mapping = aes(x = AIRPORT, y = FLIGHTS, fill = SLOT3)) +
+#   geom_col(position = "fill") +
+#   #scale_fill_brewer(palette = "RdYlBu") +
+#   #to control the "fill" aesthetic and legend, use the 2 lines below
+#   scale_fill_manual(name = "Time horizon", labels = c("Late", "Late 5-15", "Within 5", "Early 15-5", "Early"), values = RColorBrewer::brewer.pal(5, "RdYlBu")) +
+#   guides(fill = guide_legend(reverse = TRUE)) +
+#   coord_flip() +
+#   facet_wrap(.~REGION, scales = "free_y") +
+#   scale_y_continuous(labels = scales::percent) +
+#   my_own_theme_minimal +
+#   theme( legend.position = "top"
+#         ,legend.title    = element_text(size = 8) 
+#         ,legend.text     = element_text(size = 8)
+#         ,legend.key.size = unit(0.3, "cm")) +
+#   labs(x = NULL, y = NULL) +
+#   coord_flip()
+#   return(my_plot)
+# }
+# plot_punc_barchart <- function(.puncshares){
+#   my_plot <- ggplot(data = .puncshares %>% mutate(SHARE = FLIGHTS/N_VALID) , mapping = aes(y = AIRPORT, x = SHARE, fill = SLOT3)) +
+#   geom_col(
+#     position = "fill"
+#     ) +
+#   scale_fill_brewer(palette = "RdYlBu") +
+#   #to control the "fill" aesthetic and legend, use the 2 lines below
+#   #scale_fill_manual(name = "Time horizon")
+#   #, # labels = c("Late", "Late 5-15", "Within 5", "Early 15-5", "Early"), values = RColorBrewer::brewer.pal(5, "RdYlBu")) +
+#   #guides(fill = guide_legend(reverse = TRUE)) +
+#   #coord_flip() +
+#   facet_wrap(.~REGION, scales = "free_y") +
+#  # scale_y_continuous(labels = scales::percent) +
+#   my_own_theme_minimal +
+#   theme( legend.position = "top"
+#         ,legend.title    = element_text(size = 8) 
+#         ,legend.text     = element_text(size = 8)
+#         ,legend.key.size = unit(0.3, "cm")) +
+#   labs(x = NULL, y = NULL) 
+#   return(my_plot)
+# }
+```
+
+<!--
+:::{.rmdnote}
+
+VERIFICATION 
+
+```{r}
+tmp %>% filter(YEAR == 2019) %>% punc_plot(.debug = TRUE)
+```
+
+:::
+-->
+
+(ref:deppunc) Evolution of departure punctuality at study airports in both regions
+
+```{r deppunc, fig.cap="(ref:deppunc)", fig.show='hold'}
+p_2019 <- punc_plot(tmp %>% filter(YEAR == 2019)) + labs(caption = "departure punctuality 2019") + theme(legend.position = "top")
+p_2020 <- punc_plot(tmp %>% filter(YEAR == 2020)) + labs(caption = "departure punctuality 2020") + theme(legend.position = "none")
+p_2021 <- punc_plot(tmp %>% filter(YEAR == 2021)) + labs(caption = "departure punctuality 2021") + theme(legend.position = "none")
+
+#(p_2019 / p_2020 / p_2021) + plot_layout(guides = 'collect') & theme(legend.position = 'top')
+p_2019
+p_2020 + theme(legend.position = "none")
+p_2021 + theme(legend.position = "none")
+```
+
+When looking at the interval of -/+15 minutes between actual off-block time and scheduled off-block time, a different pattern than on the arrival side emerges. 
+On average, about 50% of all flights depart within that interval in Europe, with 2019 presenting a sightly larger share of punctual flights while 2020 and 2021 showed a noticeable decreasing in late departures. 
+
+For the European airports higher shares of early departures were observed in 2020 and 2021.
+While schedule reliability improved in 2021 vs 2020, the pre-COVID levels were not reached at the European airports.
+This suggests that there are still constraints surrounding the facilitation of passengers and turn-around at the airports.
+London Heathrow (EGLL) was the most affected European Airport, having its punctual portion compressed by the extremes shares.
+
+The Brazilian side did not show relevant variations in takeoff punctuality, with early departures (-15 min) barely changing. Actually, there is a negligible number of departure that blocked off less than 15 minutes early.  
+Interestingly this behavior was not impacted by the distortion of traffic during the COVID phase.
+However, a soft improvement in late departures (+15 min) is noticed. 2021 performed slightly better than 2020, even with significantly more traffic. Galeão (SBGL) presented the worst indicator in all years but improved throughout the period.  
+In general, departures in 2020 and 2021 showed similar levels than in 2019.
+<!--
+Do we want to say something about this maybe being an data artefact rather than a fact?
+-->
+
+The following figure highlights the share of late departures across the years.
+The unprecedented decline in air traffic resulted in significant lower shares of late departures decreased at the all studied airports in 2020 in comparison to 2019.
+Comparing the difference between 2021 and 2020 shows a similar structural pattern across all European airports.
+The number of late departures increased in comparison to the peak COVID-year 2020.
+This may be linked to two drivers. On one hand traffic levels increased again with more states reducing restrictions on air travel while still passenger screening and health measures required heightened processes.
+In Brazil, higher levels of departure punctuality were observed. 
+Although the change from 2020 to 2021 ranges in the oder of magnitude of under 5%, the same pattern was obsered at all Brazilian airports.
+
+(ref:latedeps) Evolution of late departures in both regions
+
+```{r latedeps, fig.cap="(ref:latedeps)"}
+late <- tmp %>% 
+  filter(SLOT3 == "LATE", YEAR %in% c(2019:2021)) %>%
+  mutate(YEAR = as.factor(YEAR))
+
+late %>% 
+  ggplot() + 
+    geom_col(aes(x = SHARE, y = AIRPORT, fill = YEAR)
+             , position = position_dodge2(reverse = TRUE)) + 
+    scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) + 
+    scale_x_continuous(labels = scales::percent) + 
+    facet_wrap(.~REGION, scales = "free_y") +
+    labs(x = NULL, y = NULL)
+```
+
+
+## Summary
+
+Arrival and departure punctuality play an important role in terms of balancing demand and capacity.
+Punctuality in this chapter is measured as the difference between the actual arrival/departure times versus the respective scheduled times. 
+This also reflects the stability and planning accuracy of the schedule in terms of air navigation services.
+Distinct patterns were observed in both regions. 
+For example, on average about 50% of all flights arrive and depart within a window of -/+15 minutes in Europe. The influence of slot control is more visible with the demand level of 2019.  
+On the other hand, a higher share of flights depart within -/+5 minutes of their schedule in Brazil.
+
+In both regions, the impact of the decline of air traffic is observable in the predictability in 2020 and 2021.
+However, there are different patterns in Brazil than in Europe. 
+Europe showed a stronger reaction in terms of early arrivals (i.e. arriving more than 15 minutes before schedule) and departures (departing later than 15 minutes after the scheduled departure time).
+Traffic at Brazilian airports showed a similar reaction to the declining traffic in 2020 only in the arrival phase. The departure flights did not showed significant change in their punctuality. 
+The behavior in 2021 is still far from the 2019 pattern in both regions.
+However, it appears that returning air traffic and load on the system drives the move towards pre-COVID levels in Europe.
+For example, the share of arrivals punctuality in 2021 ranges closer to the 2019 levels (i.e. Guarulhos SBGR, and Heathrow EGLL).
+Early arrivals, in its turn, doubled in Europe when comparing 2020 to 2019 level, and dropped again in 2021 broadly reversing the trend while not reaching 2019 levels.
+
+This suggests that there is higher uncertainty in terms of movements with the returning traffic in both regions.
+More research is needed to investigate the underlying drivers and to what extent regional connectivity influences these behaviors.
