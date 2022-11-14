@@ -1,14 +1,11 @@
 ```{=tex}
-\cleardoubleoddpage
+%%\cleardoubleoddpage
 \pagenumbering{arabic}
 \setcounter{page}{1}
 ```
-
 ```{r}
 source("_chapter-setup.R")
 ```
-
-WHY IS THERE A PAGE BREAK IN PDF?
 
 # Introduction
 
@@ -68,6 +65,7 @@ Figure @fig-scope-airports provides an overview of the location of the chosen st
 ```{r}
 #| label: tbl-scopetable
 #| tbl-cap: List of study airports for the Brazil / Europe operational ANS performance comparison
+
 scopetable = data.frame(
     Brazil = c("* Brasília (SBBR)\ \n* São Paulo Guarulhos (SBGR)\ \n* São Paulo Congonhas (SBSP)\ \n* Campinas (SBKP)\ \n* Rio de Janeiro S. Dumont  (SBRJ)\ \n* Rio de Janeiro Galeão (SBGL)\ \n* Belo Horizonte Confins (SBCF)\ \n* Salvador (SBSV)\ \n* Porto Alegre (SBPA)\ \n* Curitiba (SBCT)"),
     Europe = c("* Amsterdam Schiphol (EHAM)\ \n* Paris Charles de Gaulle (LFPG)\ \n* London Heathrow (EGLL)\ \n* Frankfurt (EDDF)\ \n* Munich (EDDM)\ \n* Madrid (LEMD)\ \n* Rome Fiumicino (LIRF)\ \n* Barcelona (LEBL)\ \n* London Gatwick (EGKK)\ \n* Zurich (LSZH)"))
@@ -83,9 +81,10 @@ flextable::flextable(scopetable) %>%
   hline_bottom(border = ft_border)
 ```
 
-```{r}
+```{r, out.width="90%"}
 #| label: fig-scope-airports
 #| fig-cap: Study airports of Brazil/Europe Comparison
+
 knitr::include_graphics("./figures/scope-airports.png")
 ```
 

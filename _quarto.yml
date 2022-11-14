@@ -7,8 +7,10 @@ execute:
   warning: false
 
 book:
-  title: "BRA-EUR2"
-  author: "DECEA Performance Section, \nEUROCONTROL Performance Review Unit"
+  title: "Brazil/Europe Comparison of Operational ANS Performance"
+  author: |
+    | DECEA Performance Section
+    | EUROCONTROL Performance Review Unit
   date: "28. October 2022"
   chapters:
     - index.qmd
@@ -33,17 +35,25 @@ format:
     theme: cosmo
   pdf:
     documentclass: scrreprt
+    papersize: a4
     pandoc_args:
+    - "--lua-filter=columns-to-table.lua"
+    - "--luafilter lua-column-div.lua"
     # control 2-column layout in pdf output
     # https://stackoverflow.com/questions/73166794/put-2-chunks-of-code-side-by-side-in-rmarkdown-or-quarto
-      - "--lua-filter=columns-to-table.lua"
+
     fig-pos: 'h'
     geometry:
-    - top=20mm
+    - top=30mm
     - right=30mm
     - left=30mm
-    - bottom=20mm
+    - bottom=30mm
     - heightrounded
+    include-in-header:
+      text: |
+        '\usepackage{multicol}'
+        '\pagenumbering{gobble}'
+
   docx:
     toc: true
     number-sections: true
