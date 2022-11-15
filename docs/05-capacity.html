@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Brazil/Europe Comparison of Operational ANS Performance - 5&nbsp; Capacity and Throughput</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./06-efficiency.html" rel="next">
+<link href="./04-predictability.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>
+/* Styles added by the columns.lua pandoc filter */
+  .columns :first-child {margin-top: 0;}
+  .column-span + * {margin-top: 0;}
+</style>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Capacity and Throughput</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Brazil/Europe Comparison of Operational ANS Performance</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-front-matters.html" class="sidebar-item-text sidebar-link">Forewords</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-executive.html" class="sidebar-item-text sidebar-link">Executive Summary</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-system-overview.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Air Navigation System Characterisation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-traffic-characterisation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Traffic Characterisation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-predictability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Predictability</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-capacity.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Capacity and Throughput</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-efficiency.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Efficiency</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-environment.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Environment</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-conclusions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conclusions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Appendices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./90-back-matters.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Fuel Burn Methodology</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#peak-declared-capacity" id="toc-peak-declared-capacity" class="nav-link active" data-scroll-target="#peak-declared-capacity"> <span class="header-section-number">5.1</span> Peak Declared Capacity</a></li>
+  <li><a href="#peak-arrival-throughput" id="toc-peak-arrival-throughput" class="nav-link" data-scroll-target="#peak-arrival-throughput"> <span class="header-section-number">5.2</span> Peak Arrival Throughput</a></li>
+  <li><a href="#peak-departure-throughput" id="toc-peak-departure-throughput" class="nav-link" data-scroll-target="#peak-departure-throughput"> <span class="header-section-number">5.3</span> Peak Departure Throughput</a></li>
+  <li><a href="#declared-capacity-and-peak-throughput" id="toc-declared-capacity-and-peak-throughput" class="nav-link" data-scroll-target="#declared-capacity-and-peak-throughput"> <span class="header-section-number">5.4</span> Declared Capacity and Peak Throughput</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"> <span class="header-section-number">5.5</span> Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Capacity and Throughput</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<p>A proper balance between airport capacity and flight demand is paramount to an adjusted network flow. This section addresses the capacity and throughput dimensions as measured by a variety of KPIs at the airport level. Airspace users expect sufficient capacity provision addressing the levels of demand. With higher levels of capacity utilisation, airspace users will experience congestion and constraints (e.g.&nbsp;higher inefficiency, c.f. previous chapter). However, planning and staffing for peak situations may come at significant costs to airspace user as well. In that respect it is essential to understand the trade-off between capacity provision and capacity consumption (i.e.&nbsp;traffic demand) as it impacts the overall system performance. Capacity and throughput analyses are therefore showing to what extent air navigation services are capable to accommodate the demand.</p>
+<section id="peak-declared-capacity" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="peak-declared-capacity"><span class="header-section-number">5.1</span> Peak Declared Capacity</h2>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>Peak Declared Capacity refers to the highest movement rate (arrivals and landings) at an airport using the most favourable runway configuration under optimal conditions. The capacity value might be subject to local or national decision-making processes. The indicator represents the highest number of landings an airport can accept in a one-hour period.</p>
+<p>In Brazil, the peak capacity is determined by DECEA considering local operational constraints. Within the European region, the airport capacity is determined locally or nationally as part of the capacity declaration process. This considers local operational constraints (e.g.&nbsp;political caps, noise quota and abatement procedures), infrastructure related limitations (e.g.&nbsp;apron/stand availability, passenger facilities). The declaration process considers typically IMC separation minima for runway movements. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>All European airports in this study are Category 3 - fully slot controlled. The slot and capacity declaration process is undertaken on the local or national level. Throughout the last years additional political caps in terms of maximum number of annual movements (e.g.&nbsp;Amsterdam (EHAM) movement cap of 500.000 commercial operations) or permissible night and day time restrictions (e.g.&nbsp;London Heathrow night operation cap) have been introduced widely. Accordingly, capacity values in Europe vary despite the local runway system capabilities. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>Throughout the last years, no substantial change in the declared capacity was observed at European airports. In Brazil, on the other hand, 2019 showed a revised capacity declaration for most of the airports throughout the country, c.f. Figure <a href="#fig-capsovertime">Figure&nbsp;<span>5.1</span></a>).</p>
+<p>Since the end 2018, CGNA worked on the enhancement of the methodology for the determination of the runway system capacity. The previous methodology used conservative limitations for the declaration of airport capacity. Capacity was limited to the maximum of 80% of its real value due to additional parameters taken into account (e.g.&nbsp;local specifics). The best practice approach included a 50%-50% division between arrivals and departures. The process and refined analysis methodology has evolved in such ways that these mentioned concepts are no longer in use. The capacity is declared on the basis of its actual value considering all variables that can restrain and impact the achievable capacity. It is applied in accordance with the operational conditions at the airport or the prevailing meteorological condition.</p>
+<p>These changes significantly increased runway systems capacity for most of Brazilian airports. Airports such as SBGR, SBGL, SBCF, SBBR and SBSV benefited from the changes made, including changes in their runway system configurations. CGNA continues developing enhancements to the runway capacity analysis process. This resulted in the publication of a refined process by the end of 2020. The impact of the revision will likely influence the Brazilian airport capacity declaration.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-capsovertime" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="05-capacity_files/figure-html/fig-capsovertime-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 5.1: Evolution of Declared Capacities at Brazilian Airports.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-peakcapacity" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="05-capacity_files/figure-html/fig-peakcapacity-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 5.2: Peak declared capacity</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-peakcapacity">Figure&nbsp;<span>5.2</span></a> the peak declared capacity per hour for each of the study airports in Europe and Brazil in 2021. In general, the declared capacity for all airports in Europe exceeds the respective declared capacity levels in Brazil.</p>
+<p>The peak capacity for Brasília (SBBR) approached to Munich (EDDM) and Heathrow (EGLL) due to the implantation of independent operarions and the methodology calculation review. Those tree airports, with similar layout, show bigger capacity than Barcelona e Zurich which have tree runway. Galeão (SBGL) and Guarulhos (SBGR) are now above the peak capacity declared for the single-runway airport Gatwick (EGKK). But still, the declared capacity values at those airports ranged around 50% of the major hubs in Europe, i.e.&nbsp;Paris Charles de Gaulle (LFPG), Amsterdam (EHAM), and Frankfurt (EDDF).</p>
+<p>As mentioned before, the capacity process takes into account a variety of local considerations. A potential avenue for further research could be a closer investigation of the variances of the declared capacity in line with the local runway system characteristics.</p>
+</section>
+<section id="peak-arrival-throughput" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="peak-arrival-throughput"><span class="header-section-number">5.2</span> Peak Arrival Throughput</h2>
+<p>The peak arrival throughput measures the 95th percentile of the hourly number of landings observed at an airport. The measure gives an indication of the “busy-hour” landing rates. It is an indication to what extent arrival traffic is serviced at an airport. For congested airports, the throughput provides a measure of the effectively realized capacity. Throughput is a measure of demand and comprises already air traffic flow or sequencing measures applied by ATM or ATC in the en-route and terminal phase. For non-congested airports, throughput serves as a measure of showing the level of (peak) demand at this airport. Unlike the day Peak Day indicator, the busiest hour of the airports under study did not suffer a significant reduction in their values even with the crisis. The demand peak during the last two years and the natural tendency of traffic concentration in more attractive hours were enough to keep the values at level with the historical data.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-arr-thru" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="05-capacity_files/figure-html/fig-arr-thru-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 5.3: Variation of arrival throughput at study airports</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- change colour/palette - do not waste too much time on it -->
+<p><a href="#fig-arr-thru">Figure&nbsp;<span>5.3</span></a> shows a constant behaviour of the peak arrival throughput across the whole time horizon. A noteworthy exemption is Brasilia (SBBR). At SBBR, a reduction of the peak arrival throughput was observed in 2019 in comparison to the previous year. Brasilia Airport started independent operations on its two runways back in 2016. As a result - and after a period of standardisation of procedures for aircrew and controllers - its traffic was possibly better dispersed throughout the day.</p>
+<p>For the majority of the European airports, <a href="#fig-arr-thru">Figure&nbsp;<span>5.3</span></a> depicts little variation over the years. These study airports represent the busiest 10 airports and accordingly the peak arrival throughput per hour presents an upper limit based on the airspace user demand and traffic patterns. The increase observed in peak arrival throughput at Paris (LFPG), Madrid (LEMD), Rome (LIRF), and Munich (EDDM) was in line with additional demand during peak hours. The continual increase in peak arrival throughput signals a potential concentration of feeder flights for international / long-range traffic.</p>
+<p>The relative constant pattern of the peak arrival throughput observed for many airports suggests that traffic patterns during the busiest hours remained fairly constant. Potential changes to the airspace user demand widely occurred outside the peak hours. This suggests that arrival management of air traffic services in Brazil and Europe is able to sustain the observed demand.</p>
+</section>
+<section id="peak-departure-throughput" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="peak-departure-throughput"><span class="header-section-number">5.3</span> Peak Departure Throughput</h2>
+<p>In analogy to the arrival throughput, the departure throughput is determined as the 95th percentile of the hourly number of departures. The measure serves as an indication of the “busy-hour” departure rates. As seen in the previous indicator, the pandemic crisis did not influence the values significantly.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-dep-thru" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="05-capacity_files/figure-html/fig-dep-thru-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 5.4: Variation of departure throughput at study airports</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The peak departure throughput at the study airports shows a similar behaviour than the behaviour observed for the arrival throughput (c.f. above). This suggests widely homogeneous demand patterns, i.e.&nbsp;schedules, across the different seasons.</p>
+<p>Peak departure throughput at SBBR showed a similar decrease as for the arrival peak throughput as reported above.</p>
+<p>In Europe, Rome (LIRF) saw a drop in departure throughput in 2017 as well, which then remained fairly constant until 2019. The observed decrease is linked to a de-peaking of the outbounds. Frankfurt (EDDF) and Madrid (LEMD) experienced a step as of 2019 that is in line with additional routes served. The annual traffic increase observed at Paris (LFPG) resulted in an increase in the peak departure throughput accommodating these additional flights also during peak hours. The observed systematic constant performance levels at Heathrow (EGLL), Gatwick (EGKK), Barcelona (LEBL), and Zurich (LSZH) evidences that these airports and air traffic services operated at their capacity limits during peak hours throughout the time horizon of this report.</p>
+</section>
+<section id="declared-capacity-and-peak-throughput" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="declared-capacity-and-peak-throughput"><span class="header-section-number">5.4</span> Declared Capacity and Peak Throughput</h2>
+<p>Effective utilisation of the deployed capacity during peak times drives operational efficiency. In this initial comparison report, the difference between the peak arrival rate and the declared capacity is analysed in order to demonstrate which airports have more and less “slack” between the peak movement levels and their capacity. <a href="#fig-capvsthru">Figure&nbsp;<span>5.5</span></a> orders all study airports based on their declared arrival capacities and compares these values with the observed peak arrival throughput.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-capvsthru" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="05-capacity_files/figure-html/fig-capvsthru-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 5.5: Comparison of declared capacity and throughput for arrival phase.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>For the majority of the airports, the approximated arrival capacity is higher than the observed peak throughput. In Europe, Amsterdam (EHAM), Frankfurt (EDDF), and Munich (EDDM) showed a higher peak throughput than the respective declared capacity. Peak arrival operations at Zurich (LSZH) were slightly higher than the declared capacity. In Brazil, the realised peak arrival throughput at Sao Paulo (SBSP) exceeded the capacity value as well. At these airports, it appears that during the peak hours (i.e.&nbsp;the top 5% of all hourly arrivals) in 2021 better than declared arrival throughputs were realised. This might be linked to the methodology used for the capacity declaration process following a more modulated approach and accounting for a wider varied aircraft mix. It will be interesting to research in future comparisons how the peak hour demand is managed in comparison to less busier hours and its underlying driving factors.</p>
+<!--
+## Capacity Utilisation
+-->
+</section>
+<section id="summary" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="summary"><span class="header-section-number">5.5</span> Summary</h2>
+<p>The maximum capacities of Brazilian airports tend to be lower than the declared capacities at European airports. Throughout the past years, Brazil changed its methodology to identify and declare arrival and departure capacities. In light of this change and on the basis of operational improvements, Brazilian airports have been showing consistent growth in their capacities. This growth of traffic is widely completed for the top 10 airports in Europe and the associated capacities were constant over the past years.</p>
+<p>Another highlight is the resilience of peak hours against demand variations. Despite the unprecendented decline of air traffic due to COVID19, demand remained concentrated during peak operating hours. On average, the declared arrival capacity is commensurate with the peak traffic observed at the airports. This suggests that runway system capacities is not a limitation for servicing traffic demand in both regions.</p>
+
+
+</section>
+<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1" role="doc-endnote"><p>The Brazilian airports that have more than one operational runway are: Brasília (SBBR) with 2 independent runways; Guarulhos (SBGR) with 2 parallel runways (simultaneous but not independent operations); and Galeão (SBGL), Curitiba (SBCT) and Salvador (SBSV) with 2 intersecting runways.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Amsterdam (EHAM) operates at fixed capacity with 6 runways, London Heathrow has maximised the runway throughput with 2 independent runways, Gatwick airport is reportedly the most efficient single runway operation in Europe.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./04-predictability.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Predictability</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./06-efficiency.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Efficiency</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

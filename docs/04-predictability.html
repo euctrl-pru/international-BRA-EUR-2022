@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Brazil/Europe Comparison of Operational ANS Performance - 4&nbsp; Predictability</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./05-capacity.html" rel="next">
+<link href="./03-traffic-characterisation.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>
+/* Styles added by the columns.lua pandoc filter */
+  .columns :first-child {margin-top: 0;}
+  .column-span + * {margin-top: 0;}
+</style>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Predictability</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Brazil/Europe Comparison of Operational ANS Performance</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-front-matters.html" class="sidebar-item-text sidebar-link">Forewords</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-executive.html" class="sidebar-item-text sidebar-link">Executive Summary</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-system-overview.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Air Navigation System Characterisation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-traffic-characterisation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Traffic Characterisation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-predictability.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Predictability</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-capacity.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Capacity and Throughput</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-efficiency.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Efficiency</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-environment.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Environment</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-conclusions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conclusions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Appendices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./90-back-matters.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Fuel Burn Methodology</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#arrival-punctuality" id="toc-arrival-punctuality" class="nav-link active" data-scroll-target="#arrival-punctuality"> <span class="header-section-number">4.1</span> Arrival Punctuality</a></li>
+  <li><a href="#departure-punctuality" id="toc-departure-punctuality" class="nav-link" data-scroll-target="#departure-punctuality"> <span class="header-section-number">4.2</span> Departure Punctuality</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"> <span class="header-section-number">4.3</span> Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Predictability</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<p>The previous chapters showed distinct responses by both systems to the overall air transport developments. Predictability in the system affects operations in both the strategic phase when airline schedules are produced and in the operating phase when ANSPs and stakeholders are balancing demand and capacity. High levels of predictability will benefit ANSPs servicing airspace users with a view to achieving highly efficient operations also during peak periods. This report focuses on the arrival and departure punctuality as measures of predictability.</p>
+<section id="arrival-punctuality" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="arrival-punctuality"><span class="header-section-number">4.1</span> Arrival Punctuality</h2>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<!--
+plot_punc_barchart <- function(.puncshares, .debug = TRUE){
+  this_ds <- .puncshares %>% mutate(SHARE = FLIGHTS/N_VALID)
+  if(.debug == TRUE) this_ds <- this_ds %>% mutate(LABEL = paste0(SLOT3,"-",round(SHARE,2)))
+  
+  my_plot <- ggplot(
+      data    = this_ds  
+    , mapping = aes(y = AIRPORT, x = SHARE, fill = SLOT3)) +
+  geom_col( position = "fill" )
+  
+  if(.debug == TRUE){
+    my_plot <- my_plot +
+      geom_text(aes(LABEL), position = position_stack(vjust = 0.5))
+  }
+  
+  my_plot <- my_plot +
+  scale_fill_brewer(palette = "RdYlBu") +
+  #to control the "fill" aesthetic and legend, use the 2 lines below
+  #scale_fill_manual(name = "Time horizon")
+  #, # labels = c("Late", "Late 5-15", "Within 5", "Early 15-5", "Early"), values = RColorBrewer::brewer.pal(5, "RdYlBu")) +
+  #guides(fill = guide_legend(reverse = TRUE)) +
+  #coord_flip() +
+  facet_wrap(.~REGION, scales = "free_y") +
+ # scale_y_continuous(labels = scales::percent) +
+  my_own_theme_minimal +
+  theme( legend.position = "top"
+        ,legend.title    = element_text(size = 8) 
+        ,legend.text     = element_text(size = 8)
+        ,legend.key.size = unit(0.3, "cm")) +
+  labs(x = NULL, y = NULL) 
+  return(my_plot)
+}
+-->
+<div id="fig-arrivalpunc" class="cell quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-arrivalpunc-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="04-predictability_files/figure-html/fig-arrivalpunc-1.png" class="img-fluid figure-img" data-ref-parent="fig-arrivalpunc" width="672"></p>
+<p></p><figcaption class="figure-caption">(a) Arrival Punctuality in 2019</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-arrivalpunc-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="04-predictability_files/figure-html/fig-arrivalpunc-2.png" class="img-fluid figure-img" data-ref-parent="fig-arrivalpunc" width="672"></p>
+<p></p><figcaption class="figure-caption">(b) Arrival Puncutality in 2020</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-arrivalpunc-3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="04-predictability_files/figure-html/fig-arrivalpunc-3.png" class="img-fluid figure-img" data-ref-parent="fig-arrivalpunc" width="672"></p>
+<p></p><figcaption class="figure-caption">(c) Arrival Punctuality in 2021</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure 4.1: Evolution of arrival punctuality at study airports in both regions</figcaption><p></p>
+</figure>
+</div>
+<p><a href="#fig-arrivalpunc">Figure&nbsp;<span>4.1</span></a> shows the evolution of arrival punctuality for the select airports in Brazil and Europe. In 2019, about 70% of flights arrived within 15 minutes of their scheduled arrival time on average in both regions. This raises concerns about schedule stability with a share of about 30% of flights arriving either well before 15 minutes or late when compared to the schedule. However, the punctual portion of the flights was further compressed in 2020, with the crisis peak. This share noticed a brief relief in 2021, with demand resuming its historical levels. The Brazilian data showed a soft advantage in the last year. On average a higher share of traffic at European airports arrives within + 15 minutes late of the scheduled arrival time. Within the European region, arrival punctuality decreased in 2020 with a higher share of early arrivals at all airports. The lower arrival punctuality was also characteristic for arrivals in 2020 in Brazil. TThe larger airports in Brazil, São Paulo/Guarulhos (SBGR), São Paulo/Congonhas (SBSP), Campinas (SBKP), and Rio de Janeiro Galeão (SBGL) observed a higher share of non-punctual arrivals (more/less than 15 minutes compared to the scheduled arrival time). A similar behaviour was also observed in 2021 across the Brazilian airports. In Europe, the schedule reliability has been improved for late arrivals, notably Rome (LIRF) in 2020 and Barcelona (LEBL) in 2021. However, pre-COVID levels have not been fully achieved. It is interesting to observe flights arriving well before their scheduled arrival time. Despite increasing end-user satisfaction, early arrivals did not reflect a healthy system and did contribute to a certain degree of inefficiency in the use of airspace and ground infrastructure due to the lack of predictability. Across the airports this portion of flights varies. However, on average, about 20-30% of flights arrived more than 15 minutes before their scheduled arrival time. The associated pattern and share varied across the 2019-2021 horizon. For a future report it will be interesting to investigate how structural this pattern is (i.e.&nbsp;which connections or service types showed this behaviour). Early arrivals may pose problems to the service delivery as available runway, apron, and stand capacity may negatively impact the management of the arrival flow. <a href="#fig-earlyarrs">Figure&nbsp;<span>4.2</span></a> highlights the share of arrivals with more than 15 minutes compared to the scheduled arrival time. For the European region, the significant lower load on the system is visible. Early arrivals increased roughly doubled in 2020 compared to 2019 and contracted again with 2021 and the overall higher traffic levels. This pattern is more diverse at the Brazilian study airports. This suggests that on average a higher level of flights arrive well ahead of their scheduled time.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-earlyarrs" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="04-predictability_files/figure-html/fig-earlyarrs-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 4.2: Evolution of early arrivals in both regions</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="departure-punctuality" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="departure-punctuality"><span class="header-section-number">4.2</span> Departure Punctuality</h2>
+<p>This section analyses the level of departure punctuality. The previous section showed that the overall traffic situation during the previous years impacted the reliability of schedules for arrivals. Though the overall pattern represented a decline in traffic due to COVID, early arrivals may impact and put an additional strain on the infrastructure (runway system, apron, and stands).</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div id="fig-deppunc" class="cell quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-deppunc-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="04-predictability_files/figure-html/fig-deppunc-1.png" class="img-fluid figure-img" data-ref-parent="fig-deppunc" width="672"></p>
+<p></p><figcaption class="figure-caption">(a) Departure Punctuality in 2019</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-deppunc-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="04-predictability_files/figure-html/fig-deppunc-2.png" class="img-fluid figure-img" data-ref-parent="fig-deppunc" width="672"></p>
+<p></p><figcaption class="figure-caption">(b) Departure Puncutality in 2020</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-deppunc-3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="04-predictability_files/figure-html/fig-deppunc-3.png" class="img-fluid figure-img" data-ref-parent="fig-deppunc" width="672"></p>
+<p></p><figcaption class="figure-caption">(c) Departure Punctuality in 2021</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure 4.3: Evolution of departure punctuality at study airports in both regions</figcaption><p></p>
+</figure>
+</div>
+<p>When looking at the interval of -/+15 minutes between actual off-block time and scheduled off-block time, a different pattern than on the arrival side emerges. On average, about 50% of all flights depart within that interval in Europe, with 2019 presenting a sightly larger share of punctual flights while 2020 and 2021 showed a noticeable decreasing in late departures.</p>
+<p>For the European airports higher shares of early departures were observed in 2020 and 2021. While schedule reliability improved in 2021 vs 2020, the pre-COVID levels were not reached at the European airports. This suggests that there are still constraints surrounding the facilitation of passengers and turn-around at the airports. London Heathrow (EGLL) was the most affected European Airport, having its punctual portion compressed by the extremes shares.</p>
+<p>The Brazilian side did not show relevant variations in takeoff punctuality, with early departures (-15 min) barely changing. Actually, there is a negligible number of departure that blocked off less than 15 minutes early.<br>
+Interestingly this behavior was not impacted by the distortion of traffic during the COVID phase. However, a soft improvement in late departures (+15 min) is noticed. 2021 performed slightly better than 2020, even with significantly more traffic. Galeão (SBGL) presented the worst indicator in all years but improved throughout the period.<br>
+In general, departures in 2020 and 2021 showed similar levels than in 2019. <!--
+Do we want to say something about this maybe being an data artefact rather than a fact?
+--></p>
+<p>The following figure highlights the share of late departures across the years. The unprecedented decline in air traffic resulted in significant lower shares of late departures decreased at the all studied airports in 2020 in comparison to 2019. Comparing the difference between 2021 and 2020 shows a similar structural pattern across all European airports. The number of late departures increased in comparison to the peak COVID-year 2020. This may be linked to two drivers. On one hand traffic levels increased again with more states reducing restrictions on air travel while still passenger screening and health measures required heightened processes. In Brazil, higher levels of departure punctuality were observed. Although the change from 2020 to 2021 ranges in the oder of magnitude of under 5%, the same pattern was obsered at all Brazilian airports.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-latedeps" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="04-predictability_files/figure-html/fig-latedeps-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 4.4: Evolution of late departures in both regions</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="summary" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">4.3</span> Summary</h2>
+<p>Arrival and departure punctuality play an important role in terms of balancing demand and capacity. Punctuality in this chapter is measured as the difference between the actual arrival/departure times versus the respective scheduled times. This also reflects the stability and planning accuracy of the schedule in terms of air navigation services. Distinct patterns were observed in both regions. For example, on average about 50% of all flights arrive and depart within a window of -/+15 minutes in Europe. The influence of slot control is more visible with the demand level of 2019.<br>
+On the other hand, a higher share of flights depart within -/+5 minutes of their schedule in Brazil.</p>
+<p>In both regions, the impact of the decline of air traffic is observable in the predictability in 2020 and 2021. However, there are different patterns in Brazil than in Europe. Europe showed a stronger reaction in terms of early arrivals (i.e.&nbsp;arriving more than 15 minutes before schedule) and departures (departing later than 15 minutes after the scheduled departure time). Traffic at Brazilian airports showed a similar reaction to the declining traffic in 2020 only in the arrival phase. The departure flights did not showed significant change in their punctuality. The behavior in 2021 is still far from the 2019 pattern in both regions. However, it appears that returning air traffic and load on the system drives the move towards pre-COVID levels in Europe. For example, the share of arrivals punctuality in 2021 ranges closer to the 2019 levels (i.e.&nbsp;Guarulhos SBGR, and Heathrow EGLL). Early arrivals, in its turn, doubled in Europe when comparing 2020 to 2019 level, and dropped again in 2021 broadly reversing the trend while not reaching 2019 levels.</p>
+<p>This suggests that there is higher uncertainty in terms of movements with the returning traffic in both regions. More research is needed to investigate the underlying drivers and to what extent regional connectivity influences these behaviors.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./03-traffic-characterisation.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Traffic Characterisation</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./05-capacity.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Capacity and Throughput</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

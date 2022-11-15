@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Brazil/Europe Comparison of Operational ANS Performance - 6&nbsp; Efficiency</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./07-environment.html" rel="next">
+<link href="./05-capacity.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>
+/* Styles added by the columns.lua pandoc filter */
+  .columns :first-child {margin-top: 0;}
+  .column-span + * {margin-top: 0;}
+</style>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Efficiency</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Brazil/Europe Comparison of Operational ANS Performance</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-front-matters.html" class="sidebar-item-text sidebar-link">Forewords</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-executive.html" class="sidebar-item-text sidebar-link">Executive Summary</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-system-overview.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Air Navigation System Characterisation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-traffic-characterisation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Traffic Characterisation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-predictability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Predictability</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-capacity.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Capacity and Throughput</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-efficiency.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Efficiency</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-environment.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Environment</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-conclusions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conclusions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Appendices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./90-back-matters.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Fuel Burn Methodology</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#additional-taxi-in-time" id="toc-additional-taxi-in-time" class="nav-link active" data-scroll-target="#additional-taxi-in-time"> <span class="header-section-number">6.1</span> Additional Taxi-In Time</a></li>
+  <li><a href="#additional-taxi-out-time" id="toc-additional-taxi-out-time" class="nav-link" data-scroll-target="#additional-taxi-out-time"> <span class="header-section-number">6.2</span> Additional Taxi-Out Time</a></li>
+  <li><a href="#mapping-of-taxi-out-and-taxi-in" id="toc-mapping-of-taxi-out-and-taxi-in" class="nav-link" data-scroll-target="#mapping-of-taxi-out-and-taxi-in"> <span class="header-section-number">6.3</span> Mapping of Taxi-out and Taxi-in</a></li>
+  <li><a href="#evolution-of-additional-taxi-times-in-early-2022" id="toc-evolution-of-additional-taxi-times-in-early-2022" class="nav-link" data-scroll-target="#evolution-of-additional-taxi-times-in-early-2022"> <span class="header-section-number">6.4</span> Evolution of Additional Taxi-Times in early 2022</a></li>
+  <li><a href="#additional-time-in-terminal-airspace" id="toc-additional-time-in-terminal-airspace" class="nav-link" data-scroll-target="#additional-time-in-terminal-airspace"> <span class="header-section-number">6.5</span> Additional Time in Terminal Airspace</a></li>
+  <li><a href="#flight-time-variability" id="toc-flight-time-variability" class="nav-link" data-scroll-target="#flight-time-variability"> <span class="header-section-number">6.6</span> Flight Time Variability</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"> <span class="header-section-number">6.7</span> Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Efficiency</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<p>Operational efficiency is a critical component in assessing the management and execution of operations. It provides insights in the management of arrival and departure flows and the associated separation and synchronisation activities. Inefficiencies can have an impact on user operations in terms of delays or excessive fuel burn.</p>
+<p>The measures reported in this study are based on the observed travel time for surface operations (i.e.&nbsp;taxi-in and taxi-out) and during the arrival phase. These travel times are compared with an associated reference time for a group of flights showing similar operational characteristics. The determined difference (i.e.&nbsp;additional times) measures the level of inefficiencies. It must be noted that high performance operations will still yield a certain share of measured additional times. Operational efficiency is therefore aiming at the minimizing rather than eliminating these additional times as they cannot be zero.</p>
+<section id="additional-taxi-in-time" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="additional-taxi-in-time"><span class="header-section-number">6.1</span> Additional Taxi-In Time</h2>
+<p>The additional taxi-in time measures the travel time of an arriving flight from its touchdown (i.e.&nbsp;actual landing time [ALDT]) to its stand/gate position (i.e.&nbsp;actual in-block time [AIBT]). The observed travel time (i.e.&nbsp;taxi time) is compared to a reference time. The reference time is determined for flights arriving at the same runway and/or the same stand/gate position. Research showed that the taxi-times are not dependent on the type of aircraft. The additional taxi-in time provides a pointer for the management of the inbound surface traffic.</p>
+<p>Due to data availability constraints (i.e.&nbsp;no stand/gate information), the reference times for the Brazilian airports have been computed on the airport level. It needs to be noted that such aggregation at the airport level may be influenced by the predominant runway configuration and frequently used stand/parking positions. This phenomenon merits further study in one of the future editions.</p>
+<p><a href="#fig-txit">Figure&nbsp;<span>6.1</span></a> shows the variation of the observed additional taxi-in times.</p>
+<!-- 
+DATA PREP
+check for this to be lifted and better organised, i.e. crunch date and complement summaries for 2020, 2021!
+-->
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-txit" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-efficiency_files/figure-html/fig-txit-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 6.1: Additional taxi-in time</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<!--
+check LIRF data for 2019
+-->
+<p>The observed additional taxi-in times vary across the different airports. The majority of airports have average additional taxi-in times at or below 2 minutes per arrival. This suggests that arrivals are rarely subject to taxi constraints.</p>
+<p>In Europe, Rome Fiumicino (LIRF) observed additional taxi-in times of higher than 4 minutes per arrival in 2019. With the decreasing traffic load during 2020 and 2021, additional taxi-in times fell sharply to 2,5 min in 2020 and 2,15 minutes per arrival. At London Heathrow (EGLL), average additional taxi-in times improved in 2020 by about three quarters of a minute. However, with increasing traffic load in 2021, higher additional taxi-in times were accrued again. A similar pattern was observed at other European airports with increasing additional taxi-in times, e.g. Zurich (LSZH), Paris Charles de Gaulle (LFPG), Madrid (LEMD), Amsterdam (EHAM), Munich (EDDM), and Frankfurt (EDDF). This suggests that there are still local procedures in place to address COVID or post-COVID related utilisation of stands.</p>
+<p>Additional taxi-in times in Brazil varied across the airports. Traffic at Rio de Janeiro’s Galeão (SBGL) airport deteriorated significantly. Despite lower traffic levels, the additional taxi-in time increased from around 3 minutes in 2019; to just under 4 minutes per arrival in 2020, and further increased to just under 6 minutes per arrival in 2021. Rio de Janeiro (SBRJ) observed an increase to over 3 minutes per arrival in 2020 and 2021. Arriving traffic at Porto Alegre (SBPA) experienced lower additional taxi-in times in 2021. Compared to 2019 and 2020, performance improved by over a minute per arrival. On average, additional taxi-in times decreased at the other airports across the years. Thus, showing a positive associated with decreasing traffic.</p>
+<p>The variations across the airports suggests that local specifics contributed to the varying taxi-in performance.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-txitcloselook" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-efficiency_files/figure-html/fig-txitcloselook-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 6.2: Monthly evolution of additional taxi-in time at SBGL and EGLL</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-txitcloselook">Figure&nbsp;<span>6.2</span></a> compares the evolution of the additional taxi-in time at two of the study airports. A sharp increase of the average additional taxi-in time is observed at both Galeão (SBGL) and London Heathrow (EGLL) by the end of 2020, despite significantly lower daily traffic in comparison to 2019. At SBGL, the observed average monthly additional taxi-in times increased even further in the beginning of 2021. EGLL saw a drop following the Chrismas/New Year season and then experienced a strong increase of the additional taxi-in times. These patterns have to be contrasted with with the shallow increase of daily traffic.</p>
+</section>
+<section id="additional-taxi-out-time" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="additional-taxi-out-time"><span class="header-section-number">6.2</span> Additional Taxi-Out Time</h2>
+<p>The additional taxi-out time addresses the travel time of a departing aircraft from when it can move away from its stand/gate position (i.e.&nbsp;actual off-block time [AOBT]) until the aircraft takes off (i.e.&nbsp;actual take-off time [ATOT]). This travel time is compared to an associated reference time.</p>
+<p>As mentioned above, the taxi-times at Brazilian airports are determined on the airport level and the observed additional taxi-out times may be influenced by the predominant runway system - stand combinations for departure traffic. The inclusion of stand/gate positions is foreseen for future iterations.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-txot" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-efficiency_files/figure-html/fig-txot-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 6.3: Additional taxi-out time</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>San Salvador (SBSV) in Brazil and Europe’s Rome Fiumicino (LIRF) and London Heathrow (EGLL) observed high average additional taxi-out times in 2019. For the majority of the airports, average additional taxi-out times are at or below 4 minutes per departure. In both regions, taxi-out performance was affected by the lower level of air traffic and typically resulted in a reduction of the average additional taxi-out time. In Brazil however, SBGL and SBBR showed increased additional taxi-out times in 2020 compared to 2019. This signals a substantial change of the taxi-operations based on the predominant usage of stands. Interestingly, additional taxi-out times varied differently across airports when comparing 2020 vs 2021. While in many instances the change is neglible (smaller than 30 sec per departure), Munich (EDDM) and Amsterdam (EHAM) showed a discernible increase in the observed additional taxi-out times. This was related to the re-opening of closed parts of the terminal in line with the general increase in air traffic.</p>
+<p>In both regions, flights observed a higher additional taxi-out time than taxi-in time. Thus, air traffic services in both regions manage departure queues more actively by separating and sequencing traffic within the maneuver area. This may be linked to higher interactions between departing traffic, or departing and arriving traffic.</p>
+</section>
+<section id="mapping-of-taxi-out-and-taxi-in" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="mapping-of-taxi-out-and-taxi-in"><span class="header-section-number">6.3</span> Mapping of Taxi-out and Taxi-in</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-txit-txot-scatter" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-efficiency_files/figure-html/fig-txit-txot-scatter-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 6.4: Comparison and evolution of additional taxi-in and taxi-out times</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The following analysis builds on the observations of the previous sections. Figure <a href="#fig-txit-txot-scatter">Figure&nbsp;<span>6.4</span></a> reveals different patterns in Brazil and Europe. In general surface movement operations see a higher variation in Brazil than in Europe. Within the European region London Heathrow (EGLL) and Rome Fiumicino (LIRF) experienced a strong reduction of the additional taxi-out time due to the reduced traffic in 2020. On average the returning traffic did not impact the additional taxi-in and taxi-out times observed in 2020 and 2021.</p>
+<p>With the exception of Rome Fiumicino (LIRF) and London Heathrow (EGLL) and the observed high additional taxi-out times at these airports, the spread between additional taxi-in and taxi-out time is smaller in Europe than in Brazil. This suggests that operational constraints are of systemic nature and less dependent on the level of traffic. This may reveal differences in the management of arriving and departing traffic in both regions. All European airports of this study operate ACDM <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> processes. ACDM aims to optimise the use of resources and improving the predictability of air traffic, in particular departing traffic. Further research is needed to analyse the impact of ACDM on the departure process with the average additional taxi-out times typically 2-3 minutes higher than the additional taxi-in times.</p>
+</section>
+<section id="evolution-of-additional-taxi-times-in-early-2022" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="evolution-of-additional-taxi-times-in-early-2022"><span class="header-section-number">6.4</span> Evolution of Additional Taxi-Times in early 2022</h2>
+<p>This section highlights and compares the performance observed in the first part of 2022, i.e. January through June. Typically, taxi-in operations are less constrained than taxi-out operations. However, flights taxiing in may be subject to interaction with other surface movements when approaching the apron or need to hold until a parking position is vacated.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-monthly-txits-bra" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-efficiency_files/figure-html/fig-monthly-txits-bra-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 6.5: Evolution of monthly average additional taxi-in times at Brazilian study airports</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-monthly-txits-bra">Figure&nbsp;<span>6.5</span></a> shows the monthly evolution of the average additional taxi-in times in Brazil. On average, monthly additional taxi-in times showed a smoother behaviour in 2020, 2021, and the first half of 2022 than in comparison to 2019. In particular, a higher level of variation and share of additional taxi-in times were observed in 2019 at Galeão (SBGL), São Paulo/Guarulhos (SBGR), São Paulo (SBSP), and for the first part of the year in Salvador (SBSV). For the beginning of 2022 arriving flights in Brazil accrued additional taxi-in times of 2 minutes or less. This evidences that incoming flights are not subject to higher constraints while taxiing in.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-monthly-txots-bra" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-efficiency_files/figure-html/fig-monthly-txots-bra-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 6.6: Evolution of monthly average additional taxi-out times at Brazilian study airports</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-monthly-txots-bra">Figure&nbsp;<span>6.6</span></a> shows the taxi-out performance observed at Brazilian study airports. The monthly taxi-out performance, on average, improved in comparison to 2019 at all airports. Brazilia is the only airport that showed a higher level of variability in 2020 during the first month of COVID. With the exception of Rio de Janeiro (SBRJ) and Sao Paulo (SBSP), observed additional taxi-out times follow the pattern of 2020 and 2021. This suggests that taxi-out procedures were adapted during COVID and taxi-out performance was stabilised on similar levels. SBRJ showed a step increase in taxi-put time in April 2022. Additional taxi-out times before and after the step were constant. This suggests a procedural change at the airfield. SBSP showed an increase in accrued additional taxi-out times as of February 2022 and reached levels of taxi-out performance simlar to pre-COVID levels (2019).</p>
+</section>
+<section id="additional-time-in-terminal-airspace" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="additional-time-in-terminal-airspace"><span class="header-section-number">6.5</span> Additional Time in Terminal Airspace</h2>
+<p>The additional time in terminal airspace is calculated as the difference between the actual travel time from entering the sequencing area (100NM radius around the airport) to the landing time and an associated reference time for the entry sector, aircraft class, and landing runway. The reference times are established based on 2019.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-asma" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-efficiency_files/figure-html/fig-asma-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 6.7: Additional time in terminal airspace</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-asma">Figure&nbsp;<span>6.7</span></a> shows the observed annual average additional time in terminal airspace for all airports. The additional time in terminal airspace followed different patterns in Brazil and Europe. Generally, additional ASMA times are higher in Brazil than in Europe <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, although, arrival sequencing in 2019 (pre-COVID) shows some airports in Europe with extremely high additional times, e.g. Zurich (LSZH), London Heathrow (EGLL), and London Gatwick (EGKK).</p>
+<p>The approach concept for London arrivals differs from other airports. To achieve maxium runway utilization, aircraft are held close to the airport. This resulted in higher ASMA times in 2019. The observed additional ASMA times for EGLL and EGKK in 2021 need to be interpreted based on the GANP algorithm chosen for this report. Reference times are determined based on the actual travel times in 2019. Thus, the negative annual average ASMA time for Heathrow (EGLL) and the extremely low result for Gatwick (EGKK) in 2021 demonstrate that at both airports the lower traffic levels in the following years are served differently. Obviously, the 2019 reference times comprise procedural elements, i.e.&nbsp;include sequencing induced additional time, and are too high for the observed traffic in 2021. For future studies it will be interesting to enhance the metric to account for substantial changes of the prevailing traffic. This also highlights that the London arrival and procedures benefitted significantly from the lower air traffic and yielded less holding and sequencing constraints on airspace users. Across the other European airports the change between the pre-COVID year 2019 and the observed performance in 2020 and 2021 is clearly visible. However, the overall change between 2020 and 2021 is - on average - negligible. This suggests that the metric measures procedural aspects in the arrival management at these airports offering room for improvement as these accrued additional times are independent of the traffic. Traffic at São Paulo Guarulhos (SBGR) observed additional times in 2019 and 2020 above four minutes per arrival. Its reduction in 2021 may be related to the new airspace design for São Paulo TMA and correlated airways changes, the TMA SP Neo Project implemented in May/2021. Higher additional times are observed in 2021 at Campinas (SBKP), Curitiba (SBCT), and Brasilia (SBBR), which also can derive from airways modification. DECEA keeps this assessment ongoing, as the demand returns to 2019 levels. For the majority of Brazilian airports, arrival traffic in 2021 experienced higher additional times than in the previous years, while the observed additional times for 2019 and 2020 ranged in the same order of magnitude. The average additional times at Brazilian airports ranged typically between two and four minutes per arrival. Traffic at São Paulo Guarulhos (SBGR) observed additional times in 2019 and 2020 above four minutes per arrival.</p>
+<p>For future reports the data for the assessment of the additional terminal time will be complemented for Brazil. This will allow to better investigate the changes observed across the years <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. This edition of the comparison suggests that there were changes to the en-route / arrival interface across the majority of Brazilian airports.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-asma-vs-traffic" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="06-efficiency_files/figure-html/fig-asma-vs-traffic-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 6.8: Comparison of additional time in terminal airspace</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-asma-vs-traffic">Figure&nbsp;<span>6.8</span></a> shows the change of average additional time in terminal airspace in both regions comparing 2019 to 2021 <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
+<p>This comparison shows the effect of the decline of air traffic in the European region on arriving traffic. For all airports, the lower traffic levels resulted in a reduction of the additional time accrued by the arrivals. However it is also noteworthy to stress that in several cases, procedures have a prevalent role on arrival sequencing. This can be observed for airports that show a relatively low change of the observed additional time while the number of arrivals significantly declined.</p>
+<p>Overall, the change in terms of observed average additional time in the terminal airspace is characterised by a rearrangement of the airports. The overall trend of an increase in sequencing times for arrivals was shown already in <a href="#fig-asma">Figure&nbsp;<span>6.7</span></a>. Based on the available data for this assessment (c.f. number of valid flights), the change in operational procedures might be masked. This will require further investigations in future editions of this bi-regional comparison. However, it is evident that the Brazilian system showed a lower level of change in the management of arrival traffic when comparing 2019 and 2021, recalling that the comparison kept the unimpeded reference time from 2019 for all years. This suggests that the observed performance is representative of the region, i.e.&nbsp;applied operational procedures, and less dependent on the volume of air traffic.</p>
+</section>
+<section id="flight-time-variability" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="flight-time-variability"><span class="header-section-number">6.6</span> Flight Time Variability</h2>
+<p>Flight time variability determines the level of predictability for airspace users and hence has an impact on airline scheduling. It focuses on the variance associated with the individual phases of flight as experienced by airspace users. This provides an integrated gate-to-gate view, as flight time is determined by the taxi-out, en-route, and taxi-in durations. Although the measure (i.e.&nbsp;flight time) may also be impacted by weather influences, runway system orientation of departure and arrival aerodrome, and prevailing en-route weather conditions, the variability of the flight time comprises also synchronisation and sequencing measures of air navigation services, including airspace constraints.</p>
+<p>For this report, flight time variability is calculated for the top 5 connections between the study airports. This serves as a proxy for the regional networks. Variability is determined as the half of the spread between the 85th and 15th percentile for flights on these connections.</p>
+<!-- {r flight-time-var, fig.show = "hold", out.width = "90%", fig.align = "default"}
+knitr::include_graphics("./figures/BRA-flight-time-var-50.png")
+knitr::include_graphics("./figures/EUR-flight-time-var-50.png")
+-->
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-flight-time-var" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="./figures/BRA-EUR-flight-time-var-combined.png" class="img-fluid figure-img" width="1322"></p>
+<p></p><figcaption class="figure-caption">Figure 6.9: Monthly flight time variability between study airports in Brazil and Europe</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-flight-time-var">Figure&nbsp;<span>6.9</span></a> shows the flight time variability for the top 5 connections among study airports in each phase of flight in both regions. Median flight time variability is less pronouced in Brazil than in Europe (depicted by the blue line). On average, both regions showed for the selected connections and flight phases different levels of monthly variability. The observed median pattern is smoother in Brazil than in Europe with a lower level of seasonality. In Brazil, lower traffic levels as part of the observed COVID waves were discernible for the surface operations only. The airborne phase - while showing high variations for certain periods - appeared to be independent on the traffic load in the system across the period from 2019 through 2021 for its median. A clear seasonal pattern was observed for taxi-out phase in Europe. Furthermore, median flight time variability in each phase reflected the overall traffic development in the region. Despite lower traffic levels, departing traffic experienced higher variability in the winter season 2020/2021. A similar pattern was observed for the en-route/airborne portion of flight. The median variability of taxi-in times were less dependent on the traffic levels, however followed the overall reduction of air transport following the pandemic declaration by WHO in March 2020. The change in terms of air transport in Europe was clearly visible in the median variation of the airborne flight time variability.There is a discernible drop by about 2 minutes for the period March 2020 through autumn 2021.</p>
+</section>
+<section id="summary" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="summary"><span class="header-section-number">6.7</span> Summary</h2>
+<p>Operational efficiency provides an insight in benefit pools to be exploited. Improvements in terms of operational efficiency can be directly linked to aircraft flying time and fuel burn. In that respect, efficiency constraints impact the cost base of airspace user operations. While high performant operations will still yield a certain level of inefficiency (and associated additional times or variability), the identification of potential areas of improvement can help to enhance overall air navigation system performance and airspace user experience.</p>
+<p>Surface movement performance in Brazil and Europe showed similarities and indicated that same operational concepts and practices are applied. On average, departing traffic in both regions observed a higher level of additional taxi-out time than compared to the observed additional taxi-in times across the years 2019 through 2021. Surface movement operations showed a higher variability in Brazil than in Europe. It will be interesting to study the respective drivers for this wider spread in future reports.</p>
+<p>The analysis of sequencing and the management of arriving flights showed certain differences. Although trends might be masked and impacted by the available data for this comparison for Brazil, the sequencing of arrival flights appeared to be independent of the traffic volume. The increase in additional times in 2021 appeared to be linked to a change in terms of en-route / terminal airspace interface. For the European context, the overall reduction in air traffic resulted in lower pressure on the sequencing of arrivals. On average, arriving traffic at all airports observed a lower additional times. This provides a pointer to a potential benefit pool in Europe as the success of arrival management (in particular arrival sequencing) varies with traffic levels. This report also showed the stark drop of accrued additional times at London airports, i.e. London Heathrow (EGLL) and Gatwick (EGKK). As additional times are calculated based on the performance observed in a reference year (in this report 2019), it is evident that these reference times already comprise a high level of congestion. It seems to be the opposite case for Brazil, where reduced demand did not necessarily reflect lower additional times. This suggests that the measured level of inefficiency - in this report - changed significantly across the period 2019 through 2021 and may be higher than reported if the reference time varies yearly.</p>
+<p>Overall, flight time variability showed similar extreme variations in both regions. However, on average, the Brazilian system is less impacted by seasonal variation and network operations showed a lower change in light of the varying traffic situations across the years. With both systems returning to 85-90% of pre-COVID traffic levels, it will be interesting to observe how each system will react to returning traffic load.</p>
+
+
+</section>
+<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1" role="doc-endnote"><p>ACDM implementation at EGKK is on-going, c.f. https://www.eurocontrol.int/concept/airport-collaborative-decision-making.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>The assessment of additional ASMA time for Brazil is based on a dataset that spans several months and partial years. For this study, data for 2018 is attributed to 2019. The data set will be complemented in future updates of this comparison. The overall behaviour of arrival times is assumed to not be affected across the years.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>The assessment of additional ASMA time for Brazil is based on a dataset that spans several months and partial years. For this study, data for 2018 is attributed to 2019. The data set will be complemented in future updates of this comparison. The overall behaviour of arrival times is assumed to not be affected across the years.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>The additional time in terminal airspace is calculated for arrival flights for which the required data was available. Accordingly, the number of “valid” flights might differ from the overall number of arrivals reported for the airports.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./05-capacity.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Capacity and Throughput</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./07-environment.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Environment</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -15,6 +15,7 @@ book:
   chapters:
     - index.qmd
     - 00-front-matters.qmd
+    - 00-executive.qmd
     - 01-intro.qmd
     - 02-system-overview.qmd
     - 03-traffic-characterisation.qmd
@@ -36,11 +37,11 @@ format:
   pdf:
     documentclass: scrreprt
     papersize: a4
-    pandoc_args:
-    - "--lua-filter=columns-to-table.lua"
-    - "--luafilter lua-column-div.lua"
-    # control 2-column layout in pdf output
-    # https://stackoverflow.com/questions/73166794/put-2-chunks-of-code-side-by-side-in-rmarkdown-or-quarto
+    # pandoc_args:
+    # - "--lua-filter=columns-to-table.lua"
+    # - "--luafilter lua-column-div.lua"
+    # # control 2-column layout in pdf output
+    # # https://stackoverflow.com/questions/73166794/put-2-chunks-of-code-side-by-side-in-rmarkdown-or-quarto
 
     fig-pos: 'h'
     geometry:
@@ -51,12 +52,20 @@ format:
     - heightrounded
     include-in-header:
       text: |
-        '\usepackage{multicol}'
-        '\pagenumbering{gobble}'
+        \usepackage{pdfpages}
+        \pagenumbering{gobble}
 
   docx:
     toc: true
     number-sections: true
     highlight-style: github
+# header-includes:
+#     - \usepackage{pdfpages}
+
+
+
+
+filters:
+  - columns.lua
 
 editor: visual

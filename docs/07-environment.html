@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Brazil/Europe Comparison of Operational ANS Performance - 7&nbsp; Environment</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./08-conclusions.html" rel="next">
+<link href="./06-efficiency.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>
+/* Styles added by the columns.lua pandoc filter */
+  .columns :first-child {margin-top: 0;}
+  .column-span + * {margin-top: 0;}
+</style>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Environment</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Brazil/Europe Comparison of Operational ANS Performance</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-front-matters.html" class="sidebar-item-text sidebar-link">Forewords</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-executive.html" class="sidebar-item-text sidebar-link">Executive Summary</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-system-overview.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Air Navigation System Characterisation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-traffic-characterisation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Traffic Characterisation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-predictability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Predictability</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-capacity.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Capacity and Throughput</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-efficiency.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Efficiency</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-environment.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Environment</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-conclusions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conclusions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Appendices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./90-back-matters.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Fuel Burn Methodology</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#overview-and-motivation" id="toc-overview-and-motivation" class="nav-link active" data-scroll-target="#overview-and-motivation"> <span class="header-section-number">7.1</span> Overview and Motivation</a></li>
+  <li><a href="#fuel-burn-estimation" id="toc-fuel-burn-estimation" class="nav-link" data-scroll-target="#fuel-burn-estimation"> <span class="header-section-number">7.2</span> Fuel Burn Estimation</a></li>
+  <li><a href="#environmental-benefit-pool---taxi" id="toc-environmental-benefit-pool---taxi" class="nav-link" data-scroll-target="#environmental-benefit-pool---taxi"> <span class="header-section-number">7.3</span> Environmental Benefit Pool - Taxi</a></li>
+  <li><a href="#mapping-of-benefit-pools" id="toc-mapping-of-benefit-pools" class="nav-link" data-scroll-target="#mapping-of-benefit-pools"> <span class="header-section-number">7.4</span> Mapping of Benefit Pools</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"> <span class="header-section-number">7.5</span> Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Environment</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="overview-and-motivation" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="overview-and-motivation"><span class="header-section-number">7.1</span> Overview and Motivation</h2>
+<div class="cell">
+
+</div>
+<p>At ICAO Assembly 40 in 2019 two global aspirational goals for curbing the impact of the international aviation sector were agreed. This includes an annual fuel efficiency improvement of 2% through 2050 and carbon neutral growth from 2020 onwards (c.f. <span class="citation" data-cites="icao2019">ICAO (<a href="references.html#ref-icao2019" role="doc-biblioref">2019b</a>)</span>). Across the globe, states have defined ambitious political goals to address the impact of climate change. For example, the European Union launched its Green Deal (<span class="citation" data-cites="europeancommission2019">European Commission (<a href="references.html#ref-europeancommission2019" role="doc-biblioref">2019</a>)</span>) and Fit-for-55 initiative. The latter strives strives towards cutting the net greenhouse gas emissions by at least 55% by 2030, compared to 1990 levels (<span class="citation" data-cites="europeancommission2021">European Commission (<a href="references.html#ref-europeancommission2021" role="doc-biblioref">2021</a>)</span>).</p>
+<p>In general terms, air navigation shall contribute to the protection of the environment by considering noise, gaseous emissions and other environmental issues in the implementation and operation (KPA Environment, c.f. Appendix D <span class="citation" data-cites="icaodoc98542005">ICAO (<a href="references.html#ref-icaodoc98542005" role="doc-biblioref">2005</a>)</span>. Accordingly, there is a higher interest in monitoring/estimating the impact of operational (in)efficiency. Operational inefficiencies typically increase the aircraft flying time (i.e.&nbsp;airborne and surface movement times) and , thus, engine running time. Engine time is directly linked to fuel burn and associated emissions and pollutants. In that respect, inefficiencies contribute to the ditremental effect of excessive emissions to climate change.</p>
+<p>The Global Air Navigation Plan (GANP) proposes indicators for regional benchmarking <span class="citation" data-cites="icaodoc97502019">(<a href="references.html#ref-icaodoc97502019" role="doc-biblioref">ICAO 2019a</a>)</span>. However, there is no detailed guidance on how to measure <em>additional fuel burn</em>. Fuel burn per se is known to the aircraft operator. While the actual fuel burn and fuel flow during the flight is recorded (e.g.&nbsp;flight data recorder), these data are not commonly shared. It is noteworthy that aircraft operators have to report their fuel burn per flight in Brazil (c.f. ANAC reporting files). This level of data is not available in Europe (or generally across the globe).</p>
+<p>For this report, both groups tapped into openly available data sources and developed an initial approach to quantifying operational inefficiencies with respect to fuel burn. It is planned to refine this approach in consultation with the international operational performance benchmarking community.</p>
+</section>
+<section id="fuel-burn-estimation" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="fuel-burn-estimation"><span class="header-section-number">7.2</span> Fuel Burn Estimation</h2>
+<p>The appendix presents an initial approach to estimating fuel burn during taxi operations as part of a comparison report. <a href="#fig-example-fb">Figure&nbsp;<span>7.1</span></a> depicts the monthly estimated fuel burn at a European hub for the taxi-in and taxi-out phase. It must be noted that the metric uses parameters of the ICAO landing and take-off cycle (LTO). The LTO estimates represent upper bounds for the fuel estimation and overestimates the actual fuel burn.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-example-fb" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="./figures/fuel_burn_EDDF.png" class="img-fluid figure-img" width="1050"></p>
+<p></p><figcaption class="figure-caption">Figure 7.1: Example fuel burn estimation at a European hub airport</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-example-fb">Figure&nbsp;<span>7.1</span></a> highlights that there is a higher fuel burn during the departure phase. This phase entails the take-off roll with a thrust setting at or close to 100%. This adds a substantial component to the fuel burn during take-off in comparison to the taxi-in phase. As mentioned above, the quantities shown reflect upper bounds based on the LTO assumptions and do not account for operational reduction measures such as single-engine taxi or reduced thrust take-offs. It is planned to refine the approach with the international benchmarking community and account for such operational measures.</p>
+</section>
+<section id="environmental-benefit-pool---taxi" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="environmental-benefit-pool---taxi"><span class="header-section-number">7.3</span> Environmental Benefit Pool - Taxi</h2>
+<p>Earlier work has introduced the concept of an environmental benefit pool, c.f. <span class="citation" data-cites="US-EU-comparison2017">EUROCONTROL Performance Review Unit and FAA Air Traffic Organization (<a href="references.html#ref-US-EU-comparison2017" role="doc-biblioref">2019</a>)</span>.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fuel-pool-taxi-in" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="07-environment_files/figure-html/fig-fuel-pool-taxi-in-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 7.2: Benefit pool in terms of additional fuel burn during taxi-in phase</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-fuel-pool-taxi-in">Figure&nbsp;<span>7.2</span></a> shows the fuel benefit pool for the taxi-in phase per arrival. The benefit pool is influenced by the fleet mix and the overall taxi-in performance. Thus, it varies significantly across the airports.</p>
+<p>With the exception of Rome Fiumicino (LIRF), there is an increase in the benefit pool when comparing 2020 and 2021 within the European region.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fuel-pool-taxi-out" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="07-environment_files/figure-html/fig-fuel-pool-taxi-out-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 7.3: Benefit pool in terms of additional fuel burn during taxi-out</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Comparing <a href="#fig-fuel-pool-taxi-out">Figure&nbsp;<span>7.3</span></a> with <a href="#fig-fuel-pool-taxi-in">Figure&nbsp;<span>7.2</span></a> shows the overall impact of higher observed taxi-out times and the high-thrust take-off run. For the major hubs in Europe the traffic decline during the COVID phase culminated in sharp decline of the average additional fuel burn per departure when comparing 2019 levels to 2020 or 2021. The impact of congestions on the taxi-operations and the associated refernce times was highlighted already in the efficiency chapter. In light of this, the results for London Heathrow (EGLL) and London Gatwick (EGKK) need to be interpreted comparing the absolute different between the different years. The decline in traffic allowed to operate without constraints which resulted in a - numerical - gain.<br>
+However, this showcases that the determined reference times internalised inefficiencies. The values for these airports range higher than presented. Future research will address how such variations in terms of traffic load can be better captured as part of the benefit pool approach.</p>
+</section>
+<section id="mapping-of-benefit-pools" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="mapping-of-benefit-pools"><span class="header-section-number">7.4</span> Mapping of Benefit Pools</h2>
+<p>The following Figures depicts the observed shares of additional fuel burn for taxi-out and taxi-in. It must be noted that the totals are based on the assumptions of the ICAO LTO cycle. As such the estimates present an <strong><em>upper bound</em></strong> and do not take into consideration single-engine taxi-operations, reduced taxi-thrust, etc.</p>
+<div class="cell">
+
+</div>
+<!-- 
+{r,fig.show='hold', warning=FALSE}
+-->
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-treemap-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="07-environment_files/figure-html/fig-treemap-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 7.4: Regional shares of additional fuel burn during ground movement phase</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div id="fig-treemap-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="07-environment_files/figure-html/fig-treemap-2.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure 7.5: Regional shares of additional fuel burn during ground movement phase</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="summary" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="summary"><span class="header-section-number">7.5</span> Summary</h2>
+<p>This chapter is a first attempt to estimate the environmental impact of operational inefficiencies at airports. The determined benefit pools for taxi-in and taxi-out vary significantly between airports. While operational inefficiencies, e.g.&nbsp;higher sequencing and holding times, impact on the overall taxi-phase duration - and ultimately - the total fuel burnt during these phases, the metric is also dependent on the different fleet mix observed at these airports. The impact of wide-bodies (and primarily international traffic) can be readily observed for the major hubs during 2019. The COVID related decline of operations of these types and connections, resulted in a sharp drop of the measured benefit pool in 2020 and 2021.</p>
+<p>Based on the underlying databank of aircraft types and associated fuel burn indices, more detailed analyses will be feasible in future reports.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-US-EU-comparison2017" class="csl-entry" role="doc-biblioentry">
+EUROCONTROL Performance Review Unit, and FAA Air Traffic Organization. 2019. <span>“2017 Comparison of Air Traffic Management-Related Operational Performance, US/Europe.”</span> <a href="https://www.eurocontrol.int/sites/default/files/2019-05/us-europe-comparison-operational-performance-2017.pdf">https://www.eurocontrol.int/sites/default/files/2019-05/us-europe-comparison-operational-performance-2017.pdf</a>.
+</div>
+<div id="ref-europeancommission2019" class="csl-entry" role="doc-biblioentry">
+European Commission. 2019. <span>“European Green Deal, Striving to Be the First Climate-Neutral Continent.”</span> <a href="https://ec.europa.eu/info/strategy/priorities-2019-2024/european-green-deal_en">https://ec.europa.eu/info/strategy/priorities-2019-2024/european-green-deal_en</a>.
+</div>
+<div id="ref-europeancommission2021" class="csl-entry" role="doc-biblioentry">
+———. 2021. <span>“Fit-for-55, European Green Deal: Commission Proposes Transformation of EU Economy and Society to Meet Climate Ambitions.”</span> <a href="https://ec.europa.eu/commission/presscorner/detail/en/IP_21_3541">https://ec.europa.eu/commission/presscorner/detail/en/IP_21_3541</a>.
+</div>
+<div id="ref-icaodoc98542005" class="csl-entry" role="doc-biblioentry">
+ICAO. 2005. <em>Global Air Traffic Management Operational Concept</em>. First Edition. Doc 9854, AN/458. Montreal, Canada: International Civil Aviation Organization.
+</div>
+<div id="ref-icaodoc97502019" class="csl-entry" role="doc-biblioentry">
+———. 2019a. <em>Doc 9750, Capacity &amp; Efficiency, Global Air Navigation Plan 2016-2030</em>. Sixth Edition. Montreal, Canada: International Civil Aviation Organization.
+</div>
+<div id="ref-icao2019" class="csl-entry" role="doc-biblioentry">
+———. 2019b. <span>“Resolution A40-18: Consolidated Statement of Continuing ICAO Policies and Practices Related to Environmental Protection - Climate Change.”</span> <a href="https://www.icao.int /environmental-protection/Documents/Assembly/Resolution_A40-18_Climate _Change.pdf">https://www.icao.int /environmental-protection/Documents/Assembly/Resolution_A40-18_Climate _Change.pdf</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./06-efficiency.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Efficiency</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./08-conclusions.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conclusions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
