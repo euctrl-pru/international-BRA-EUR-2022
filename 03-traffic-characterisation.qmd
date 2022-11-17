@@ -116,8 +116,6 @@ p2 <- reg_eur %>% mutate(DATE = as.Date(DATE)) %>%
   theme(legend.position = "none")
 ```
 
-
-
 ```{r}
 #| label: fig-timeline-region-mvts
 #| fig-cap: Timeline of regional air traffic
@@ -245,11 +243,12 @@ var_ytd <- counts_norm %>%
          ,YTD_NBR = yday(max_joint_date))
 ```
 
-
-```{r , fig.cap="(ref:viz-annualvar)"}
-#| label: fig-viz-annualvar
-#| fig-cap: Movements at study airports in both regions
-
+```{r, eval=FALSE}
+# based on the updated data by BRAZIL - the graph has been fixed outside this 
+# section
+# the following code is deactivated 
+# and the graph loaded below in the other code chunk.
+# ACTION - ajust data files for corrected data / next report
 g1 <- ds4 %>% ggplot() + 
   aes(x = REG, y = MVTS, fill = YR) +
   geom_col(position = position_dodge()) +
@@ -285,8 +284,14 @@ gvar <- g2 / g3
 g1 + gvar + plot_layout(widths = c(4,1))
 ```
 
+```{r, out.width="95%"}
+#| label: fig-viz-annualvar
+#| fig-cap: Movements at study airports in both regions
+knitr::include_graphics("./figures/corrected_traffic.png")
+```
+
 @fig-viz-annualvar shows the variation of air traffic across the study airports.
-On average, the annual traffic at the Brazilian airports in 2020 and 2021 ranged about 45% respectively 47% lower than in 2019.
+On average, the annual traffic at the Brazilian airports in 2020 decreased by about 47% and in 2021 traffic ranged about 32% lower than in 2019.
 The European study airports observed a higher decrease.
 The airports serviced -60% in 2020 and -55% in 2021.
 The airports of this study had been selected based on their role in the regional networks.
