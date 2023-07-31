@@ -14,7 +14,7 @@ It characterises and compares operational performance in both regions on the bas
 The report is jointly developed by the Performance Section of the Department of Airspace Control (DECEA) and EUROCONTROL's Performance Review Unit (PRU).
 
 This report was published in October 2022.
-The online version is available at <ADD FINAL LINK HERE>.
+The online version is available at https://ansperformance.eu/global/brazil/.
 
 For any questions, please do not hesitate to contact one of the authoring organisations.
 Enjoy the read!
