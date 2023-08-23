@@ -8,7 +8,16 @@ execute:
 
 book:
   title: "Brazil/Europe Comparison of Operational ANS Performance"
-  author: "DECEA Performance Section<br>EUROCONTROL Performance Review Unit"
+  author:
+  - name: Performance Section
+    affiliations:
+      - name: DECEA
+        country: Brazil
+  - name: Performance Review Unit
+    affiliations:
+      - name: EUROCONTROL
+        country: Belgium
+  # author: "DECEA Performance Section<br>EUROCONTROL Performance Review Unit"
   date: "28. October 2022"
   search:
     location: sidebar

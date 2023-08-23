@@ -20,9 +20,8 @@ The report focuses on a subset of the eleven Key Performance Areas identified by
 While the primacy of Safety is fully recognised, the scope of this report is limited to operational ANS performance due to data constraints.
 In particular, Predictability, Capacity, Efficiency and Environment, as shown below.
 
-```{r, out.width="90%"}
-knitr::include_graphics("./figures/KPA-and-KPI.png")
-```
+![](figures/KPA-and-KPI.png){width="90%"}
+
 
 This second report also introduces an initial approach to quantify the environmental impact of operational inefficiencies.
 
