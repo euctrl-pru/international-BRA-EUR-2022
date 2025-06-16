@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Brazil/Europe Comparison of Operational ANS Performance - 1&nbsp; Introduction</title>
+<title>1&nbsp; Introduction – Brazil/Europe Comparison of Operational ANS Performance</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,14 +17,16 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -38,8 +40,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -56,17 +57,23 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-094b2ac33dd8b996e7c9015af1b1259d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/iconify-3.0.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -75,21 +82,22 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<!-- Google tag (gtag.js) -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-RJ3R0C35X7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-RJ3R0C35X7');
-</script>
 <link href="site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+
 <script src="site_libs/tabwid-1.1.3/tabwid.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+  .navbar-logo {
+    max-height: 60px;
+  }
+</style>
 <style>
 /* Styles added by the columns.lua pandoc filter */
   .columns :first-child {margin-top: 0;}
@@ -103,158 +111,231 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./media/EUROCONTROL-logo-standard-rgb.svg" alt="" class="navbar-logo">
+    <img src="./media/EUROCONTROL-logo-standard-rgb.png" alt="" class="navbar-logo">
     </a>
   </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://ansperformance.eu/"> 
+<span class="menu-text">Home</span></a>
+  </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-aiu-home" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">AIU Home</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-performance-areas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Performance areas</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-aiu-home">    
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-performance-areas">    
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu"><i class="bi bi-house-fill" role="img">
-</i> 
- <span class="dropdown-text"><strong>Home</strong></span></a>
+    <a class="dropdown-item" href="https://www.eurocontrol.int/Economics/BalancedScorecard.html">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:th" aria-label="Icon th from fa6-solid Iconify.design set." title="Icon th from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Balanced scorecard</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="https://ansperformance.eu/traffic/">
- <span class="dropdown-text"><i class="fas fa-plane-departure"></i> <strong>Traffic</strong></span></a>
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:plane-departure" aria-label="Icon plane-departure from fa6-solid Iconify.design set." title="Icon plane-departure from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Traffic</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://www.eurocontrol.int/Economics/DailyTrafficVariation-States.html"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text"> Daily Traffic Dashboard</span></a>
+    <a class="dropdown-item" href="https://www.eurocontrol.int/Economics/DailyTrafficVariation-States.html">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Daily traffic dashboard</span></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/traffic/statfor/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Traffic Forecast</span></a>
+    <a class="dropdown-item" href="https://www.eurocontrol.int/ServiceUnits/Dashboard/EnRouteMainDashboard.html">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Service units</span></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/traffic/statfor/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Traffic forecast</span></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/traffic/punctuality/">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:calendar" aria-label="Icon calendar from fa6-solid Iconify.design set." title="Icon calendar from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Punctuality</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.eurocontrol.int/Economics/DailyPunctuality-States.html">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Daily punctuality dashboard</span></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/traffic/punctuality/#eurocontrol-area-network-view-1">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Network punctuality</span></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/traffic/punctuality/#state-view-1">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">State &amp; airport punctuality</span></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/capacity/">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:clock" aria-label="Icon clock from fa6-solid Iconify.design set." title="Icon clock from fa6-solid Iconify.design set."></iconify-icon>&nbsp;En-route &amp; airport delays</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.eurocontrol.int/Economics/DailyDelay-States.html">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Daily ATFM delays dashboard</span></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/capacity/atfm_ert/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">En-route ATFM delays</span></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/capacity/atfm_apt/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Airport ATFM delays</span></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/capacity/tot_dly">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">All-causes delays</span></span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="https://ansperformance.eu/efficiency/">
- <span class="dropdown-text"><i class="fas fa-leaf"></i> <strong>Efficiency &amp; Environment</strong></span></a>
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:leaf" aria-label="Icon leaf from fa6-solid Iconify.design set." title="Icon leaf from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Efficiency &amp; environment</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/emissions/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">CO<sub>2</sub> emissions</span></a>
+    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/emissions/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">CO<sub>2</sub> emissions</span></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/hfe/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Horizontal Flight Efficiency</span></a>
+    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/hfe/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Horizontal flight efficiency</span></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/vfe/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Vertical Flight Efficiency</span></a>
+    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/vfe/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Vertical flight efficiency</span></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/asma/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Terminal Holdings</span></a>
+    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/asma/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Terminal holdings</span></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/taxiout/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Taxi-out</span></a>
+    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/taxiout/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Taxi-out</span></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/taxiin/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Taxi-in</span></span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="https://ansperformance.eu/economics/">
- <span class="dropdown-text"><i class="fas fa-euro-sign"></i> <strong>Economics</strong></span></a>
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:euro-sign" aria-label="Icon euro-sign from fa6-solid Iconify.design set." title="Icon euro-sign from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Economics</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://www.eurocontrol.int/ServiceUnits/Dashboard/EnRouteMainDashboard.html"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Service Units</span></a>
+    <a class="dropdown-item" href="https://ansperformance.eu/economics/ace-overview/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">ATM cost-effectiveness (ACE)</span></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://www.eurocontrol.int/ServiceUnits/Dashboard/EnRouteUnitRates.html"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Unit Rates and Costs</span></a>
+    <a class="dropdown-item" href="https://www.eurocontrol.int/ServiceUnits/Dashboard/EnRouteUnitRates.html">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Unit rates and costs</span></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/ACE/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">ATM Cost Effectiveness</span></a>
+    <a class="dropdown-item" href="https://www.eurocontrol.int/ServiceUnits/Dashboard/EnRouteMainDashboard.html">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Service units</span></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/economics/finance/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">ANSPs Financial Situation</span></a>
+    <a class="dropdown-item" href="https://ansperformance.eu/economics/finance/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">ANSPs financial dashboard</span></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/economics/cba/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">CBA</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/dashboard/stakeholder/">
- <span class="dropdown-text"><i class="fas fa-user-friends"></i> <strong>Stakeholder views</strong></span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/airport/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Airport View</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/ansp/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">ANSP View</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/dashboard/stakeholder/fab/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">FAB View</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/dashboard/stakeholder/state/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">State View</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/publications/">
- <span class="dropdown-text"><i class="fas fa-book"></i> <strong>Publications</strong></span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/data/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Data</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/reference/">
- <span class="dropdown-text"><i class="fas fa-hands-helping"></i> <strong>Reference</strong></span></a>
-  </li>  
-        <li class="dropdown-header"><i class="fas fa-external-link-alt"></i> <strong>External</strong></li>
-        <li>
-    <a class="dropdown-item" href="https://www.eurocontrol.int/prudata/dashboard/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Single European Sky Portal</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://www4.icao.int/ganpportal/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">ICAO GANP</span></a>
+    <a class="dropdown-item" href="https://ansperformance.eu/economics/cba/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Standard Inputs for Economic Analyses</span></span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-about" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-stakeholder-views" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Stakeholder views</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-stakeholder-views">    
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/dashboard/stakeholder/airport/">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:plane-arrival" aria-label="Icon plane-arrival from fa6-solid Iconify.design set." title="Icon plane-arrival from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Airports</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/dashboard/stakeholder/ansp/">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:compass" aria-label="Icon compass from fa6-solid Iconify.design set." title="Icon compass from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Air navigation service provider</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/dashboard/stakeholder/state/">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:globe" aria-label="Icon globe from fa6-solid Iconify.design set." title="Icon globe from fa6-solid Iconify.design set."></iconify-icon>&nbsp;States</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://ansperformance.eu/data/"> 
+<span class="menu-text">Data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://ansperformance.eu/publications/"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/definition/">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:marker" aria-label="Icon marker from fa6-solid Iconify.design set." title="Icon marker from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Definitions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/methodology/">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:wrench" aria-label="Icon wrench from fa6-solid Iconify.design set." title="Icon wrench from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Methodology</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/acronym/">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:quote-left" aria-label="Icon quote-left from fa6-solid Iconify.design set." title="Icon quote-left from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Acronyms</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/bibliography/">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:book" aria-label="Icon book from fa6-solid Iconify.design set." title="Icon book from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Bibliography</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-links" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Links</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-links">    
+        <li>
+    <a class="dropdown-item" href="https://www.eurocontrol.int/">
+ <span class="dropdown-text">EUROCONTROL <i class="fas fa-xs fa-external-link-alt"></i></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.eurocontrol.int/prudata/dashboard/">
+ <span class="dropdown-text">Single European Sky (SES) portal <i class="fas fa-xs fa-external-link-alt"></i></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www4.icao.int/ganpportal/">
+ <span class="dropdown-text">ICAO GANP <i class="fas fa-xs fa-external-link-alt"></i></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ext.eurocontrol.int/connectivity_web/from">
+ <span class="dropdown-text">Connectivity dashboard <i class="fas fa-xs fa-external-link-alt"></i></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/transformation/">
+ <span class="dropdown-text">PRC Transformation Strategy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://opdi.aero">
+ <span class="dropdown-text">PRC Open Performance Data Initiative</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-about" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">About</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-about">    
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-about">    
         <li>
     <a class="dropdown-item" href="https://ansperformance.eu/about/prc/">
  <span class="dropdown-text">About the PRC</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/about/aiu/">
+ <span class="dropdown-text">About the AIU</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="https://ansperformance.eu/about/us/">
@@ -270,112 +351,22 @@ div.csl-indent {
   </li>  
     </ul>
   </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-areas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Areas</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-areas">    
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/traffic/">
- <span class="dropdown-text">Traffic</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/capacity/">
- <span class="dropdown-text">Capacity &amp; delays</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/">
- <span class="dropdown-text">Efficiency &amp; environment</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/economics/">
- <span class="dropdown-text">Economics</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-views" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Views</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-views">    
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/dashboard/stakeholder/airport/">
- <span class="dropdown-text">Airports</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/ansp/">
- <span class="dropdown-text">Air Navigation Service Provider</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/fab/">
- <span class="dropdown-text">Functional Airspace Block</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/dashboard/stakeholder/state/">
- <span class="dropdown-text">State</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="https://ansperformance.eu/publications/">
- <span class="menu-text">Publications</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://ansperformance.eu/data/">
- <span class="menu-text">Data</span></a>
-  </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Reference</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/data/">
- <span class="dropdown-text">Data downloads</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/definition/">
- <span class="dropdown-text">Definitions</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/methodology/">
- <span class="dropdown-text">Methodology</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/acronym/">
- <span class="dropdown-text">Acronyms</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/bibliography/">
- <span class="dropdown-text">Bibliography</span></a>
-  </li>  
-        <li><hr class="dropdown-divider"></li>
-        <li>
-    <a class="dropdown-item" href="https://www4.icao.int/ganpportal/">
- <span class="dropdown-text"><i class="fas fa-xs fa-external-link-alt"></i> ICAO GANP</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ses" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">SES</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-ses">    
-        <li>
-    <a class="dropdown-item" href="https://www.eurocontrol.int/prudata/dashboard/">
- <span class="dropdown-text"><i class="fas fa-xs fa-external-link-alt"></i> Single European Sky (SES) Portal</span></a>
-  </li>  
-    </ul>
-  </li>
 </ul>
           </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -383,85 +374,99 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-      <div class="mt-2 flex-shrink-0 align-items-center">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./00-front-matters.html" class="sidebar-item-text sidebar-link">Forewords</a>
+  <a href="./00-front-matters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Forewords</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./00-executive.html" class="sidebar-item-text sidebar-link">Executive Summary</a>
+  <a href="./00-executive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Executive Summary</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-system-overview.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Air Navigation System Characterisation</span></a>
+  <a href="./02-system-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Air Navigation System Characterisation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-traffic-characterisation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Traffic Characterisation</span></a>
+  <a href="./03-traffic-characterisation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Traffic Characterisation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-predictability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Predictability</span></a>
+  <a href="./04-predictability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Predictability</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-capacity.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Capacity and Throughput</span></a>
+  <a href="./05-capacity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Capacity and Throughput</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-efficiency.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Efficiency</span></a>
+  <a href="./06-efficiency.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Efficiency</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-environment.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Environment</span></a>
+  <a href="./07-environment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Environment</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-conclusions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conclusions</span></a>
+  <a href="./08-conclusions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conclusions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Appendices</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./90-back-matters.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Fuel Burn Methodology</span></a>
+  <a href="./90-back-matters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Fuel Burn Methodology</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
       </ul>
@@ -469,21 +474,22 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background"><span class="toc-section-number">1.1</span>  Background</a></li>
-  <li><a href="#scope" id="toc-scope" class="nav-link" data-scroll-target="#scope"><span class="toc-section-number">1.2</span>  Scope</a></li>
-  <li><a href="#geographical-scope" id="toc-geographical-scope" class="nav-link" data-scroll-target="#geographical-scope"><span class="toc-section-number">1.3</span>  Geographical Scope</a>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background"><span class="header-section-number">1.1</span> Background</a></li>
+  <li><a href="#scope" id="toc-scope" class="nav-link" data-scroll-target="#scope"><span class="header-section-number">1.2</span> Scope</a></li>
+  <li><a href="#geographical-scope" id="toc-geographical-scope" class="nav-link" data-scroll-target="#geographical-scope"><span class="header-section-number">1.3</span> Geographical Scope</a>
   <ul class="collapse">
-  <li><a href="#study-airports" id="toc-study-airports" class="nav-link" data-scroll-target="#study-airports"><span class="toc-section-number">1.3.1</span>  Study Airports</a></li>
-  <li><a href="#temporal-scope" id="toc-temporal-scope" class="nav-link" data-scroll-target="#temporal-scope"><span class="toc-section-number">1.3.2</span>  Temporal Scope</a></li>
+  <li><a href="#study-airports" id="toc-study-airports" class="nav-link" data-scroll-target="#study-airports"><span class="header-section-number">1.3.1</span> Study Airports</a></li>
+  <li><a href="#temporal-scope" id="toc-temporal-scope" class="nav-link" data-scroll-target="#temporal-scope"><span class="header-section-number">1.3.2</span> Temporal Scope</a></li>
   </ul></li>
-  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><span class="toc-section-number">1.4</span>  Data Sources</a></li>
-  <li><a href="#structure-of-the-report" id="toc-structure-of-the-report" class="nav-link" data-scroll-target="#structure-of-the-report"><span class="toc-section-number">1.5</span>  Structure of the Report</a></li>
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><span class="header-section-number">1.4</span> Data Sources</a></li>
+  <li><a href="#structure-of-the-report" id="toc-structure-of-the-report" class="nav-link" data-scroll-target="#structure-of-the-report"><span class="header-section-number">1.5</span> Structure of the Report</a></li>
   </ul>
 </nav>
     </div>
@@ -492,7 +498,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
 </div>
 
 
@@ -505,11 +511,10 @@ div.csl-indent {
   </div>
   
 
+
 </header>
 
-<div class="cell">
 
-</div>
 <section id="background" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="background"><span class="header-section-number">1.1</span> Background</h2>
 <p>Since its first flights, the aviation world has learned that standardisation is the key to healthy and prosperous growth. Over the years, the good lessons experienced in sharing standards in operational activities have spread to all areas, including organisational management and strategic planning. In the early 2000s, ICAO proposed an approach inspired by the renowned PDCA cycle, adding performance-based management to it. Although ICAO emphasises the importance of a performance-based approach, the lack of a common understanding of establishing and calculating the indicators would make them internationally useless. Therefore, in 2016, interested stakeholders developed a set of key performance indicators used by a variety of organisations to establish a common set of indicators. This set of indicators is proposed as part of the ICAO Global Air Navigation Plan update cycle and the related Aviation System Block Upgrades. Stakeholders are encouraged to share their common understanding and lessons learnt from measuring air navigation system performance and providing input to the decision making process in terms of operational procedure changes and deployment of novel enabling technologies.</p>
@@ -525,13 +530,17 @@ div.csl-indent {
 <h2 data-number="1.3" class="anchored" data-anchor-id="geographical-scope"><span class="header-section-number">1.3</span> Geographical Scope</h2>
 <p>The geographical scope of this report relates to Brazil and Europe.</p>
 <p>Brazil is defined as the sovereign airspace of the national territory of Brazil. In Brazil, airspace control is performed in an integrated civil-military manner. The same institution performs both the air defence and air traffic control functions: the Brazilian Air Force. The Department of Airspace Control (DECEA) is a governmental organization subordinated to the Brazilian Air Force Command. That Department coordinates and provides human resources and technical equipment for all air traffic units within Brazilian territory, ensuring the safety of air traffic and, at the same time, contributing to military defence.</p>
-<p>DECEA is the main body of the Brazilian Airspace Control System (SISCEAB). The department is in charge of providing the Air Navigation Services for the 22 million km<sup>2</sup> of airspace jurisdiction, including oceanic areas. The Brazilian airspace is composed of 5 Flight Information Regions (FIR). Air traffic within these FIRs is managed by 4 operational bases subordinated to DECEA. The areas of responsibility of these integrated Centres for Air Defence and Air Traffic Control (CINDACTA) are depicted in <a href="#fig-BRA-airspace">Figure&nbsp;<span>1.1</span></a>).</p>
+<p>DECEA is the main body of the Brazilian Airspace Control System (SISCEAB). The department is in charge of providing the Air Navigation Services for the 22 million km<sup>2</sup> of airspace jurisdiction, including oceanic areas. The Brazilian airspace is composed of 5 Flight Information Regions (FIR). Air traffic within these FIRs is managed by 4 operational bases subordinated to DECEA. The areas of responsibility of these integrated Centres for Air Defence and Air Traffic Control (CINDACTA) are depicted in <a href="#fig-BRA-airspace" class="quarto-xref">Figure&nbsp;<span>1.1</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-BRA-airspace" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="./figures/BRAZIL_CINDACTA_AND_CRCEA.png" class="img-fluid figure-img" width="557"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.1: Brazilian Airspace Structure/FIRs (CINDACTAs)</figcaption><p></p>
+<div id="fig-BRA-airspace" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-BRA-airspace-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures/BRAZIL_CINDACTA_AND_CRCEA.png" class="img-fluid figure-img" width="557">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-BRA-airspace-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.1: Brazilian Airspace Structure/FIRs (CINDACTAs)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -539,37 +548,51 @@ div.csl-indent {
 <p>The CINDACTAs combine civil air traffic control and air defence military operations. In addition to CINDACTAs, there is also the Regional Center of Southeast Airspace Control (CRCEA-SE), which is responsible for servicing air traffic for the high density air flow in the terminal areas of São Paulo and Rio de Janeiro.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-EUR-airspace" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="./figures/Europe-ECTRL.png" class="img-fluid figure-img" width="613"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.2: European Airspace and EUROCONTROL Member States</figcaption><p></p>
+<div id="fig-EUR-airspace" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-EUR-airspace-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures/Europe-ECTRL.png" class="img-fluid figure-img" width="613">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-EUR-airspace-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.2: European Airspace and EUROCONTROL Member States
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>In this report, Europe, i.e.&nbsp;the European airspace, is defined as the area where the 41 EUROCONTROL member states provide air navigation services, excluding the oceanic areas and the Canary islands (c.f. <a href="#fig-EUR-airspace">Figure&nbsp;<span>1.2</span></a>). In 2016, EUROCONTROL signed a comprehensive agreement with Israel and Morocco. Both comprehensive agreement States will be successively fully integrated into the working structures including performance monitoring. Within this report, these states are included in the reported network traffic volume.<br>
+<p>In this report, Europe, i.e.&nbsp;the European airspace, is defined as the area where the 41 EUROCONTROL member states provide air navigation services, excluding the oceanic areas and the Canary islands (c.f. <a href="#fig-EUR-airspace" class="quarto-xref">Figure&nbsp;<span>1.2</span></a>). In 2016, EUROCONTROL signed a comprehensive agreement with Israel and Morocco. Both comprehensive agreement States will be successively fully integrated into the working structures including performance monitoring. Within this report, these states are included in the reported network traffic volume.<br>
 EUROCONTROL is an inter-governmental organisation working towards a highly harmonized European air traffic management system. Air traffic services are provided by air navigation service providers entrusted by the different EUROCONTROL member states. Dependent on the local and national regimes, there is a mix of civil and military service providers, and integrated service provision. The Maastricht Upper Area Control Center is operated by EUROCONTROL on behalf of 4 States (Netherlands, Belgium, Luxemburg, and Germany). It is the only multi-national cross-border air traffic unit in Europe at the time being. Given the European context and airspace structure, the European area comprises 37 ANSPs with 62 en-route centres and 16 stand-alone Approach Control Units (i.e.&nbsp;totalling 78 air traffic service units).</p>
 <p>Europe employs a collaborative approach to manage and service airspace and air traffic. This includes the integration of military objectives and requirements which need to be fully coordinated within the ATM System. A variety of coordination cells/procedures exists between civil air traffic control centres and air defence units reflecting the local practices. Many EUROCONTROL member states are members of NATO and have their air defence centres / processes for civil-military coordination aligned under the integrated NATO air defence system.</p>
 <p>Further details on the organisation of the regional air navigation systems in Brazil and Europe will be provided in Section 2.1.</p>
 <section id="study-airports" class="level3" data-number="1.3.1">
 <h3 data-number="1.3.1" class="anchored" data-anchor-id="study-airports"><span class="header-section-number">1.3.1</span> Study Airports</h3>
 <p>As concerns airport-related air navigation performance, this edition of the comparison report addresses the performance at a set of selected airports. These airports represent the top-10 or most relevant airports in terms of IFR movements in both regions and allow to make meaningful comparisons. In Brazil, the selected airports play a significant role in terms of the national and regional connectivity, including the major hubs for international air traffic. These study airports have consolidated systems and structured processes for data collection in support of this comparison report. For the European context, the study airports comprise the busiest airports in several states exhibiting a mix of national, regional, and international air traffic. These airports are also characterised by varying operational constraints that make them excellent candidates for an international comparison. All of these airports are subject to the performance monitoring under the EUROCONTROL Performance Review System and provide movement related data on the basis of a harmonised data specification.</p>
-<p>Figure <a href="#fig-scope-airports">Figure&nbsp;<span>1.3</span></a> provides an overview of the location of the chosen study airports within the regions. The airports are also listed in <a href="#tbl-scopetable">Table&nbsp;<span>1.1</span></a>.</p>
+<p>Figure <a href="#fig-scope-airports" class="quarto-xref">Figure&nbsp;<span>1.3</span></a> provides an overview of the location of the chosen study airports within the regions. The airports are also listed in <a href="#tbl-scopetable" class="quarto-xref">Table&nbsp;<span>1.1</span></a>.</p>
 <p>(ref:scopetable-caption) List of study airports for the Brazil / Europe operational ANS performance comparison</p>
 <div class="cell">
+<div id="tbl-scopetable" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-scopetable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1.1: List of study airports for the Brazil / Europe operational ANS performance comparison
+</figcaption>
+<div aria-describedby="tbl-scopetable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-scopetable" class="anchored">
-
-<div class="tabwid"><style>.cl-f3a203e8{}.cl-f39e813c{font-family:'Helvetica';font-size:10pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-f3a003b8{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-f3a00d04{width:2.5in;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f3a00d0e{width:2.5in;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-f3a203e8"><caption>Table&nbsp;1.1:  List of study airports for the Brazil / Europe operational ANS performance comparison </caption><thead><tr style="overflow-wrap:break-word;"><th class="cl-f3a00d04"><p class="cl-f3a003b8"><span class="cl-f39e813c">Brazil</span></p></th><th class="cl-f3a00d04"><p class="cl-f3a003b8"><span class="cl-f39e813c">Europe</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-f3a00d0e"><p class="cl-f3a003b8"><span class="cl-f39e813c">* Brasília (SBBR) </span><br><span class="cl-f39e813c">* São Paulo Guarulhos (SBGR) </span><br><span class="cl-f39e813c">* São Paulo Congonhas (SBSP) </span><br><span class="cl-f39e813c">* Campinas (SBKP) </span><br><span class="cl-f39e813c">* Rio de Janeiro S. Dumont  (SBRJ) </span><br><span class="cl-f39e813c">* Rio de Janeiro Galeão (SBGL) </span><br><span class="cl-f39e813c">* Belo Horizonte Confins (SBCF) </span><br><span class="cl-f39e813c">* Salvador (SBSV) </span><br><span class="cl-f39e813c">* Porto Alegre (SBPA) </span><br><span class="cl-f39e813c">* Curitiba (SBCT)</span></p></td><td class="cl-f3a00d0e"><p class="cl-f3a003b8"><span class="cl-f39e813c">* Amsterdam Schiphol (EHAM) </span><br><span class="cl-f39e813c">* Paris Charles de Gaulle (LFPG) </span><br><span class="cl-f39e813c">* London Heathrow (EGLL) </span><br><span class="cl-f39e813c">* Frankfurt (EDDF) </span><br><span class="cl-f39e813c">* Munich (EDDM) </span><br><span class="cl-f39e813c">* Madrid (LEMD) </span><br><span class="cl-f39e813c">* Rome Fiumicino (LIRF) </span><br><span class="cl-f39e813c">* Barcelona (LEBL) </span><br><span class="cl-f39e813c">* London Gatwick (EGKK) </span><br><span class="cl-f39e813c">* Zurich (LSZH)</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-dd434952{}.cl-dd389aac{font-family:'Helvetica';font-size:10pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-dd3cf548{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-dd3d0f06{width:2.5in;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dd3d0f10{width:2.5in;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-dd434952"><thead><tr style="overflow-wrap:break-word;"><th class="cl-dd3d0f06"><p class="cl-dd3cf548"><span class="cl-dd389aac">Brazil</span></p></th><th class="cl-dd3d0f06"><p class="cl-dd3cf548"><span class="cl-dd389aac">Europe</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-dd3d0f10"><p class="cl-dd3cf548"><span class="cl-dd389aac">* Brasília (SBBR) </span><br><span class="cl-dd389aac">* São Paulo Guarulhos (SBGR) </span><br><span class="cl-dd389aac">* São Paulo Congonhas (SBSP) </span><br><span class="cl-dd389aac">* Campinas (SBKP) </span><br><span class="cl-dd389aac">* Rio de Janeiro S. Dumont  (SBRJ) </span><br><span class="cl-dd389aac">* Rio de Janeiro Galeão (SBGL) </span><br><span class="cl-dd389aac">* Belo Horizonte Confins (SBCF) </span><br><span class="cl-dd389aac">* Salvador (SBSV) </span><br><span class="cl-dd389aac">* Porto Alegre (SBPA) </span><br><span class="cl-dd389aac">* Curitiba (SBCT)</span></p></td><td class="cl-dd3d0f10"><p class="cl-dd3cf548"><span class="cl-dd389aac">* Amsterdam Schiphol (EHAM) </span><br><span class="cl-dd389aac">* Paris Charles de Gaulle (LFPG) </span><br><span class="cl-dd389aac">* London Heathrow (EGLL) </span><br><span class="cl-dd389aac">* Frankfurt (EDDF) </span><br><span class="cl-dd389aac">* Munich (EDDM) </span><br><span class="cl-dd389aac">* Madrid (LEMD) </span><br><span class="cl-dd389aac">* Rome Fiumicino (LIRF) </span><br><span class="cl-dd389aac">* Barcelona (LEBL) </span><br><span class="cl-dd389aac">* London Gatwick (EGKK) </span><br><span class="cl-dd389aac">* Zurich (LSZH)</span></p></td></tr></tbody></table></div>
 </div>
+</div>
+</figure>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-scope-airports" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="./figures/scope-airports.png" class="img-fluid figure-img" style="width:90.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.3: Study airports of Brazil/Europe Comparison</figcaption><p></p>
+<div id="fig-scope-airports" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scope-airports-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures/scope-airports.png" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scope-airports-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.3: Study airports of Brazil/Europe Comparison
+</figcaption>
 </figure>
 </div>
 </div>
@@ -601,8 +624,8 @@ EUROCONTROL is an inter-governmental organisation working towards a highly harmo
 </ul>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-apdf-v1-2019" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-apdf-v1-2019" class="csl-entry" role="listitem">
 EUROCONTROL. 2019. <span>“Eurocontrol Specification for Operational ANS Performance Monitoring - Airport Operator Data Flow.”</span> <a href="https://www.eurocontrol.int/publication/eurocontrol-specification-operational-ans-performance-monitoring">https://www.eurocontrol.int/publication/eurocontrol-specification-operational-ans-performance-monitoring</a>.
 </div>
 </div>
@@ -642,12 +665,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
     }
-  });
-  clipboard.on('success', function(e) {
+    return false;
+  }
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -679,11 +705,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/eurocontrol\.int\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -693,8 +756,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -706,9 +778,244 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -750,17 +1057,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./00-executive.html" class="pagination-link">
+      <a href="./00-executive.html" class="pagination-link" aria-label="Executive Summary">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Executive Summary</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02-system-overview.html" class="pagination-link">
+      <a href="./02-system-overview.html" class="pagination-link" aria-label="Air Navigation System Characterisation">
         <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Air Navigation System Characterisation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

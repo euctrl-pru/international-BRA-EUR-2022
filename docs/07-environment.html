@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Brazil/Europe Comparison of Operational ANS Performance - 7&nbsp; Environment</title>
+<title>7&nbsp; Environment – Brazil/Europe Comparison of Operational ANS Performance</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,14 +17,16 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -38,8 +40,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -56,17 +57,23 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-094b2ac33dd8b996e7c9015af1b1259d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/iconify-3.0.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -75,19 +82,18 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<!-- Google tag (gtag.js) -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-RJ3R0C35X7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-RJ3R0C35X7');
-</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+  .navbar-logo {
+    max-height: 60px;
+  }
+</style>
 <style>
 /* Styles added by the columns.lua pandoc filter */
   .columns :first-child {margin-top: 0;}
@@ -101,158 +107,231 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./media/EUROCONTROL-logo-standard-rgb.svg" alt="" class="navbar-logo">
+    <img src="./media/EUROCONTROL-logo-standard-rgb.png" alt="" class="navbar-logo">
     </a>
   </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://ansperformance.eu/"> 
+<span class="menu-text">Home</span></a>
+  </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-aiu-home" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">AIU Home</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-performance-areas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Performance areas</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-aiu-home">    
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-performance-areas">    
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu"><i class="bi bi-house-fill" role="img">
-</i> 
- <span class="dropdown-text"><strong>Home</strong></span></a>
+    <a class="dropdown-item" href="https://www.eurocontrol.int/Economics/BalancedScorecard.html">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:th" aria-label="Icon th from fa6-solid Iconify.design set." title="Icon th from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Balanced scorecard</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="https://ansperformance.eu/traffic/">
- <span class="dropdown-text"><i class="fas fa-plane-departure"></i> <strong>Traffic</strong></span></a>
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:plane-departure" aria-label="Icon plane-departure from fa6-solid Iconify.design set." title="Icon plane-departure from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Traffic</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://www.eurocontrol.int/Economics/DailyTrafficVariation-States.html"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text"> Daily Traffic Dashboard</span></a>
+    <a class="dropdown-item" href="https://www.eurocontrol.int/Economics/DailyTrafficVariation-States.html">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Daily traffic dashboard</span></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/traffic/statfor/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Traffic Forecast</span></a>
+    <a class="dropdown-item" href="https://www.eurocontrol.int/ServiceUnits/Dashboard/EnRouteMainDashboard.html">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Service units</span></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/traffic/statfor/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Traffic forecast</span></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/traffic/punctuality/">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:calendar" aria-label="Icon calendar from fa6-solid Iconify.design set." title="Icon calendar from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Punctuality</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.eurocontrol.int/Economics/DailyPunctuality-States.html">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Daily punctuality dashboard</span></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/traffic/punctuality/#eurocontrol-area-network-view-1">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Network punctuality</span></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/traffic/punctuality/#state-view-1">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">State &amp; airport punctuality</span></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/capacity/">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:clock" aria-label="Icon clock from fa6-solid Iconify.design set." title="Icon clock from fa6-solid Iconify.design set."></iconify-icon>&nbsp;En-route &amp; airport delays</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.eurocontrol.int/Economics/DailyDelay-States.html">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Daily ATFM delays dashboard</span></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/capacity/atfm_ert/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">En-route ATFM delays</span></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/capacity/atfm_apt/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Airport ATFM delays</span></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/capacity/tot_dly">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">All-causes delays</span></span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="https://ansperformance.eu/efficiency/">
- <span class="dropdown-text"><i class="fas fa-leaf"></i> <strong>Efficiency &amp; Environment</strong></span></a>
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:leaf" aria-label="Icon leaf from fa6-solid Iconify.design set." title="Icon leaf from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Efficiency &amp; environment</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/emissions/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">CO<sub>2</sub> emissions</span></a>
+    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/emissions/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">CO<sub>2</sub> emissions</span></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/hfe/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Horizontal Flight Efficiency</span></a>
+    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/hfe/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Horizontal flight efficiency</span></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/vfe/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Vertical Flight Efficiency</span></a>
+    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/vfe/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Vertical flight efficiency</span></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/asma/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Terminal Holdings</span></a>
+    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/asma/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Terminal holdings</span></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/taxiout/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Taxi-out</span></a>
+    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/taxiout/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Taxi-out</span></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/taxiin/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Taxi-in</span></span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="https://ansperformance.eu/economics/">
- <span class="dropdown-text"><i class="fas fa-euro-sign"></i> <strong>Economics</strong></span></a>
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:euro-sign" aria-label="Icon euro-sign from fa6-solid Iconify.design set." title="Icon euro-sign from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Economics</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://www.eurocontrol.int/ServiceUnits/Dashboard/EnRouteMainDashboard.html"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Service Units</span></a>
+    <a class="dropdown-item" href="https://ansperformance.eu/economics/ace-overview/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">ATM cost-effectiveness (ACE)</span></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://www.eurocontrol.int/ServiceUnits/Dashboard/EnRouteUnitRates.html"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Unit Rates and Costs</span></a>
+    <a class="dropdown-item" href="https://www.eurocontrol.int/ServiceUnits/Dashboard/EnRouteUnitRates.html">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Unit rates and costs</span></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/ACE/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">ATM Cost Effectiveness</span></a>
+    <a class="dropdown-item" href="https://www.eurocontrol.int/ServiceUnits/Dashboard/EnRouteMainDashboard.html">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Service units</span></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/economics/finance/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">ANSPs Financial Situation</span></a>
+    <a class="dropdown-item" href="https://ansperformance.eu/economics/finance/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">ANSPs financial dashboard</span></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/economics/cba/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">CBA</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/dashboard/stakeholder/">
- <span class="dropdown-text"><i class="fas fa-user-friends"></i> <strong>Stakeholder views</strong></span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/airport/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Airport View</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/ansp/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">ANSP View</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/dashboard/stakeholder/fab/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">FAB View</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/dashboard/stakeholder/state/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">State View</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/publications/">
- <span class="dropdown-text"><i class="fas fa-book"></i> <strong>Publications</strong></span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/data/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Data</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/reference/">
- <span class="dropdown-text"><i class="fas fa-hands-helping"></i> <strong>Reference</strong></span></a>
-  </li>  
-        <li class="dropdown-header"><i class="fas fa-external-link-alt"></i> <strong>External</strong></li>
-        <li>
-    <a class="dropdown-item" href="https://www.eurocontrol.int/prudata/dashboard/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">Single European Sky Portal</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://www4.icao.int/ganpportal/"><i class="bi bi-arrow-return-right" role="img">
-</i> 
- <span class="dropdown-text">ICAO GANP</span></a>
+    <a class="dropdown-item" href="https://ansperformance.eu/economics/cba/">
+ <span class="dropdown-text">&nbsp;&nbsp;&nbsp;<span style="font-weight: normal">Standard Inputs for Economic Analyses</span></span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-about" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-stakeholder-views" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Stakeholder views</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-stakeholder-views">    
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/dashboard/stakeholder/airport/">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:plane-arrival" aria-label="Icon plane-arrival from fa6-solid Iconify.design set." title="Icon plane-arrival from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Airports</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/dashboard/stakeholder/ansp/">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:compass" aria-label="Icon compass from fa6-solid Iconify.design set." title="Icon compass from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Air navigation service provider</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/dashboard/stakeholder/state/">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:globe" aria-label="Icon globe from fa6-solid Iconify.design set." title="Icon globe from fa6-solid Iconify.design set."></iconify-icon>&nbsp;States</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://ansperformance.eu/data/"> 
+<span class="menu-text">Data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://ansperformance.eu/publications/"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Reference</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-reference">    
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/definition/">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:marker" aria-label="Icon marker from fa6-solid Iconify.design set." title="Icon marker from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Definitions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/methodology/">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:wrench" aria-label="Icon wrench from fa6-solid Iconify.design set." title="Icon wrench from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Methodology</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/acronym/">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:quote-left" aria-label="Icon quote-left from fa6-solid Iconify.design set." title="Icon quote-left from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Acronyms</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/bibliography/">
+ <span class="dropdown-text"><iconify-icon role="img" inline="" icon="fa6-solid:book" aria-label="Icon book from fa6-solid Iconify.design set." title="Icon book from fa6-solid Iconify.design set."></iconify-icon>&nbsp;Bibliography</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-links" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Links</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-links">    
+        <li>
+    <a class="dropdown-item" href="https://www.eurocontrol.int/">
+ <span class="dropdown-text">EUROCONTROL <i class="fas fa-xs fa-external-link-alt"></i></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.eurocontrol.int/prudata/dashboard/">
+ <span class="dropdown-text">Single European Sky (SES) portal <i class="fas fa-xs fa-external-link-alt"></i></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www4.icao.int/ganpportal/">
+ <span class="dropdown-text">ICAO GANP <i class="fas fa-xs fa-external-link-alt"></i></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ext.eurocontrol.int/connectivity_web/from">
+ <span class="dropdown-text">Connectivity dashboard <i class="fas fa-xs fa-external-link-alt"></i></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/transformation/">
+ <span class="dropdown-text">PRC Transformation Strategy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://opdi.aero">
+ <span class="dropdown-text">PRC Open Performance Data Initiative</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-about" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">About</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-about">    
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-about">    
         <li>
     <a class="dropdown-item" href="https://ansperformance.eu/about/prc/">
  <span class="dropdown-text">About the PRC</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://ansperformance.eu/about/aiu/">
+ <span class="dropdown-text">About the AIU</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="https://ansperformance.eu/about/us/">
@@ -268,112 +347,22 @@ div.csl-indent {
   </li>  
     </ul>
   </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-areas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Areas</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-areas">    
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/traffic/">
- <span class="dropdown-text">Traffic</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/capacity/">
- <span class="dropdown-text">Capacity &amp; delays</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/efficiency/">
- <span class="dropdown-text">Efficiency &amp; environment</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/economics/">
- <span class="dropdown-text">Economics</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-views" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Views</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-views">    
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/dashboard/stakeholder/airport/">
- <span class="dropdown-text">Airports</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/ansp/">
- <span class="dropdown-text">Air Navigation Service Provider</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/fab/">
- <span class="dropdown-text">Functional Airspace Block</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/dashboard/stakeholder/state/">
- <span class="dropdown-text">State</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="https://ansperformance.eu/publications/">
- <span class="menu-text">Publications</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://ansperformance.eu/data/">
- <span class="menu-text">Data</span></a>
-  </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-reference" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Reference</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-reference">    
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/data/">
- <span class="dropdown-text">Data downloads</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/definition/">
- <span class="dropdown-text">Definitions</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/methodology/">
- <span class="dropdown-text">Methodology</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/acronym/">
- <span class="dropdown-text">Acronyms</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="https://ansperformance.eu/bibliography/">
- <span class="dropdown-text">Bibliography</span></a>
-  </li>  
-        <li><hr class="dropdown-divider"></li>
-        <li>
-    <a class="dropdown-item" href="https://www4.icao.int/ganpportal/">
- <span class="dropdown-text"><i class="fas fa-xs fa-external-link-alt"></i> ICAO GANP</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ses" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">SES</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-ses">    
-        <li>
-    <a class="dropdown-item" href="https://www.eurocontrol.int/prudata/dashboard/">
- <span class="dropdown-text"><i class="fas fa-xs fa-external-link-alt"></i> Single European Sky (SES) Portal</span></a>
-  </li>  
-    </ul>
-  </li>
 </ul>
           </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Environment</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-environment.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Environment</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -381,85 +370,99 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-      <div class="mt-2 flex-shrink-0 align-items-center">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./00-front-matters.html" class="sidebar-item-text sidebar-link">Forewords</a>
+  <a href="./00-front-matters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Forewords</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./00-executive.html" class="sidebar-item-text sidebar-link">Executive Summary</a>
+  <a href="./00-executive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Executive Summary</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-system-overview.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Air Navigation System Characterisation</span></a>
+  <a href="./02-system-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Air Navigation System Characterisation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-traffic-characterisation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Traffic Characterisation</span></a>
+  <a href="./03-traffic-characterisation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Traffic Characterisation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-predictability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Predictability</span></a>
+  <a href="./04-predictability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Predictability</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-capacity.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Capacity and Throughput</span></a>
+  <a href="./05-capacity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Capacity and Throughput</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-efficiency.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Efficiency</span></a>
+  <a href="./06-efficiency.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Efficiency</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-environment.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Environment</span></a>
+  <a href="./07-environment.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Environment</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-conclusions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conclusions</span></a>
+  <a href="./08-conclusions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conclusions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Appendices</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./90-back-matters.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Fuel Burn Methodology</span></a>
+  <a href="./90-back-matters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Fuel Burn Methodology</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
       </ul>
@@ -467,17 +470,18 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#overview-and-motivation" id="toc-overview-and-motivation" class="nav-link active" data-scroll-target="#overview-and-motivation"><span class="toc-section-number">7.1</span>  Overview and Motivation</a></li>
-  <li><a href="#fuel-burn-estimation" id="toc-fuel-burn-estimation" class="nav-link" data-scroll-target="#fuel-burn-estimation"><span class="toc-section-number">7.2</span>  Fuel Burn Estimation</a></li>
-  <li><a href="#environmental-benefit-pool---taxi" id="toc-environmental-benefit-pool---taxi" class="nav-link" data-scroll-target="#environmental-benefit-pool---taxi"><span class="toc-section-number">7.3</span>  Environmental Benefit Pool - Taxi</a></li>
-  <li><a href="#mapping-of-benefit-pools" id="toc-mapping-of-benefit-pools" class="nav-link" data-scroll-target="#mapping-of-benefit-pools"><span class="toc-section-number">7.4</span>  Mapping of Benefit Pools</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="toc-section-number">7.5</span>  Summary</a></li>
+  <li><a href="#overview-and-motivation" id="toc-overview-and-motivation" class="nav-link active" data-scroll-target="#overview-and-motivation"><span class="header-section-number">7.1</span> Overview and Motivation</a></li>
+  <li><a href="#fuel-burn-estimation" id="toc-fuel-burn-estimation" class="nav-link" data-scroll-target="#fuel-burn-estimation"><span class="header-section-number">7.2</span> Fuel Burn Estimation</a></li>
+  <li><a href="#environmental-benefit-pool---taxi" id="toc-environmental-benefit-pool---taxi" class="nav-link" data-scroll-target="#environmental-benefit-pool---taxi"><span class="header-section-number">7.3</span> Environmental Benefit Pool - Taxi</a></li>
+  <li><a href="#mapping-of-benefit-pools" id="toc-mapping-of-benefit-pools" class="nav-link" data-scroll-target="#mapping-of-benefit-pools"><span class="header-section-number">7.4</span> Mapping of Benefit Pools</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">7.5</span> Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -486,7 +490,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Environment</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Environment</span></h1>
 </div>
 
 
@@ -499,13 +503,12 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <section id="overview-and-motivation" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="overview-and-motivation"><span class="header-section-number">7.1</span> Overview and Motivation</h2>
-<div class="cell">
-
-</div>
 <p>At ICAO Assembly 40 in 2019 two global aspirational goals for curbing the impact of the international aviation sector were agreed. This includes an annual fuel efficiency improvement of 2% through 2050 and carbon neutral growth from 2020 onwards (c.f. <span class="citation" data-cites="icao2019">ICAO (<a href="references.html#ref-icao2019" role="doc-biblioref">2019b</a>)</span>). Across the globe, states have defined ambitious political goals to address the impact of climate change. For example, the European Union launched its Green Deal (<span class="citation" data-cites="europeancommission2019">European Commission (<a href="references.html#ref-europeancommission2019" role="doc-biblioref">2019</a>)</span>) and Fit-for-55 initiative. The latter strives strives towards cutting the net greenhouse gas emissions by at least 55% by 2030, compared to 1990 levels (<span class="citation" data-cites="europeancommission2021">European Commission (<a href="references.html#ref-europeancommission2021" role="doc-biblioref">2021</a>)</span>).</p>
 <p>In general terms, air navigation shall contribute to the protection of the environment by considering noise, gaseous emissions and other environmental issues in the implementation and operation (KPA Environment, c.f. Appendix D <span class="citation" data-cites="icaodoc98542005">ICAO (<a href="references.html#ref-icaodoc98542005" role="doc-biblioref">2005</a>)</span>. Accordingly, there is a higher interest in monitoring/estimating the impact of operational (in)efficiency. Operational inefficiencies typically increase the aircraft flying time (i.e.&nbsp;airborne and surface movement times) and , thus, engine running time. Engine time is directly linked to fuel burn and associated emissions and pollutants. In that respect, inefficiencies contribute to the ditremental effect of excessive emissions to climate change.</p>
 <p>The Global Air Navigation Plan (GANP) proposes indicators for regional benchmarking <span class="citation" data-cites="icaodoc97502019">(<a href="references.html#ref-icaodoc97502019" role="doc-biblioref">ICAO 2019a</a>)</span>. However, there is no detailed guidance on how to measure <em>additional fuel burn</em>. Fuel burn per se is known to the aircraft operator. While the actual fuel burn and fuel flow during the flight is recorded (e.g.&nbsp;flight data recorder), these data are not commonly shared. It is noteworthy that aircraft operators have to report their fuel burn per flight in Brazil (c.f. ANAC reporting files). This level of data is not available in Europe (or generally across the globe).</p>
@@ -513,73 +516,87 @@ div.csl-indent {
 </section>
 <section id="fuel-burn-estimation" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="fuel-burn-estimation"><span class="header-section-number">7.2</span> Fuel Burn Estimation</h2>
-<p>The appendix presents an initial approach to estimating fuel burn during taxi operations as part of a comparison report. <a href="#fig-example-fb">Figure&nbsp;<span>7.1</span></a> depicts the monthly estimated fuel burn at a European hub for the taxi-in and taxi-out phase. It must be noted that the metric uses parameters of the ICAO landing and take-off cycle (LTO). The LTO estimates represent upper bounds for the fuel estimation and overestimates the actual fuel burn.</p>
+<p>The appendix presents an initial approach to estimating fuel burn during taxi operations as part of a comparison report. <a href="#fig-example-fb" class="quarto-xref">Figure&nbsp;<span>7.1</span></a> depicts the monthly estimated fuel burn at a European hub for the taxi-in and taxi-out phase. It must be noted that the metric uses parameters of the ICAO landing and take-off cycle (LTO). The LTO estimates represent upper bounds for the fuel estimation and overestimates the actual fuel burn.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-example-fb" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="./figures/fuel_burn_EDDF.png" class="img-fluid figure-img" width="1050"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;7.1: Example fuel burn estimation at a European hub airport</figcaption><p></p>
+<div id="fig-example-fb" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-example-fb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures/fuel_burn_EDDF.png" class="img-fluid figure-img" width="1050">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-example-fb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.1: Example fuel burn estimation at a European hub airport
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-example-fb">Figure&nbsp;<span>7.1</span></a> highlights that there is a higher fuel burn during the departure phase. This phase entails the take-off roll with a thrust setting at or close to 100%. This adds a substantial component to the fuel burn during take-off in comparison to the taxi-in phase. As mentioned above, the quantities shown reflect upper bounds based on the LTO assumptions and do not account for operational reduction measures such as single-engine taxi or reduced thrust take-offs. It is planned to refine the approach with the international benchmarking community and account for such operational measures.</p>
+<p><a href="#fig-example-fb" class="quarto-xref">Figure&nbsp;<span>7.1</span></a> highlights that there is a higher fuel burn during the departure phase. This phase entails the take-off roll with a thrust setting at or close to 100%. This adds a substantial component to the fuel burn during take-off in comparison to the taxi-in phase. As mentioned above, the quantities shown reflect upper bounds based on the LTO assumptions and do not account for operational reduction measures such as single-engine taxi or reduced thrust take-offs. It is planned to refine the approach with the international benchmarking community and account for such operational measures.</p>
 </section>
 <section id="environmental-benefit-pool---taxi" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="environmental-benefit-pool---taxi"><span class="header-section-number">7.3</span> Environmental Benefit Pool - Taxi</h2>
 <p>Earlier work has introduced the concept of an environmental benefit pool, c.f. <span class="citation" data-cites="US-EU-comparison2017">EUROCONTROL Performance Review Unit and FAA Air Traffic Organization (<a href="references.html#ref-US-EU-comparison2017" role="doc-biblioref">2019</a>)</span>.</p>
 <div class="cell">
-
-</div>
-<div class="cell">
 <div class="cell-output-display">
-<div id="fig-fuel-pool-taxi-in" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="07-environment_files/figure-html/fig-fuel-pool-taxi-in-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;7.2: Benefit pool in terms of additional fuel burn during taxi-in phase</figcaption><p></p>
+<div id="fig-fuel-pool-taxi-in" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fuel-pool-taxi-in-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-environment_files/figure-html/fig-fuel-pool-taxi-in-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fuel-pool-taxi-in-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.2: Benefit pool in terms of additional fuel burn during taxi-in phase
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-fuel-pool-taxi-in">Figure&nbsp;<span>7.2</span></a> shows the fuel benefit pool for the taxi-in phase per arrival. The benefit pool is influenced by the fleet mix and the overall taxi-in performance. Thus, it varies significantly across the airports.</p>
+<p><a href="#fig-fuel-pool-taxi-in" class="quarto-xref">Figure&nbsp;<span>7.2</span></a> shows the fuel benefit pool for the taxi-in phase per arrival. The benefit pool is influenced by the fleet mix and the overall taxi-in performance. Thus, it varies significantly across the airports.</p>
 <p>With the exception of Rome Fiumicino (LIRF), there is an increase in the benefit pool when comparing 2020 and 2021 within the European region.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fuel-pool-taxi-out" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="07-environment_files/figure-html/fig-fuel-pool-taxi-out-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;7.3: Benefit pool in terms of additional fuel burn during taxi-out</figcaption><p></p>
+<div id="fig-fuel-pool-taxi-out" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fuel-pool-taxi-out-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-environment_files/figure-html/fig-fuel-pool-taxi-out-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fuel-pool-taxi-out-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.3: Benefit pool in terms of additional fuel burn during taxi-out
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Comparing <a href="#fig-fuel-pool-taxi-out">Figure&nbsp;<span>7.3</span></a> with <a href="#fig-fuel-pool-taxi-in">Figure&nbsp;<span>7.2</span></a> shows the overall impact of higher observed taxi-out times and the high-thrust take-off run. For the major hubs in Europe the traffic decline during the COVID phase culminated in sharp decline of the average additional fuel burn per departure when comparing 2019 levels to 2020 or 2021. The impact of congestions on the taxi-operations and the associated refernce times was highlighted already in the efficiency chapter. In light of this, the results for London Heathrow (EGLL) and London Gatwick (EGKK) need to be interpreted comparing the absolute different between the different years. The decline in traffic allowed to operate without constraints which resulted in a - numerical - gain.<br>
+<p>Comparing <a href="#fig-fuel-pool-taxi-out" class="quarto-xref">Figure&nbsp;<span>7.3</span></a> with <a href="#fig-fuel-pool-taxi-in" class="quarto-xref">Figure&nbsp;<span>7.2</span></a> shows the overall impact of higher observed taxi-out times and the high-thrust take-off run. For the major hubs in Europe the traffic decline during the COVID phase culminated in sharp decline of the average additional fuel burn per departure when comparing 2019 levels to 2020 or 2021. The impact of congestions on the taxi-operations and the associated refernce times was highlighted already in the efficiency chapter. In light of this, the results for London Heathrow (EGLL) and London Gatwick (EGKK) need to be interpreted comparing the absolute different between the different years. The decline in traffic allowed to operate without constraints which resulted in a - numerical - gain.<br>
 However, this showcases that the determined reference times internalised inefficiencies. The values for these airports range higher than presented. Future research will address how such variations in terms of traffic load can be better captured as part of the benefit pool approach.</p>
 </section>
 <section id="mapping-of-benefit-pools" class="level2" data-number="7.4">
 <h2 data-number="7.4" class="anchored" data-anchor-id="mapping-of-benefit-pools"><span class="header-section-number">7.4</span> Mapping of Benefit Pools</h2>
 <p>The following Figures depicts the observed shares of additional fuel burn for taxi-out and taxi-in. It must be noted that the totals are based on the assumptions of the ICAO LTO cycle. As such the estimates present an <strong><em>upper bound</em></strong> and do not take into consideration single-engine taxi-operations, reduced taxi-thrust, etc.</p>
-<div class="cell">
-
-</div>
 <!-- 
 {r,fig.show='hold', warning=FALSE}
 -->
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-treemap-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="07-environment_files/figure-html/fig-treemap-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;7.4: Regional shares of additional fuel burn during ground movement phase</figcaption><p></p>
+<div id="fig-treemap-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-treemap-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-environment_files/figure-html/fig-treemap-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-treemap-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.4: Regional shares of additional fuel burn during ground movement phase
+</figcaption>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
-<div id="fig-treemap-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="07-environment_files/figure-html/fig-treemap-2.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;7.5: Regional shares of additional fuel burn during ground movement phase</figcaption><p></p>
+<div id="fig-treemap-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-treemap-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="07-environment_files/figure-html/fig-treemap-2.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-treemap-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.5: Regional shares of additional fuel burn during ground movement phase
+</figcaption>
 </figure>
 </div>
 </div>
@@ -591,23 +608,23 @@ However, this showcases that the determined reference times internalised ineffic
 <p>Based on the underlying databank of aircraft types and associated fuel burn indices, more detailed analyses will be feasible in future reports.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-US-EU-comparison2017" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-US-EU-comparison2017" class="csl-entry" role="listitem">
 EUROCONTROL Performance Review Unit, and FAA Air Traffic Organization. 2019. <span>“2017 Comparison of Air Traffic Management-Related Operational Performance, US/Europe.”</span> <a href="https://www.eurocontrol.int/sites/default/files/2019-05/us-europe-comparison-operational-performance-2017.pdf">https://www.eurocontrol.int/sites/default/files/2019-05/us-europe-comparison-operational-performance-2017.pdf</a>.
 </div>
-<div id="ref-europeancommission2019" class="csl-entry" role="doc-biblioentry">
+<div id="ref-europeancommission2019" class="csl-entry" role="listitem">
 European Commission. 2019. <span>“European Green Deal, Striving to Be the First Climate-Neutral Continent.”</span> <a href="https://ec.europa.eu/info/strategy/priorities-2019-2024/european-green-deal_en">https://ec.europa.eu/info/strategy/priorities-2019-2024/european-green-deal_en</a>.
 </div>
-<div id="ref-europeancommission2021" class="csl-entry" role="doc-biblioentry">
+<div id="ref-europeancommission2021" class="csl-entry" role="listitem">
 ———. 2021. <span>“Fit-for-55, European Green Deal: Commission Proposes Transformation of EU Economy and Society to Meet Climate Ambitions.”</span> <a href="https://ec.europa.eu/commission/presscorner/detail/en/IP_21_3541">https://ec.europa.eu/commission/presscorner/detail/en/IP_21_3541</a>.
 </div>
-<div id="ref-icaodoc98542005" class="csl-entry" role="doc-biblioentry">
+<div id="ref-icaodoc98542005" class="csl-entry" role="listitem">
 ICAO. 2005. <em>Global Air Traffic Management Operational Concept</em>. First Edition. Doc 9854, AN/458. Montreal, Canada: International Civil Aviation Organization.
 </div>
-<div id="ref-icaodoc97502019" class="csl-entry" role="doc-biblioentry">
+<div id="ref-icaodoc97502019" class="csl-entry" role="listitem">
 ———. 2019a. <em>Doc 9750, Capacity &amp; Efficiency, Global Air Navigation Plan 2016-2030</em>. Sixth Edition. Montreal, Canada: International Civil Aviation Organization.
 </div>
-<div id="ref-icao2019" class="csl-entry" role="doc-biblioentry">
+<div id="ref-icao2019" class="csl-entry" role="listitem">
 ———. 2019b. <span>“Resolution A40-18: Consolidated Statement of Continuing ICAO Policies and Practices Related to Environmental Protection - Climate Change.”</span> <a href="https://www.icao.int /environmental-protection/Documents/Assembly/Resolution_A40-18_Climate _Change.pdf">https://www.icao.int /environmental-protection/Documents/Assembly/Resolution_A40-18_Climate _Change.pdf</a>.
 </div>
 </div>
@@ -641,12 +658,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
     }
-  });
-  clipboard.on('success', function(e) {
+    return false;
+  }
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -678,11 +698,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/eurocontrol\.int\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -692,8 +749,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -705,9 +771,244 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -749,17 +1050,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./06-efficiency.html" class="pagination-link">
+      <a href="./06-efficiency.html" class="pagination-link" aria-label="Efficiency">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Efficiency</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./08-conclusions.html" class="pagination-link">
+      <a href="./08-conclusions.html" class="pagination-link" aria-label="Conclusions">
         <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conclusions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 
