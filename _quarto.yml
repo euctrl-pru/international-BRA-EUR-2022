@@ -19,8 +19,6 @@ book:
         country: Belgium
   # author: "DECEA Performance Section<br>EUROCONTROL Performance Review Unit"
   date: "28. October 2022"
-  search:
-    location: sidebar
   chapters:
     - index.qmd
     - 00-front-matters.qmd
